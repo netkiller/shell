@@ -1,0 +1,11 @@
+#!/bin/bash
+# netkiller@9812.net
+
+queue=$1
+#echo ${queue}
+#mailq | tail +2 | awk 'BEGIN { RS = "" } /excite.com/ { print $1 }' | tr -d '*!' | postsuper -d -
+DELETE="mailq | tail +2 | awk  'BEGIN { RS = \"\" } /${queue}/ { print \$1 }' | tr -d '*!' | postsuper -d -"
+echo ${DELETE}
+echo ${DELETE} > queue
+chmod 755 queue
+./queue

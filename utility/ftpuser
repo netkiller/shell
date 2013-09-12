@@ -1,0 +1,86 @@
+#!/bin/bash
+#####################################
+# Netkiller series tools
+# Home: http://netkiller.sf.net
+# Author: Neo Chen<openunix@163.com>
+#####################################
+
+HOME_DIR=/www
+shell=/sbin/nologin
+uid=$(id -u nobody)
+gid=$(id -g nobody)
+group='nobody'
+
+
+
+addftpuser(){
+    if [ -z $2 ]; then
+        usage
+    else
+        local HOME_DIR=$2
+    fi
+    if [ -z $3 ]; then
+        usage
+    else
+        local user=$3
+    fi
+
+    if [ -z $4 ]; then
+        local passwd=$(cat /dev/urandom | tr -dc [:alnum:] | head -c 20)
+    else
+        local passwd=$4
+    fi
+
+    adduser -o --home "$HOME_DIR" --shell "$shell" --uid "$uid" --gid "$gid" --group "$group" $user
+    echo "$user:$passwd" | chpasswd
+
+    echo $user >> /etc/vsftpd/chroot_list
+    echo "ftp://$user:$passwd@$(hostname)"
+}
+delftpuser(){
+    local user=$1
+    if [ -z $user ]; then
+        usage
+    else
+        userdel $user
+    fi
+}
+listftpuser(){
+    cat /etc/passwd | grep `id -u nobody`
+}
+chroot_list(){
+    cat /etc/vsftpd/chroot_list
+}
+usage(){
+    echo $"Usage: $0 add <directory> <username>"
+    echo $"       $0 {list|del} <username>"
+    echo $"       $0 chroot_list"
+    echo "Example:"
+    echo "    $0 add /home/test test"
+    echo "    $0 add /home/test test testpassword"
+    echo "    $0 list test"
+    echo "    $0 del test"
+
+    echo "E-mail bug reports to: <openunix@163.com>."
+    echo "Be sure to include the word ``ftpuser'' somewhere in te ``Subject:'' field."
+
+    exit 2
+}
+case "$1" in
+    list)
+        listftpuser
+        ;;
+    add)
+        addftpuser $@
+        ;;
+    del)
+        delftpuser $2
+        ;;
+    chroot_list)
+        chroot_list
+        ;;
+
+    *)
+        usage
+        exit 1
+esac

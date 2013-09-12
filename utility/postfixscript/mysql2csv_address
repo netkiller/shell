@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# configure.
+
+if [ ! -f mail.conf ]; then
+    exit 0
+else
+    . mail.conf
+fi
+
+echo "姓名,电子邮件地址" | awk -F "," '{ print $1 "," $2 "\r"}' >address.csv
+echo "select name,user from postfix_users where dept='Sales';" | \
+${mysql} -u$mysql_name -p$mysql_password postfix | \
+awk -F " " '{ print $1 "," $2 "\r"}' | \
+sed -e '1d' >>address.csv

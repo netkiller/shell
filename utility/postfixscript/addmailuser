@@ -1,0 +1,98 @@
+#!/bin/sh
+
+# configure.
+
+if [ ! -f mail.conf ]; then
+    exit 0
+else
+    . mail.conf
+fi
+
+echo -n 'Enter user name:'
+read name
+
+if [ "$name" = "" ]; then
+    echo 'Must input name!'
+    exit
+fi
+
+isexist=`echo "select count(name) from postfix_users where name='${name}'" |mysql -u root -p3655927 postfix|sed -e '1d'`
+if [ "${isexist}" -gt '0' ]; then
+    echo $name' exists!'
+    exit
+fi
+
+echo -n 'Enter user password:['${name}']'
+read password
+if [ "$password" = "" ]; then
+    password=${name}
+fi
+
+#echo 'Enter user forward:['$name']'
+#read forward
+#if [ "$forward" = "" ]; then
+#forward=$name
+#fi
+
+echo -n 'Enter user domain:['${default_domain}']'
+read domain
+if [ "$domain" = "" ]; then
+    domain=${default_domain}
+fi
+
+echo -n 'Enter user home:['${default_mailbox_base}'/]'
+read home
+if [ "$home" = "" ]; then
+    home=${default_mailbox_base}'/'
+fi
+
+echo -n 'Enter user Maildir:['$home$domain'/'$name'/Maildir/]'
+read maildir
+if [ "$maildir" = "" ]; then
+    maildir=$domain/$name/Maildir/
+fi
+
+echo -n 'Enter user quota:['${default_quota}']'
+read quota
+if [ "$quota" = "" ]; then
+    quota=${default_quota}
+fi
+
+echo '-------------------------------------'
+
+echo 'name= '$name
+echo 'password= '$password
+#echo 'forward= '$forward
+echo 'domain= '$domain
+echo 'home= '$home
+echo 'maildir= '$maildir
+echo 'status= '$status
+#echo 'filter= '$filter
+echo 'quota= '$quota
+
+echo '-------------------------------------'
+
+echo -n "If under value is right,please input 'y' any Enter:"
+read mychoice
+if [ "$mychoice" = "y" ]; then
+    touch addmailuser.sql
+    chmod 400 addmailuser.sql
+    echo "use ${mysql_db};" > addmailuser.sql
+#echo "INSERT INTO USER (USERNAME,PASSWORD,CLEAR_PASSWORD,FORWARD,DOMAIN,HOMEDIR,MAILDIR,MAIL) VALUES ('$name','','$password','$forward','$domain','$home','$maildir','$name@$domain');" >> tmp_addmailuser.sql
+echo "INSERT INTO postfix_users (USER,NAME,PASSWD,DOMAIN,HOME,MAILDIR,QUOTA,create_date) VALUES ('$name@$domain','$name',encrypt('$password'),'$domain','$home','$maildir','$quota',now());" >> addmailuser.sql
+
+${mysql} -u$mysql_name -p$mysql_password < addmailuser.sql
+rm addmailuser.sql
+
+uid=${mail_owner}
+gid=${setgid_group}
+MailUserDir=$home$domain/$name
+mkdir -p $MailUserDir
+${courier} $MailUserDir/Maildir;chmod -R 700 $MailUserDir;chown -R ${uid}:${gid} $MailUserDir
+
+fi
+exit
+
+
+# chmod 755 /sbin/addmailuser
+

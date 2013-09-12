@@ -1,0 +1,1 @@
+mailq | tail +2 | awk 'BEGIN { RS = "" } // { print $1 }' | tr -d '*!' | postsuper -d -

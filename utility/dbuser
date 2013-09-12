@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# This is variable for connect to mysql.
+host=192.168.3.9
+user=root
+pass=chen
+db=mysql
+
+# You can set to up binrary program's path and parameter.
+MYSQL=mysql
+MYSQLOPTS="-h $host -u $user -p$pass $db"
+MYSQLDUMP=mysqldump
+MYSQLDUMPOPTS="-h$host -u$user -p$pass -c --no-create-info"
+
+$MYSQL $MYSQLOPTS <<SQL
+
+GRANT ALL PRIVILEGES ON opencart.* TO 'neo'@'localhost' IDENTIFIED BY 'chen' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+SQL
