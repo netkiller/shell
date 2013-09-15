@@ -1,0 +1,584 @@
+#!/bin/bash
+##############################################################
+# Script for Apache and Tomcat
+# File:/etc/rc.d/init.d/www
+##############################################################
+# Setup environment for script execution
+#
+
+# chkconfig: - 101 101
+# description: Starts and stops the apache and tomcat daemons \
+#              used to provide Neo Chen<jingfeng.chen@sinofriends.com>
+#
+# pidfile: /var/run/www/apache.pid
+# pidfile: /var/run/www/tomcat.pid
+# config:  /etc/apache2/apache2.conf
+
+#APACHE_USER=apache
+#TOMCAT_USER=tomcat
+
+APACHE_HOME=/usr/local/apache
+TOMCAT_HOME=/usr/local/tomcat
+JBOSS_HOME=/etc/init.d
+APACHE_USER=root
+TOMCAT_USER=root
+JBOSS_USER=root
+
+APACHE_START=yes
+TOMCAT_START=yes
+JBOSS_START=yes
+
+WAIT_TIME=5
+
+get_apache_pid(){
+    APACHE_PID=`pgrep -o httpd`
+    echo $APACHE_PID
+}
+get_tomcat_pid(){
+    TOMCAT_PID=`ps axww | grep catalina.home | grep -v 'grep' | sed q | awk '{print $1}'`
+    echo $TOMCAT_PID
+}
+get_jboss_pid(){
+    echo `ps axww | grep 'org.jboss.Main' | grep -v 'grep' | sed q | awk '{print $1}'`
+}
+#OPEN_FILS=40960
+
+# Source function library.
+#if [ -f /etc/init.d/functions ] ; then
+#  . /etc/init.d/functions
+#elif [ -f /etc/rc.d/init.d/functions ] ; then
+#  . /etc/rc.d/init.d/functions
+#else
+#  exit 0
+#fi
+
+if [ ! -d /var/run/www ] ; then
+  mkdir /var/run/www
+fi
+
+#if [ -f /var/lock/subsys/tomcat ] ; then
+#fi
+
+start() {
+	#if [ `ulimit -n` -le  ${OPEN_FILES} ]; then
+	#	ulimit -n ${OPEN_FILES}
+	#fi
+    if [ $JBOSS_START ]; then
+	jboss_start
+        sleep 2
+    fi
+    if [ $TOMCAT_START ]; then
+	echo -en "\\033[1;32;1m"
+	echo "Starting Tomcat $TOMCAT_HOME ..."
+	echo -en "\\033[0;39;1m"
+	if [ `get_tomcat_pid` ]; then
+		echo "tomcat (pid `get_tomcat_pid`) already running"
+	else
+		su -m ${TOMCAT_USER} -c "$TOMCAT_HOME/bin/catalina.sh start > /dev/null"
+#		echo `get_tomcat_pid` > /var/run/www/tomcat.pid
+#		touch /var/lock/subsys/tomcat
+	fi
+	sleep 2
+    fi
+    if [ $APACHE_START ]; then
+	echo -en "\\033[1;32;1m"
+	echo "Starting Apache $APACHE_HOME ..."
+	echo -en "\\033[0;39;1m"
+	su -m ${APACHE_USER} -c "$APACHE_HOME/bin/apachectl start"
+#	touch /var/lock/subsys/apache
+    fi
+}
+
+stop() {
+    if [ $APACHE_START ]; then
+	echo -en "\\033[1;32;1m"
+	echo "Shutting down Apache $APACHE_HOME ..."
+	echo -en "\\033[0;39;1m"
+	su -m ${APACHE_USER} -c "$APACHE_HOME/bin/apachectl stop"
+	sleep 2
+    fi
+    if [ $TOMCAT_START ]; then
+	echo -en "\\033[1;32;1m"
+	echo "Shutting down Tomcat $TOMCAT_HOME ..."
+	echo -en "\\033[0;39;1m"
+	su -m ${TOMCAT_USER} -c "$TOMCAT_HOME/bin/catalina.sh stop > /dev/null"
+	sleep 2
+    fi
+    if [ $JBOSS_START ]; then
+	jboss_stop 
+    fi
+#	rm -rf /var/run/www/tomcat.pid
+#	rm -f /var/lock/subsys/tomcat
+#	rm -f /var/lock/subsys/apache
+}
+
+restart() {
+    stop
+
+    if [ $APACHE_START ]; then
+        apache_waiting
+	echo
+    fi
+
+    if [ $TOMCAT_START ]; then
+        tomcat_waiting
+	echo
+    fi
+
+    if [ $JBOSS_START ]; then
+        jboss_waiting
+	echo
+    fi
+
+    start
+}
+apache_waiting(){
+    if [ ! -z `get_apache_pid` ]; then
+	echo -n "Waiting Apache: "
+    fi
+    while [ ! -z `get_apache_pid` ]; do
+        if [ -z `get_apache_pid` ]; then
+            return 1
+        else
+            echo -n "."
+        fi
+	sleep 1
+    done
+}
+
+tomcat_waiting(){
+    if [ ! -z `get_tomcat_pid` ]; then
+        echo -n "Waiting Tomcat: "
+    fi
+    while [ ! -z `get_tomcat_pid` ]; do
+        if [ -z `get_tomcat_pid` ]; then
+            return 1
+        else
+            echo -n "."
+        fi
+        sleep 1
+    done
+}
+
+jboss_waiting(){
+    if [ ! -z `get_jboss_pid` ]; then
+        echo -n "Waiting JBoss: "
+    fi
+    while [ ! -z `get_jboss_pid` ]; do
+        if [ -z `get_jboss_pid` ]; then
+            return 1
+        else
+            echo -n "."
+        fi
+        sleep 1
+    done
+}
+
+apache_k9stop(){
+    while [ ! -z `get_apache_pid` ]; do
+
+        if [ -z `get_apache_pid` ]; then
+                return 1
+        else
+                kill -9 `get_apache_pid`
+        fi
+    done
+}
+
+tomcat_k9stop(){
+    while [ ! -z `get_tomcat_pid` ]; do
+
+        if [ -z `get_tomcat_pid` ]; then
+                return 1
+        else
+                kill -9 `get_tomcat_pid`
+        fi
+    done
+}
+
+jboss_k9stop(){
+    while [ ! -z `get_jboss_pid` ]; do
+
+        if [ -z `get_jboss_pid` ]; then
+                return 1
+        else
+                kill -9 `get_jboss_pid`
+        fi
+    done
+}
+
+
+k9stop() {
+    stop
+
+    sleep ${WAIT_TIME}
+
+    if [ $APACHE_START ]; then
+	apache_k9stop
+    fi
+
+    if [ $TOMCAT_START ]; then
+	tomcat_k9stop
+    fi
+
+    if [ $JBOSS_START ]; then
+	jboss_k9stop
+    fi
+
+    echo
+}
+k9restart(){
+    k9stop
+    start
+}
+
+k9restart_old() {
+    ISEXIT='false'
+    stop
+    for i in `seq 1 ${WAIT_TIME}`;
+    do
+		if [ -z `get_tomcat_pid` ] && [ -z `get_apache_pid` ]; then
+	        ISEXIT='true'
+	        break
+		else
+			sleep 1
+		fi
+	done
+	
+	if [ $ISEXIT == 'false' ]; then
+	    while true;
+		do
+			apache_pid=`get_apache_pid`
+			tomcat_pid=`get_tomcat_pid`
+			if [ -z $tomcat_pid ] && [ -z $apache_pid ]; then
+				ISEXIT='true'
+	        	break
+			fi
+
+			if [ ! -z $apache_pid ]; then
+				kill -9 $apache_pid
+			fi
+			if [ ! -z $tomcat_pid ]; then
+				kill -9 $tomcat_pid
+			fi
+		done
+		rm -rf /var/run/www/tomcat.pid
+		rm -f /var/lock/subsys/tomcat
+		rm -f /var/lock/subsys/apache		
+	fi
+	
+	echo
+	
+	if [ $ISEXIT == 'true' ]; then
+		start
+	fi
+}
+
+status() {
+		#ps -aux | grep -e tomcat -e apache
+		
+		echo -en "\\033[1;32;1m"
+		echo ulimit open files: `ulimit -n`
+		echo -en "\\033[0;39;1m"
+
+		echo -en "\\033[1;32;1m"
+		echo -en "httpd count:"
+		let hc=`ps axf|grep httpd|wc -l`-1
+		echo $hc
+		echo -en "apache count:"
+		netstat -alp | grep '*:http' | wc -l
+		echo -en "tomcat count:"		
+		netstat -alp | grep '*:webcache' | wc -l
+		echo -en "dbconn count:"
+		netstat -a | grep ':3433' | wc -l
+		echo -en "\\033[0;39;1m"
+}
+
+allkill() {
+	if [ `get_apache_pid` ]; then
+		echo -en "\\033[1;32;1m"
+		echo "kill Apache pid(`pidof httpd`) ..."
+		kill `pidof httpd`
+		echo -en "\\033[0;39;1m"
+	fi
+	if [ `get_tomcat_pid` ]; then
+		echo -en "\\033[1;32;1m"
+		echo "kill Tomcat pid(`get_tomcat_pid`) ..."
+		kill `get_tomcat_pid`
+		echo -en "\\033[0;39;1m"
+	fi
+        if [ `get_jboss_pid` ]; then
+                echo -en "\\033[1;32;1m"
+                echo "kill JBoss pid(`get_jboss_pid`) ..."
+                kill `get_jboss_pid`
+                echo -en "\\033[0;39;1m"
+        fi
+
+	rm -rf /var/run/www/tomcat.pid
+	rm -f /var/lock/subsys/tomcat
+	rm -f /var/lock/subsys/apache
+}
+
+apache_start(){
+    su -m ${APACHE_USER} -c "$APACHE_HOME/bin/apachectl start"
+}
+apache_stop(){
+    su -m ${APACHE_USER} -c "$APACHE_HOME/bin/apachectl stop"
+}
+apache_restart(){
+    su -m ${APACHE_USER} -c "$APACHE_HOME/bin/apachectl restart"
+}
+apache_k9restart(){
+    ISEXIT='false'
+    apache_stop
+    for i in `seq 1 ${WAIT_TIME}`;
+    do
+                if [ -z `pidof -s httpd` ]; then
+                ISEXIT='true'
+                break
+                else
+                        sleep 1
+                fi
+        done
+
+        if [ $ISEXIT == 'false' ]; then
+            while true;
+            do
+                apache_pid=`pidof -s httpd`
+                 if [ -z $apache_pid ]; then
+                        ISEXIT='true'
+                        break
+                 else
+                        kill -9 $apache_pid
+                 fi
+            done
+                rm -rf /var/run/www/apache.pid
+                rm -f /var/lock/subsys/apache
+        fi
+
+        echo
+
+        if [ $ISEXIT == 'true' ]; then
+                apache_start
+        fi
+
+}
+apache_reload() {
+	killall -HUP httpd
+}
+
+
+tomcat_start(){
+    su -m ${TOMCAT_USER} -c "$TOMCAT_HOME/bin/catalina.sh start > /dev/null"
+}
+tomcat_stop() {
+    su -m ${TOMCAT_USER} -c "$TOMCAT_HOME/bin/catalina.sh stop > /dev/null"
+}
+tomcat_restart() {
+    tomcat_stop
+    rm -rf /var/run/www/tomcat.pid
+    rm -f /var/lock/subsys/tomcat
+    sleep 2
+    if [ -z `get_tomcat_pid` ]; then
+        tomcat_start
+        exit 0
+    else
+        echo "Usage: $0 killall (^C)"
+        echo -n "Waiting: "
+    fi
+    while true;
+    do
+                sleep 1
+                if [ -z `get_tomcat_pid` ]; then
+			echo
+                        break
+                else
+                        echo -n "."
+                fi
+    done
+    tomcat_start
+    echo `get_tomcat_pid` > /var/run/www/tomcat.pid
+    touch /var/lock/subsys/tomcat
+}
+
+tomcat_k9restart() {
+    ISEXIT='false'
+    tomcat_stop
+    for i in `seq 1 ${WAIT_TIME}`;
+    do
+                if [ -z `get_tomcat_pid` ]; then
+                ISEXIT='true'
+                break
+                else
+                        sleep 1
+                fi
+        done
+
+        if [ $ISEXIT == 'false' ]; then
+            while true;
+            do
+		tomcat_pid=`get_tomcat_pid`
+	         if [ -z $tomcat_pid ]; then
+                        ISEXIT='true'
+                        break
+                 else
+                        kill -9 `get_tomcat_pid`
+                 fi
+            done
+                rm -rf /var/run/www/tomcat.pid
+                rm -f /var/lock/subsys/tomcat
+        fi
+
+        echo
+
+        if [ $ISEXIT == 'true' ]; then
+                tomcat_start
+        fi
+}
+
+jboss_start(){
+    su -m ${JBOSS_USER} -c "${JBOSS_HOME}/jboss start"
+}
+jboss_stop(){
+    su -m ${JBOSS_USER} -c "${JBOSS_HOME}/jboss stop"
+}
+jboss_restart(){
+    su -m ${JBOSS_USER} -c "${JBOSS_HOME}/jboss restart"
+}
+jboss_k9restart(){
+    ISEXIT='false'
+    jboss_stop
+    for i in `seq 1 ${WAIT_TIME}`;
+    do
+        if [ -z `get_jboss_pid` ]; then
+            ISEXIT='true'
+            break
+        else
+            sleep 1
+        fi
+    done
+
+        if [ $ISEXIT == 'false' ]; then
+            while true;
+            do
+                jboss_pid=`get_jboss_pid`
+                 if [ -z $jboss_pid ]; then
+                        ISEXIT='true'
+                        break
+                 else
+                        kill -9 $jboss_pid
+                 fi
+            done
+        fi
+
+        echo
+
+        if [ $ISEXIT == 'true' ]; then
+                jboss_start
+        fi
+
+}
+
+# Determine and execute action based on command line parameter
+case $1 in
+    apache)
+	case "$2" in
+            start)
+                apache_start
+                ;;
+            stop)
+                apache_stop
+                ;;
+            restart)
+                apache_restart
+                ;;
+            k9stop)
+                apache_k9stop >/dev/null
+		;;
+            k9restart)
+                apache_k9restart > /dev/null
+                ;;
+	    reload)
+		apache_reload
+		;;
+	    *)
+		su -m ${APACHE_USER} -c "${APACHE_HOME}/bin/apachectl $2"
+		;;
+	esac
+	;;
+    tomcat)
+	case "$2" in
+            start)
+                tomcat_start
+                ;;
+            stop)
+                tomcat_stop
+                ;;
+            restart)
+                tomcat_restart
+                ;;
+            k9stop)
+                tomcat_k9stop >/dev/null
+		;;
+	    k9restart)
+		tomcat_k9restart > /dev/null
+		;;
+	    *)
+		su -m ${TOMCAT_USER} -c "${TOMCAT_HOME}/bin/catalina.sh $2"
+		;;
+	esac
+	;;
+    jboss)
+        case "$2" in
+            start)
+                jboss_start
+                ;;
+            stop)
+                jboss_stop
+                ;;
+            restart)
+                jboss_restart
+                ;;
+    	    k9stop)
+        	jboss_k9stop >/dev/null
+		;;
+            k9restart)
+                jboss_k9restart > /dev/null
+                ;;
+            *)
+                su -m ${JBOSS_USER} -c "${JBOSS_HOME}/jboss $2"
+                ;;
+        esac
+        ;;
+    start)
+	start
+	;;
+    stop)
+	stop
+	;;
+    restart)
+	restart
+	;;
+    status)
+	status
+	;;
+    allkill)
+	allkill
+	;;
+    k9stop)
+        k9stop >/dev/null
+        ;;
+    k9restart)
+	k9restart >/dev/null
+	;;
+    *)
+	echo -en "\\033[1;32;1m"
+	echo "Usage: $0 {start|stop|restart|status|allkill|k9stop|k9restart}"
+	echo "Usage: $0 apache {start|stop|restart|k9stop|k9restart|graceful|graceful-stop|reload}"
+	echo "Usage: $0 tomcat {debug|run|start|restart|k9stop|k9restart|stop|version}"
+	echo "Usage: $0 jboss {start|stop|restart|k9stop|k9restart}"
+	echo -en "\\033[0;39;1m"
+	;;
+esac
+echo -en "\\033[0;39;m"
+exit 0
