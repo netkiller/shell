@@ -1,3 +1,0 @@
-#!/bin/sh
-mailq |grep MAILER-DAEMON | awk '{printf $1} {print " deferred"}' | tr -d '*!' | xargs -n 2 postsuper -d 
-
