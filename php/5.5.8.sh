@@ -8,17 +8,17 @@ curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXp
 #yum install openldap-devel net-snmp-devel
 
 cd /usr/local/src/
-wget http://tw2.php.net/get/php-5.5.7.tar.gz/from/this/mirror
+wget http://tw2.php.net/get/php-5.5.8.tar.gz/from/this/mirror
 
 #ln -s /usr/pgsql-9.2/lib/* /usr/lib/
 #ln -s /usr/pgsql-9.2/include/* /usr/include/
 
-tar zxf php-5.5.7.tar.gz
-cd php-5.5.7
+tar zxf php-5.5.8.tar.gz
+cd php-5.5.8
 
-./configure --prefix=/srv/php-5.5.7 \
---with-config-file-path=/srv/php-5.5.7/etc \
---with-config-file-scan-dir=/srv/php-5.5.7/etc/conf.d \
+./configure --prefix=/srv/php-5.5.8 \
+--with-config-file-path=/srv/php-5.5.8/etc \
+--with-config-file-scan-dir=/srv/php-5.5.8/etc/conf.d \
 --enable-fpm \
 --with-fpm-user=www \
 --with-fpm-group=www \
@@ -64,23 +64,23 @@ cd php-5.5.7
 
 make && make install
 
-strip /srv/php-5.5.7/bin/php
-strip /srv/php-5.5.7/bin/php-cgi
+strip /srv/php-5.5.8/bin/php
+strip /srv/php-5.5.8/bin/php-cgi
 		
-mkdir -p /srv/php-5.5.7/etc/conf.d
-cp php.ini-* /srv/php-5.5.7/etc/
-#cp /srv/php-5.5.7/etc/php.ini-development /srv/php-5.5.7/etc/php.ini
-cp /srv/php-5.5.7/etc/php.ini-production /srv/php-5.5.7/etc/php.ini
-cp /srv/php-5.5.7/etc/php-fpm.conf.default /srv/php-5.5.7/etc/php-fpm.conf
-cp /srv/php-5.5.7/etc/pear.conf{,.original}
+mkdir -p /srv/php-5.5.8/etc/conf.d
+cp php.ini-* /srv/php-5.5.8/etc/
+#cp /srv/php-5.5.8/etc/php.ini-development /srv/php-5.5.8/etc/php.ini
+cp /srv/php-5.5.8/etc/php.ini-production /srv/php-5.5.8/etc/php.ini
+cp /srv/php-5.5.8/etc/php-fpm.conf.default /srv/php-5.5.8/etc/php-fpm.conf
+cp /srv/php-5.5.8/etc/pear.conf{,.original}
 cp ./sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
 chmod +x /etc/init.d/php-fpm
 chkconfig --add php-fpm
 chkconfig php-fpm on
 
-ln -s /srv/php-5.5.7/ /srv/php
+ln -s /srv/php-5.5.8/ /srv/php
 
-vim /srv/php-5.5.7/etc/php-fpm.conf <<end > /dev/null 2>&1
+vim /srv/php-5.5.8/etc/php-fpm.conf <<end > /dev/null 2>&1
 :25,25s/;//
 :32,32s/;//
 :225,225s/pm.max_children = 5/pm.max_children = 512/
@@ -89,8 +89,8 @@ vim /srv/php-5.5.7/etc/php-fpm.conf <<end > /dev/null 2>&1
 :wq
 end
 
-vim /srv/php-5.5.7/etc/php.ini <<EOF > /dev/null 2>&1
-:309,309s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.5.7/lib/php/:/srv/php-5.5.7/bin/$
+vim /srv/php-5.5.8/etc/php.ini <<EOF > /dev/null 2>&1
+:309,309s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.5.8/lib/php/:/srv/php-5.5.8/bin/$
 :376,376s/expose_php = On/expose_php = Off/
 :406,406s/memory_limit = 128M/memory_limit = 32M/
 :768,768s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
@@ -100,8 +100,8 @@ vim /srv/php-5.5.7/etc/php.ini <<EOF > /dev/null 2>&1
 :wq
 EOF
 
-#:706,706s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.5.7/lib/php:/srv/php-5.5.7/share"!
-#:728,728s!; extension_dir = "./"!extension_dir = "./:/srv/php-5.5.7/lib/php/extensions:/srv/php-5.5.7/lib/php/extensions/no-debug-non-zts-20121212"!
+#:706,706s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.5.8/lib/php:/srv/php-5.5.8/share"!
+#:728,728s!; extension_dir = "./"!extension_dir = "./:/srv/php-5.5.8/lib/php/extensions:/srv/php-5.5.8/lib/php/extensions/no-debug-non-zts-20121212"!
 #:804,804s/upload_max_filesize = 2M/upload_max_filesize = 3M/
 
 cat >> ~/.bashrc <<EOF
