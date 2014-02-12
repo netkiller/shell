@@ -1,0 +1,1 @@
+yes | pkg install phalcon
