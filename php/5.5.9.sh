@@ -54,9 +54,9 @@ cd php-5.5.9
 --enable-opcache \
 --enable-pcntl \
 --enable-maintainer-zts \
+--with-tsrm-pthreads \
 --disable-debug
 
-#--with-tsrm-pthreads \
 #--with-mysql \
 #--with-mysqli=/usr/bin/mysql_config \
 #--with-pdo-pgsql=/usr/pgsql-9.2 \
