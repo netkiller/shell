@@ -1,15 +1,8 @@
 #!/bin/bash
-if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
-        echo 'Only for Redhat or CentOS'
-        exit
-fi
+sudo apt-get install mongodb
 
-yum install mongodb-server mongodb -y
-
-chkconfig mongod on
-service mongod start
-
-#yum install mongodb
+chkconfig mongodb on
+service mongodb start
 
 cat <<EOF | mongo
 use admin
@@ -20,10 +13,10 @@ EOF
 
 echo "admin password: chen"
 
-cp /etc/mongodb.conf{,.original}
-sed -i "s/#auth = true/auth = true/" /etc/mongodb.conf
+sudo cp /etc/mongodb.conf{,.original}
+sudo sed -i "s/#auth = true/auth = true/" /etc/mongodb.conf
 
-service mongod reload
+sudo /etc/init.d/mongodb restart
 
 iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -j ACCEPT
 service iptables save
