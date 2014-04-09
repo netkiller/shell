@@ -4,6 +4,10 @@ Installation
 PHP 5.5.9
 ---------
     https://raw.github.com/oscm/shell/master/php/5.5.9.sh
+
+PHP 5.5.11
+---------
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/php/5.5.11.sh | bash	
     
 Pecl
 ----
