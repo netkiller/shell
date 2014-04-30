@@ -16,18 +16,12 @@ yum install -y vim-enhanced
 
 #yum install -y openssh-clients
 
-rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
-rpm -K http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-rpm -i http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-
 rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-
-yum update -y
 
 cat >> /etc/security/limits.conf <<EOF
 
-* soft nofile 40960
-* hard nofile 40960
+* soft nofile 4096
+* hard nofile 4096
 EOF
 
 
