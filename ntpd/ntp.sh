@@ -12,6 +12,5 @@ yum install ntp -y
 #:25,25s/^/\rserver 172.16.3.51\rserver 172.16.3.52\r/
 #:wq
 #VIM
-
-service ntpd start
 chkconfig ntpd on
+service ntpd start
