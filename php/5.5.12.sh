@@ -21,6 +21,49 @@ if [ -s php-5.5.12.tar.gz ]; then
 tar zxf php-5.5.12.tar.gz
 cd php-5.5.12
 
+./configure --prefix=/srv/php-5.5.12 \
+--with-config-file-path=/srv/php-5.5.12/etc \
+--with-config-file-scan-dir=/srv/php-5.5.12/etc/conf.d \
+--enable-fpm \
+--with-fpm-user=www \
+--with-fpm-group=www \
+--with-pear \
+--with-curl \
+--with-gd \
+--with-jpeg-dir \
+--with-png-dir \
+--with-freetype-dir \
+--with-zlib-dir \
+--with-iconv \
+--with-mcrypt \
+--with-mhash \
+--with-pdo-mysql \
+--with-mysql-sock=/var/lib/mysql/mysql.sock \
+--with-mysqli=/usr/bin/mysql_config \
+--with-pdo-pgsql=/usr/pgsql-9.3 \
+--with-openssl \
+--with-xsl \
+--with-recode \
+--enable-sockets \
+--enable-soap \
+--enable-mbstring \
+--enable-exif \
+--enable-gd-native-ttf \
+--enable-zip \
+--enable-xml \
+--enable-bcmath \
+--enable-calendar \
+--enable-shmop \
+--enable-dba \
+--enable-wddx \
+--enable-sysvsem \
+--enable-sysvshm \
+--enable-sysvmsg \
+--enable-opcache \
+--enable-pcntl \
+--enable-maintainer-zts \
+--with-tsrm-pthreads \
+--disable-debug
 
 #--with-mysql \
 #--with-pgsql=/usr/pgsql-9.2 \
