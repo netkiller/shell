@@ -98,6 +98,7 @@ chmod +x /etc/init.d/php-fpm
 chkconfig --add php-fpm
 chkconfig php-fpm on
 
+rm -f /srv/php
 ln -s /srv/php-5.5.12/ /srv/php
 
 vim /srv/php-5.5.12/etc/php-fpm.conf <<end > /dev/null 2>&1
