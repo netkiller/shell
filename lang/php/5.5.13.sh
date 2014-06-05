@@ -114,7 +114,7 @@ vim /srv/php-5.5.13/etc/php.ini <<EOF > /dev/null 2>&1
 :299,299s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.5.13/lib/php/:/srv/php-5.5.13/bin/$
 :366,366s/expose_php = On/expose_php = Off/
 :758,758s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
-:913,913s$;date.timezone =$date.timezone = Asia/Hong_Kong$
+:913,913s:;date.timezone =:date.timezone = Asia/Hong_Kong:
 :1390,1390s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
 :1416,1416s/session.name = PHPSESSID/session.name = JSESSIONID/
 :wq
