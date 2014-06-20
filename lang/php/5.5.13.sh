@@ -127,6 +127,12 @@ EOF
 #:804,804s/upload_max_filesize = 2M/upload_max_filesize = 3M/
 #s/disable_functions =.*/disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket/g
 
+vim /srv/php-5.5.13/etc/php.cli.ini <<EOF > /dev/null 2>&1
+:396,396s/memory_limit = 128M/memory_limit = 2G/
+:913,913s:;date.timezone =:date.timezone = Asia/Hong_Kong:
+:wq
+EOF
+
 cat >> ~/.bashrc <<EOF
 
 alias php='php -c /srv/php/etc/php.cli.ini'
