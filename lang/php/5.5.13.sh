@@ -89,8 +89,8 @@ strip /srv/php-5.5.13/bin/php-cgi
 		
 mkdir -p /srv/php-5.5.13/etc/conf.d
 cp php.ini-* /srv/php-5.5.13/etc/
-#cp /srv/php-5.5.13/etc/php.ini-development /srv/php-5.5.13/etc/php.ini
 cp /srv/php-5.5.13/etc/php.ini-production /srv/php-5.5.13/etc/php.ini
+cp /srv/php-5.5.13/etc/php.ini-development /srv/php-5.5.13/etc/php.cli.ini
 cp /srv/php-5.5.13/etc/php-fpm.conf.default /srv/php-5.5.13/etc/php-fpm.conf
 cp /srv/php-5.5.13/etc/pear.conf{,.original}
 cp ./sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
@@ -128,6 +128,8 @@ EOF
 #s/disable_functions =.*/disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket/g
 
 cat >> ~/.bashrc <<EOF
+
+alias php='php -c /srv/php/etc/php.cli.ini'
 PATH=$PATH:/srv/php/bin:
 EOF
 
