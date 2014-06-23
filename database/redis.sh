@@ -13,6 +13,7 @@ chkconfig redis on
 service redis start
 
 cp /etc/redis.conf{,.original}
+sed -i 's/bind 127.0.0.1/bind 0.0.0.0/g' /etc/redis.conf 
 
 sysctl vm.overcommit_memory=1
 
