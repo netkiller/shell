@@ -42,3 +42,9 @@ Node Install
 		curl -q -s https://raw.githubusercontent.com/oscm/shell/master/modules/mysql.sh | bash
         echo '====================================================================='
     fi
+
+Donations
+---------
+We accept tips through [Gittip][tip].
+
+[![Gittip](http://img.shields.io/gittip/Homebrew.svg)](https://www.gittip.com/netkiller/)
