@@ -74,6 +74,7 @@ cd php-5.2.17
 make && make install
 		
 mkdir -p /srv/php-5.2.17/etc/conf.d/
+cp php-5.2.17/php.ini-* /srv/php-5.2.17/etc/
 cp php.ini-recommended /srv/php-5.2.17/etc/php.ini
 cp /srv/php-5.2.17/etc/php-fpm.conf{,.original}
 cp /srv/php-5.2.17/etc/pear.conf{,.original}
