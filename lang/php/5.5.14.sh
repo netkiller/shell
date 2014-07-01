@@ -94,7 +94,8 @@ cp /srv/php-5.5.14/etc/php.ini-development /srv/php-5.5.14/etc/php.cli.ini
 cp /srv/php-5.5.14/etc/php-fpm.conf.default /srv/php-5.5.14/etc/php-fpm.conf
 cp /srv/php-5.5.14/etc/pear.conf{,.original}
 
-cp ./sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
+#\cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
+yes|cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
 chmod +x /etc/init.d/php-fpm
 chkconfig --add php-fpm
 chkconfig php-fpm on

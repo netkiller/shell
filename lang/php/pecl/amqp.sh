@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 yum install -y librabbitmq-devel
 pecl install amqp
 
