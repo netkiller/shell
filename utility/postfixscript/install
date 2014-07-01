@@ -1,5 +1,0 @@
-#!/bin/bash
-chmod 500 `pwd`
-chmod 500 *
-chmod 400 mail.conf
-chown root.root -R `pwd`
