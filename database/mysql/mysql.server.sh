@@ -1,7 +1,14 @@
-mkdir -p /srv/pkg/mysql
-cd /srv/pkg/mysql
+#!/bin/sh
+yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+yum update -y
+yum install mysql-server -y
+chkconfig mysqld on
+service mysqld start
 
-wget http://cdn.mysql.com/Downloads/MySQL-5.5/MySQL-server-5.5.28-1.el6.x86_64.rpm
+cp /etc/my.cnf{,.original}
 
-rpm -e --nodeps mysql-libs
-yum localinstall MySQL-server-5.5.28-1.el6.x86_64.rpm
+cat >> /etc/security/limits.d/80-mysql.conf <<EOF
+
+mysql soft nofile 40960
+mysql hard nofile 40960
+EOF
