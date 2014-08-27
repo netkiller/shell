@@ -73,8 +73,6 @@ make -j8
 
 [[ $? -ne 0 ]] && echo "Error: make" &&  exit $?
 
-fi
-
 if [ $(id -u) != "0" ]; then
     sudo make install
 else
