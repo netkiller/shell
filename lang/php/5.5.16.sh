@@ -136,8 +136,8 @@ vim /srv/php-5.5.16/etc/php.cli.ini <<EOF > /dev/null 2>&1
 :wq
 EOF
 
-cat >> ~/.bashrc <<EOF
+cat >> ~/.bashrc <<'EOF'
 
 alias php='php -c /srv/php/etc/php.cli.ini'
-PATH=$PATH:/srv/php/bin:
+PATH=$PATH:/srv/php/bin
 EOF
