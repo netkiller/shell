@@ -68,6 +68,7 @@ cd php-5.2.17
 --enable-sysvshm \
 --enable-sysvmsg \
 --enable-pcntl \
+--enable-maintainer-zts \
 --with-tsrm-pthreads \
 --disable-debug
 
