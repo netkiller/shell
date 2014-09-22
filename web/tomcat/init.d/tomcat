@@ -1,0 +1,58 @@
+#!/bin/bash
+# description: Tomcat Start Stop Restart
+# processname: tomcat
+# chkconfig: 234 20 80
+
+JAVA_HOME=/srv/java
+CATALINA_HOME=/srv/apache-tomcat
+
+# Source function library.
+. /etc/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+if [ -f /etc/sysconfig/tomcat ]; then
+        . /etc/sysconfig/tomcat
+fi
+
+prog=tomcat
+lockfile=/var/lock/subsys/$prog
+pidfile=${PIDFILE-/var/run/$prog.pid}
+lockfile=${LOCKFILE-/var/lock/subsys/$prog}
+RETVAL=0
+OPTIONS="--pidfile=${pidfile}"
+
+start(){
+	# Start daemons.
+	echo -n $"Starting $prog: "
+    #daemon $prog $OPTIONS
+	su - www -c "$CATALINA_HOME/bin/startup.sh"
+	RETVAL=$?
+        echo
+	[ $RETVAL -eq 0 ] && touch $lockfile
+	return $RETVAL
+}
+
+stop() {
+	echo -n $"Stopping $prog: "
+#	killproc -p ${pidfile} -d 10 $httpd
+	su - www -c "$CATALINA_HOME/bin/shutdown.sh"
+	RETVAL=$?
+	echo
+	[ $RETVAL = 0 ] && rm -f ${lockfile} ${pidfile}
+}
+
+case $1 in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        start
+        stop
+    ;;
+esac
+exit 0
