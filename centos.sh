@@ -13,7 +13,7 @@ yum install -y telnet wget rsync vim-enhanced
 
 #yum install -y openssh-clients
 
-rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/epel-release-7-2.noarch.rpm
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
 
 cat >> /etc/security/limits.conf <<EOF
 
