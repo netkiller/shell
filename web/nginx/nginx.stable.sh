@@ -12,7 +12,7 @@ rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0
 
 yum install -y nginx
 chkconfig nginx on
-service nginx start
+systemctl start nginx
 
 cp /etc/nginx/nginx.conf{,.original}
 

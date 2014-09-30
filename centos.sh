@@ -5,18 +5,15 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
         exit
 fi
 
-lokkit --disabled --selinux=disabled
 
 yum remove dhclient -y
 
 yum update -y
-yum install -y telnet wget rsync
-yum install -y system-config-network-tui bind-utils
-yum install -y vim-enhanced
+yum install -y telnet wget rsync vim-enhanced
 
 #yum install -y openssh-clients
 
-rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
 
 cat >> /etc/security/limits.conf <<EOF
 
