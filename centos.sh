@@ -6,7 +6,7 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
 fi
 
 
-yum remove dhclient -y
+yum remove -y dhclient dhcp-*
 
 yum update -y
 yum install -y telnet wget rsync vim-enhanced
