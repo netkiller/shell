@@ -27,6 +27,7 @@ make && make install
 cd ..
 
 wget http://museum.php.net/php5/php-5.2.17.tar.gz
+wget http://php-fpm.org/downloads/php-5.2.17-fpm-0.5.14.diff.gz
 tar zxvf php-5.2.17.tar.gz
 gzip -cd php-5.2.17-fpm-0.5.14.diff.gz | patch -d php-5.2.17 -p1
 
