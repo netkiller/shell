@@ -25,7 +25,8 @@ wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz && tar zxf libicon
 ./configure --prefix=/srv/libiconv-1.14
 make && make install
 cd ..
- 
+
+wget http://museum.php.net/php5/php-5.2.17.tar.gz
 tar zxvf php-5.2.17.tar.gz
 gzip -cd php-5.2.17-fpm-0.5.14.diff.gz | patch -d php-5.2.17 -p1
 
