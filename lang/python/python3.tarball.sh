@@ -8,6 +8,7 @@ make -j8
 make install
 
 ln -s /srv/python-3.4.2 /srv/python
+ln -s /srv/python/bin/python3 /usr/bin/python3
 
 cat >> ~/.bashrc <<EOF
 PATH=$PATH:/srv/python/bin:
