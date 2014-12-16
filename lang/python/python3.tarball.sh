@@ -1,4 +1,6 @@
 #!/bin/sh
+cd /usr/local/src
+
 wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
 
 tar zxf Python-3.4.2.tgz 
