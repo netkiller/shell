@@ -1,6 +1,12 @@
-linux.shell
+linux shell
 =====
 This is a group of installation script, it can achieve fast initialization of your server.
+
+CentOS Init
+-----
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/ssh/sshd_config.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/ntpd/ntp.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/centos.sh | bash
 
 Nginx
 -----
