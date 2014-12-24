@@ -7,4 +7,7 @@ vim /etc/ssh/sshd_config <<EOF > /dev/null 2>&1
 :wq
 EOF
 
+#:48,48s/#PermitRootLogin yes/PermitRootLogin no/
+
+
 systemctl restart sshd

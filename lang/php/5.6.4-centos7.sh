@@ -67,6 +67,8 @@ cd php-5.6.4
 --enable-pcntl \
 --disable-debug
 
+fi
+
 [[ $? -ne 0 ]] && echo "Error: configure" &&  exit $?
 
 make -j12
