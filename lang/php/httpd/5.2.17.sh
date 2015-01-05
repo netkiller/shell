@@ -50,15 +50,13 @@ cd php-5.2.17
 #--enable-sysvshm \
 #--enable-sysvmsg \
 #--enable-pcntl \
-#--enable-maintainer-zts \
 #--with-tsrm-pthreads \
 
 make -j8 && make install
-		
+
 mkdir -p /srv/php-5.2.17/etc/conf.d/
 cp php.ini-* /srv/php-5.2.17/etc/
 cp php.ini-recommended /srv/php-5.2.17/etc/php.ini
-cp /srv/php-5.2.17/etc/php-fpm.conf{,.original}
 cp /srv/php-5.2.17/etc/pear.conf{,.original}
 
 strip /srv/php-5.2.17/bin/php
@@ -74,7 +72,7 @@ export PATH=/srv/php/bin:$PATH
 EOF
 
 vim /srv/php-5.2.17/etc/php.ini <<EOF > /dev/null 2>&1
-:254,254s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.2.17/lib/php/:/srv/php-5.2.17/bin/$
+:254,254s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.2.17/lib/php/:/srv/php-5.2.17/bin/:/srv/httpd/htdocs/$
 :297,297s/expose_php = On/expose_php = Off/
 :307,307s/memory_limit = 128M/memory_limit = 16M/
 :496,496s/magic_quotes_gpc = Off/magic_quotes_gpc = On/
@@ -97,6 +95,17 @@ cat > /srv/php-5.2.17/etc/conf.d/redis.ini <<EOF
 extension=redis.so
 EOF
 
+# 安装 ZendOptimizer 需要 --with-mpm=prefork
+wget http://downloads.zend.com/optimizer/3.3.9/ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz
+tar zxf ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz
+mv ZendOptimizer-3.3.9-linux-glibc23-x86_64 /srv/
+cat > /srv/php-5.2.17/etc/conf.d/zend.ini <<EOF
+[Zend]
+zend_extension=/srv/ZendOptimizer-3.3.9-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so
+zend_extension_ts=/srv/ZendOptimizer-3.3.9-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so
+EOF
+
+# 安装 ZendOptimizer 需要 --with-mpm=prefork, 但ZendOptimizer-3.3.3在--with-mpm=event 模式下可以安装，ZendOptimizer-3.3.9 不支持event
 wget http://downloads.zend.com/optimizer/3.3.3/ZendOptimizer-3.3.3-linux-glibc23-x86_64.tar.gz
 tar zxvf ZendOptimizer-3.3.3-linux-glibc23-x86_64.tar.gz
 cp -r ZendOptimizer-3.3.3-linux-glibc23-x86_64 /srv/
@@ -105,16 +114,6 @@ cat > /srv/php-5.2.17/etc/conf.d/zend.ini <<EOF
 zend_extension=/srv/ZendOptimizer-3.3.3-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so
 zend_extension_ts=/srv/ZendOptimizer-3.3.3-linux-glibc23-x86_64/data/5_2_x_comp/TS/ZendOptimizer.so
 EOF
-
-#wget http://downloads.zend.com/optimizer/3.3.9/ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz
-#tar zxf ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz
-#mv ZendOptimizer-3.3.9-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so /srv/php-5.2.17/lib/php/extensions
-#mv ZendOptimizer-3.3.9-linux-glibc23-x86_64 /srv/
-
-#cat > /srv/php-5.2.17/etc/conf.d/zend.ini <<EOF
-#[Zend]
-#zend_extension=/srv/php-5.2.17/lib/php/extensions/ZendOptimizer.so
-#EOF
 
 #/srv/php-5.2.17/bin/pecl install apc
 #cat > /srv/php-5.2.17/etc/conf.d/apc.ini <<EOF

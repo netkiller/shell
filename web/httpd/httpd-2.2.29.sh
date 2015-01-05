@@ -27,9 +27,9 @@ tar jxf httpd-2.2.29.tar.bz2
 cd httpd-2.2.29
 
 ./configure --prefix=/srv/httpd-2.2.29 \
---with-mpm=event \
 --with-apr=/srv/apr-1.5.1 \
 --with-apr-util=/srv/apr-util-1.5.4 \
+--with-mpm=event \
 --enable-mods-static="so dir mime rewrite deflate expires vhost_alias include ssl status" \
 --disable-authn_file \
 --disable-authn_default \
@@ -92,10 +92,10 @@ ln -sv /srv/httpd-2.2.29 /srv/httpd
 cp /srv/httpd-2.2.29/conf/httpd.conf{,.original}
 vim /srv/httpd-2.2.29/conf/httpd.conf <<VIM > /dev/null 2>&1
 :99,99s/^$/ServerName localhost:80/
-:396,396s/#//
 :405,405s/#//
 :wq
 VIM
+#:396,396s/#//
 
 cp /srv/httpd-2.2.29/conf/mime.types{,.original}
 cat >> /srv/httpd-2.2.29/conf/mime.types <<EOF
