@@ -48,7 +48,6 @@ cd php-5.6.4
 --with-xsl \
 --with-recode \
 --with-tsrm-pthreads \
---enable-maintainer-zts \
 --enable-sockets \
 --enable-soap \
 --enable-mbstring \

@@ -27,9 +27,9 @@ tar jxf httpd-2.4.10.tar.bz2
 cd httpd-2.4.10
 
 ./configure --prefix=/srv/httpd-2.4.10 \
---with-mpm=event \
 --with-apr=/srv/apr-1.5.1 \
 --with-apr-util=/srv/apr-util-1.5.4 \
+--with-mpm=event \
 --enable-mods-static="so dir mime rewrite deflate expires vhost_alias include ssl status" \
 --disable-authn_file \
 --disable-authn_default \
@@ -56,6 +56,8 @@ cd httpd-2.4.10
 --enable-include \
 --enable-remoteip \
 --enable-ratelimit
+
+# 如果安装 ZendOptimizer 或 ZendGuardLoader 需要 --with-mpm=prefork
 
 #--enable-info \
 
@@ -92,10 +94,11 @@ ln -sv /srv/httpd-2.4.10 /srv/httpd
 cp /srv/httpd-2.4.10/conf/httpd.conf{,.original}
 vim /srv/httpd-2.4.10/conf/httpd.conf <<VIM > /dev/null 2>&1
 :171,171s/^$/ServerName localhost:80/
-:444,444s/#//
 :453,453s/#//
 :wq
 VIM
+
+#:444,444s/#//
 
 cp /srv/httpd-2.4.10/conf/mime.types{,.original}
 cat >> /srv/httpd-2.4.10/conf/mime.types <<EOF

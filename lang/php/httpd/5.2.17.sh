@@ -1,15 +1,12 @@
 #!/bin/bash
 
-groupadd -g 80 www
-adduser -o --home /www --uid 80 --gid 80 -c "Web Application" www
-
 cd /usr/local/src/
 
-yum install -y gcc gcc-c++ make automake autoconf patch
 yum install -y curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel openssl-devel recode-devel 
 #yum install openldap-devel net-snmp-devel
 
-yum localinstall MySQL-*
+yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+yum install mysql-community-devel -y
 
 wget http://museum.php.net/php5/php-5.2.17.tar.gz
 tar zxf php-5.2.17.tar.gz
@@ -47,22 +44,24 @@ cd php-5.2.17
 --enable-shmop \
 --enable-dba \
 --enable-wddx \
---enable-sysvsem \
---enable-sysvshm \
---enable-sysvmsg \
---enable-pcntl \
---enable-maintainer-zts \
---with-tsrm-pthreads \
 --disable-debug
+
+#--enable-sysvsem \
+#--enable-sysvshm \
+#--enable-sysvmsg \
+#--enable-pcntl \
+#--enable-maintainer-zts \
+#--with-tsrm-pthreads \
 
 make -j8 && make install
 		
 mkdir -p /srv/php-5.2.17/etc/conf.d/
-cp php-5.2.17/php.ini-* /srv/php-5.2.17/etc/
+cp php.ini-* /srv/php-5.2.17/etc/
 cp php.ini-recommended /srv/php-5.2.17/etc/php.ini
 cp /srv/php-5.2.17/etc/php-fpm.conf{,.original}
 cp /srv/php-5.2.17/etc/pear.conf{,.original}
 
+strip /srv/php-5.2.17/bin/php
 
 ln -s /srv/php-5.2.17/ /srv/php
 
@@ -81,23 +80,41 @@ vim /srv/php-5.2.17/etc/php.ini <<EOF > /dev/null 2>&1
 :496,496s/magic_quotes_gpc = Off/magic_quotes_gpc = On/
 :499,499s/magic_quotes_runtime = Off/magic_quotes_runtime = On/
 :525,525s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.2.17/lib/php:/srv/php-5.2.17/share"!
+:542,542s:extension_dir = "./":extension_dir = "/srv/php-5.2.17/lib/php/extensions/no-debug-non-zts-20060613":
 :571,571s/; cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
 :716,716s:;date.timezone =:date.timezone = Asia/Hong_Kong:
 :1046,1046s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
 :1058,1058s/session.name = PHPSESSID/session.name = JSESSIONID/
 :wq
 EOF
-#:542,542s:extension_dir = "./":extension_dir = "/srv/php-5.2.17/lib/php/extensions/no-debug-non-zts-20060613":
+
 #:%s/upload_max_filesize = 2M/upload_max_filesize = 8M/
 
 cd ..
 
-wget http://downloads.zend.com/optimizer/3.3.9/ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz
-tar zxf ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz
-mv ZendOptimizer-3.3.9-linux-glibc23-x86_64 /srv/
-cat > /srv/php-5.2.17/etc/conf.d/zend.ini <<EOF
-zend_extension=/srv/ZendOptimizer-3.3.9-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so
+/srv/php-5.2.17/bin/pecl install redis
+cat > /srv/php-5.2.17/etc/conf.d/redis.ini <<EOF
+extension=redis.so
 EOF
+
+wget http://downloads.zend.com/optimizer/3.3.3/ZendOptimizer-3.3.3-linux-glibc23-x86_64.tar.gz
+tar zxvf ZendOptimizer-3.3.3-linux-glibc23-x86_64.tar.gz
+cp -r ZendOptimizer-3.3.3-linux-glibc23-x86_64 /srv/
+cat > /srv/php-5.2.17/etc/conf.d/zend.ini <<EOF
+[Zend]
+zend_extension=/srv/ZendOptimizer-3.3.3-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so
+zend_extension_ts=/srv/ZendOptimizer-3.3.3-linux-glibc23-x86_64/data/5_2_x_comp/TS/ZendOptimizer.so
+EOF
+
+#wget http://downloads.zend.com/optimizer/3.3.9/ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz
+#tar zxf ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz
+#mv ZendOptimizer-3.3.9-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so /srv/php-5.2.17/lib/php/extensions
+#mv ZendOptimizer-3.3.9-linux-glibc23-x86_64 /srv/
+
+#cat > /srv/php-5.2.17/etc/conf.d/zend.ini <<EOF
+#[Zend]
+#zend_extension=/srv/php-5.2.17/lib/php/extensions/ZendOptimizer.so
+#EOF
 
 #/srv/php-5.2.17/bin/pecl install apc
 #cat > /srv/php-5.2.17/etc/conf.d/apc.ini <<EOF
@@ -106,9 +123,10 @@ EOF
 
 #php -r 'phpinfo();' |grep apc
 
-/srv/php-5.2.17/bin/pecl install redis
-cat > /srv/php-5.2.17/etc/conf.d/redis.ini <<EOF
-extension=redis.so
-EOF
+#php -v | grep Optimizer
+#php -m | grep Optimizer
+#php -i | grep Zend
+
+
 
 

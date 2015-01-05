@@ -61,7 +61,6 @@ cd php-5.5.18
 --enable-sysvmsg \
 --enable-opcache \
 --enable-pcntl \
---enable-maintainer-zts \
 --with-tsrm-pthreads \
 --disable-debug
 
