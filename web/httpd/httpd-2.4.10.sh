@@ -108,7 +108,9 @@ application/x-httpd-php-source      phps
 EOF
 
 cp /srv/httpd-2.4.10/conf/extra/httpd-default.conf{,.original}
+sed -i "s/Timeout 300/Timeout 30/" /srv/httpd-2.2.29/conf/extra/httpd-default.conf
 sed -i "s/ServerTokens Full/ServerTokens Prod/" /srv/httpd-2.4.10/conf/extra/httpd-default.conf
+sed -i "s/ServerSignature On/ServerSignature Off/" /srv/httpd-2.2.29/conf/extra/httpd-default.conf
 
 cat >> /etc/man.config <<EOF
 MANPATH  /srv/httpd/man/
