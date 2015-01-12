@@ -2,6 +2,14 @@ linux shell
 =====
 This is a group of installation script, it can achieve fast initialization of your server.
 
+Install
+-----
+	git clone https://github.com/oscm/shell.git
+	
+Update
+-----
+	git pull
+
 CentOS Init
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/ssh/sshd_config.sh | bash
