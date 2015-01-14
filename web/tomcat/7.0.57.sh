@@ -6,11 +6,11 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
 fi
 
 cd /usr/local/src/
-wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-7/v7.0.40/bin/apache-tomcat-7.0.40.tar.gz
-tar zxvf apache-tomcat-7.0.40.tar.gz 
+wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-7/v7.0.57/bin/apache-tomcat-7.0.57.tar.gz
+tar zxf apache-tomcat-7.0.57.tar.gz 
 
-mv apache-tomcat-7.0.40 /srv/
-ln -s /srv/apache-tomcat-7.0.40 /srv/apache-tomcat
+mv apache-tomcat-7.0.57 /srv/
+ln -s /srv/apache-tomcat-7.0.57 /srv/apache-tomcat
 rm -rf /srv/apache-tomcat/webapps/*
 
 cat > /srv/apache-tomcat/bin/setenv.sh <<'EOF'
@@ -29,7 +29,3 @@ adduser -o --home /www --uid 80 --gid 80 -c "Web Application" www
 chown www:www -R /srv/*
 
 su - www -c "/srv/apache-tomcat/bin/startup.sh"
-
-#export CLASSPATH=/usr/local/java/jdk1.6.0_27/jre/lib/ext/IngrianNAE-5.1.1.jar:
-
-#/usr/local/apache-tomcat-7.0.21/lib/servlet-api.jar:/usr/local/apache-tomcat-7.0.21/lib/tomcat-api.jar:/usr/local/apache-tomcat-7.0.21/lib/tomcat-coyote.jar:/usr/local/apache-tomcat-7.0.21/lib/tomcat-util.jar:/usr/local/apache-tomcat-7.0.21/bin/tomcat-juli.jar

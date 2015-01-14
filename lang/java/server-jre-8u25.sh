@@ -1,10 +1,10 @@
 #!/bin/bash
 
 cd /usr/local/src/
-
-tar zxf server-jre-8u20-linux-x64.gz 
-mv jdk1.8.0_20 /srv/
-ln -s /srv/jdk1.8.0_20 /srv/java
+wget http://download.oracle.com/otn-pub/java/jdk/8u25-b17/server-jre-8u25-linux-x64.tar.gz?AuthParam=1421206431_6b843b3c6afbd75cffe7a14fa80ef41c
+tar zxf server-jre-8u25-linux-x64.gz*
+mv jdk1.8.0_25 /srv/
+ln -s /srv/jdk1.8.0_25 /srv/java
 
 cat >> /etc/profile.d/java.sh <<'EOF'
 export JAVA_HOME=/srv/java
