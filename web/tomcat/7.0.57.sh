@@ -25,7 +25,7 @@ EOF
 cp /srv/apache-tomcat/conf/server.xml{,.original}
 
 vim /srv/apache-tomcat/conf/server.xml <<VIM > /dev/null 2>&1
-:73,73s:/>:maxThreads="4096" enableLookups="false" compression="on" compressionMinSize="2048" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,,application/octet-stream" />:
+:73,73s:/>:maxThreads="4096" enableLookups="false" compression="on" compressionMinSize="2048" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,,application/octet-stream" server="Apache"/>:
 :126,126s/true/false/g
 :93s/</<!-- </
 :93s/>/> -->/
