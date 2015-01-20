@@ -105,22 +105,22 @@ vim /srv/php-5.5.20/etc/php-fpm.conf <<end > /dev/null 2>&1
 :25,25s/;//
 :32,32s/;//
 :93,93s/;rlimit_files = 1024/rlimit_files = 65536/
-:225,225s/pm.max_children = 5/pm.max_children = 2048/
-:251,251s/;pm.max_requests = 500/pm.max_requests = 1024/
-:448,448s/;rlimit_files = 1024/rlimit_files = 40960/
+:230,230s/pm.max_children = 5/pm.max_children = 2048/
+:256,256s/;pm.max_requests = 500/pm.max_requests = 1024/
+:453,453s/;rlimit_files = 1024/rlimit_files = 40960/
 :wq
 end
 
 #:15,15s/;//
 
 vim /srv/php-5.5.20/etc/php.ini <<EOF > /dev/null 2>&1
-:299,299s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.5.20/lib/php/:/srv/php-5.5.20/bin/$
-:366,366s/expose_php = On/expose_php = Off/
-:396,396s/memory_limit = 128M/memory_limit = 32M/
-:758,758s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
-:913,913s:;date.timezone =:date.timezone = Asia/Hong_Kong:
-:1390,1390s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
-:1416,1416s/session.name = PHPSESSID/session.name = JSESSIONID/
+:298,298s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.5.20/lib/php/:/srv/php-5.5.20/bin/$
+:363,363s/expose_php = On/expose_php = Off/
+:393,393s/memory_limit = 128M/memory_limit = 32M/
+:755,755s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
+:910,910s:;date.timezone =:date.timezone = Asia/Hong_Kong:
+:1387,1387s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
+:1413,1413s/session.name = PHPSESSID/session.name = JSESSIONID/
 :wq
 EOF
 
@@ -130,9 +130,9 @@ EOF
 #:804,804s/upload_max_filesize = 2M/upload_max_filesize = 3M/
 
 vim /srv/php-5.5.20/etc/php.cli.ini <<EOF > /dev/null 2>&1
-:396,396s/memory_limit = 128M/memory_limit = 4G/
+:393,393s/memory_limit = 128M/memory_limit = 4G/
 :575,575s/;//
-:913,913s:;date.timezone =:date.timezone = Asia/Hong_Kong:
+:910,910s:;date.timezone =:date.timezone = Asia/Hong_Kong:
 :wq
 EOF
 
