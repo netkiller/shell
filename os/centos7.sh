@@ -9,10 +9,11 @@ yum localinstall -y http://ftp.cuhk.edu.hk/pub/linux/fedora-epel/7/x86_64/e/epel
 
 yum update -y
 
-cat >> /etc/security/limits.conf <<EOF
+cat >> /etc/security/limits.d/20-nofile.conf <<EOF
 
 * soft nofile 4096
 * hard nofile 4096
+
 www soft nofile 65535
 www hard nofile 65535
 
@@ -43,5 +44,5 @@ sysctl -p
 
 cat >> /etc/bashrc <<EOF
 
-export HISTTIMEFORMAT="%Y-%m-%d-%H:%M:%S "
+export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 EOF
