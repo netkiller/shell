@@ -3,6 +3,8 @@
 
 curl -s https://raw.githubusercontent.com/oscm/shell/master/compiler/gcc.sh | bash
 
+
+
 cd /usr/local/src
 wget http://softlayer-sng.dl.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.8/nagios-4.0.8.tar.gz
 wget http://nagios-plugins.org/download/nagios-plugins-2.0.3.tar.gz
@@ -13,7 +15,12 @@ cd nagios-4.0.8
 ./configure --prefix=/srv/nagios-4.0.8
 make all 
 make install && make install-init && make install-commandmode && make install-config
-# make install-webconf && make install-exfoliation && make install-classicui
+make install-webconf 
+# && make install-exfoliation && make install-classicui
+
+htpasswd -c /srv/nagios-4.0.8/etc/htpasswd.users nagiosadmin
+chown apache:apache /srv/nagios-4.0.8/etc/htpasswd.users
+chmod 600 /srv/nagios-4.0.8/etc/htpasswd.users
 
 cd /usr/local/src
 
@@ -27,3 +34,5 @@ useradd -s /sbin/nologin -d /srv/nagios nagios
 chkconfig --add nagios 
 chkconfig nagios on
 chkconfig --list nagios
+
+systemctl restart httpd
