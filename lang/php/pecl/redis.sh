@@ -1,15 +1,8 @@
 #!/bin/bash
 
-#yum install git -y
-#git clone git://github.com/nicolasff/phpredis.git
+sudo apt-get install -y php5-redis
+#pecl install redis
 
-#cd phpredis
-#/srv/php/bin/phpize
-#./configure --with-php-config=/srv/php/bin/php-config
-#make && make install
-
-pecl install redis
-
-cat > /srv/php/etc/conf.d/redis.ini <<EOF
-extension=redis.so
-EOF
+#cat > /srv/php/etc/conf.d/redis.ini <<EOF
+#extension=redis.so
+#EOF
