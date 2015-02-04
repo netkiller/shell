@@ -6,26 +6,28 @@ curl -s https://raw.githubusercontent.com/oscm/shell/master/compiler/gcc.sh | ba
 curl -s https://raw.githubusercontent.com/oscm/shell/master/web/httpd/httpd.yum.sh | bash
 
 yum install -y openssl-devel
+#mail command
+yum install -y mailx
 
 cd /usr/local/src
 wget http://softlayer-sng.dl.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.8/nagios-4.0.8.tar.gz
 wget http://nagios-plugins.org/download/nagios-plugins-2.0.3.tar.gz
 wget http://liquidtelecom.dl.sourceforge.net/project/nagios/nrpe-2.x/nrpe-2.15/nrpe-2.15.tar.gz
-tar zxf nagios-4.0.8.tar.gz 
-tar zxf nagios-plugins-2.0.3.tar.gz 
+tar zxf nagios-4.0.8.tar.gz
+tar zxf nagios-plugins-2.0.3.tar.gz
 tar zxf nrpe-2.15.tar.gz
 
 cd nagios-4.0.8
 ./configure --prefix=/srv/nagios-4.0.8
-make all 
+make all
 make install && make install-init && make install-commandmode && make install-config
-make install-webconf 
+make install-webconf
 # && make install-exfoliation && make install-classicui
 
 cd /usr/local/src
 
 cd nagios-plugins-2.0.3
-./configure --prefix=/srv/nagios-4.0.8 --with-nagios-user=nagios --with-nagios-group=nagios 
+./configure --prefix=/srv/nagios-4.0.8 --with-nagios-user=nagios --with-nagios-group=nagios
 make && make install
 
 cd /usr/local/src
@@ -44,12 +46,12 @@ cat >> /etc/services <<EOD
 nrpe            5666/tcp                # NRPE
 EOD
 
-cd 
+cd
 
 ln -s /srv/nagios-4.0.8 /srv/nagios
 useradd -s /sbin/nologin -d /srv/nagios nagios
 
-chkconfig --add nagios 
+chkconfig --add nagios
 chkconfig nagios on
 chkconfig --list nagios
 
@@ -92,33 +94,132 @@ define command{
 # 'notify-host-by-sms' command definition
 define command{
         command_name    notify-host-by-sms
-        command_line    /srv/sms/alert "Host: $HOSTNAME$\nState: $HOSTSTATE$\nAddress: $HOSTADDRESS$\nInfo: $HOSTOUTPUT$\n\nDate/Time: $LONGDATETIME$\n"
+        command_line    /srv/sms/alert $CONTACTPAGER$ "Host: $HOSTNAME$\nState: $HOSTSTATE$\nAddress: $HOSTADDRESS$\nInfo: $HOSTOUTPUT$\n\nDate/Time: $SHORTDATETIME$\n"
         }
 
 # 'notify-service-by-sms' command definition
 define command{
         command_name    notify-service-by-sms
-        command_line    /srv/sms/alert "Service: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nState: $SERVICESTATE$\n\nDate/Time: $LONGDATETIME$\n\nAdditional Info:\n\n$SERVICEOUTPUT$"
-        }	   
+        command_line    /srv/sms/alert $CONTACTPAGER$ "Service: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nState: $SERVICESTATE$\n\nDate/Time: $SHORTDATETIME$\n\nAdditional Info:\n\n$SERVICEOUTPUT$"
+        }
 EOD
 
 cat > /srv/nagios-4.0.8/etc/servers/hostgroups.cfg <<'EOD'
-#define hostgroup{
-#   hostgroup_name      server
-#   alias               XXXXX Server
-#   members             node1,node2,node3
-#}
-#define hostgroup{
-#   hostgroup_name      server
-#   alias               XXXXX Server
-#   members             node1,node2,node3
-#}
-#define hostgroup{
-#   hostgroup_name      server
-#   alias               XXXXX Server
-#   members             node1,node2,node3
-#}
+define hostgroup{
+    hostgroup_name      Database
+    alias               Database Server
+    members             *
+}
+define hostgroup{
+    hostgroup_name      Web
+    alias               Web Server
+    members             *
+}
+define hostgroup{
+    hostgroup_name      Cache
+    alias               Cache Server
+    members             *
+}
 EOD
+
+cat > /srv/nagios-4.0.8/etc/servers/templates.cfg <<'EOD'
+define contact{
+        name                            management-contact    	; The name of this contact template
+        service_notification_period     overtime			; service notifications can be sent anytime
+        host_notification_period        overtime			; host notifications can be sent anytime
+        service_notification_options    w,u,c,r,f,s		; send notifications for all service states, flapping events, and scheduled downtime events
+        host_notification_options       d,u,r,f,s		; send notifications for all host states, flapping events, and scheduled downtime events
+        service_notification_commands   notify-service-by-email,notify-service-by-sms	; send service notifications via email
+        host_notification_commands      notify-host-by-email,notify-host-by-sms	; send host notifications via email
+        register                        0       		; DONT REGISTER THIS DEFINITION - ITS NOT A REAL CONTACT, JUST A TEMPLATE!
+        }
+
+define contact{
+        name                            developer-contact    	; The name of this contact template
+        service_notification_period     workday			; service notifications can be sent anytime
+        host_notification_period        workday			; host notifications can be sent anytime
+        service_notification_options    w,u,c,r,f,s		; send notifications for all service states, flapping events, and scheduled downtime events
+        host_notification_options       d,u,r,f,s		; send notifications for all host states, flapping events, and scheduled downtime events
+        service_notification_commands   notify-service-by-email	; send service notifications via email
+        host_notification_commands      notify-host-by-email	; send host notifications via email
+        register                        0       		; DONT REGISTER THIS DEFINITION - ITS NOT A REAL CONTACT, JUST A TEMPLATE!
+        }
+
+define contact{
+        name                            tester-contact    	; The name of this contact template
+        service_notification_period     workday			; service notifications can be sent anytime
+        host_notification_period        workday			; host notifications can be sent anytime
+        service_notification_options    w,u,c,r,f,s		; send notifications for all service states, flapping events, and scheduled downtime events
+        host_notification_options       d,u,r,f,s		; send notifications for all host states, flapping events, and scheduled downtime events
+        service_notification_commands   notify-service-by-email,notify-service-by-sms	; send service notifications via email
+        host_notification_commands      notify-host-by-email,notify-host-by-sms	; send host notifications via email
+        register                        0       		; DONT REGISTER THIS DEFINITION - ITS NOT A REAL CONTACT, JUST A TEMPLATE!
+        }
+
+define contact{
+        name                            administrator-contact    	; The name of this contact template
+        service_notification_period     24x7			; service notifications can be sent anytime
+        host_notification_period        24x7			; host notifications can be sent anytime
+        service_notification_options    w,u,c,r,f,s		; send notifications for all service states, flapping events, and scheduled downtime events
+        host_notification_options       d,u,r,f,s		; send notifications for all host states, flapping events, and scheduled downtime events
+        service_notification_commands   notify-service-by-email,notify-service-by-sms	; send service notifications via email
+        host_notification_commands      notify-host-by-email,notify-host-by-sms	; send host notifications via email
+        register                        0       		; DONT REGISTER THIS DEFINITION - ITS NOT A REAL CONTACT, JUST A TEMPLATE!
+        }
+
+# Linux host definition template - This is NOT a real host, just a template!
+
+define host{
+        name                            flexible-server
+        use                             generic-host
+        check_period                    24x7
+        check_interval                  1
+        retry_interval                  1
+        max_check_attempts              10
+        check_command                   check-host-alive
+        notification_period		        24x7
+        notification_interval           120
+        notification_options            d,u,r
+        contact_groups                  admins
+        register                        0
+        }
+
+# Flexible service definition template - This is NOT a real service, just a template!
+
+define service{
+        name                            flexible-service
+        use                             generic-service
+        max_check_attempts              3
+        normal_check_interval           1
+        retry_check_interval            1
+	    ;contact_groups					admins, technology
+        register                        0
+	    }
+EOD
+# check_interval * normal_check_interval = 检查次数 
+
+cat > /srv/nagios-4.0.8/etc/servers/timeperiods.cfg <<'EOD'
+define timeperiod{
+        timeperiod_name workday
+        alias           Normal Work Hours
+        monday          09:00-18:00
+        tuesday         09:00-18:00
+        wednesday       09:00-18:00
+        thursday        09:00-18:00
+        friday          09:00-18:00
+        }
+define timeperiod{
+        timeperiod_name overtime
+        alias           Work Hours and Overtime
+        monday          09:00-22:00
+        tuesday         09:00-22:00
+        wednesday       09:00-22:00
+        thursday        09:00-22:00
+        friday          09:00-22:00
+        }
+
+EOD
+
 
 cat > /etc/profile.d/nagios.sh <<EOD
 export PATH=$PATH:/srv/nagios/bin:/srv/nagios/libexec

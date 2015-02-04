@@ -1,7 +1,5 @@
-#!/bin/sh
 yum install -y exim
-systemctl enable exim
-
+chkconfig exim on
 
 cp /etc/exim/exim.conf{,.original}
 
@@ -12,7 +10,7 @@ EOF
 
 alternatives --config mta
 
-systemctl start exim
+service exim start
 
 iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 25 -j ACCEPT
 service iptables save

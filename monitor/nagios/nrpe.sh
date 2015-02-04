@@ -9,11 +9,11 @@ nagios-plugins-log \
 nagios-plugins-mailq \
 nagios-plugins-procs \
 nagios-plugins-swap \
-nagios-plugins-users
-
+nagios-plugins-users \
+nagios-plugins-mysql 
 #nagios-plugins-dig \
 #nagios-plugins-dns \
-#nagios-plugins-mysql \
+
 #nagios-plugins-ntp \
 #nagios-plugins-smtp \
 #nagios-plugins-snmp \
@@ -31,15 +31,15 @@ VIM
 
 cat > /etc/nrpe.d/nrpe.cfg <<'EOF'
 command[check_swap]=/usr/lib64/nagios/plugins/check_swap -w $ARG1$ -c $ARG2$
+command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
 command[check_all_disks]=/usr/lib64/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -e
 command[check_users]=/usr/lib64/nagios/plugins/check_users -w $ARG1$ -c $ARG2$
 command[check_load]=/usr/lib64/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
 command[check_zombie_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s Z
 command[check_total_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ 
-command[check_users]=/usr/lib64/nagios/plugins/check_users -w $ARG1$ -c $ARG2$
-command[check_load]=/usr/lib64/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
-command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
 command[check_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
+command[check_procs_args]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -C $ARG3$
+
 EOF
 
 chkconfig nrpe on
