@@ -5,7 +5,7 @@ curl -s https://raw.githubusercontent.com/oscm/shell/master/compiler/gcc.sh | ba
 
 curl -s https://raw.githubusercontent.com/oscm/shell/master/web/httpd/httpd.yum.sh | bash
 
-yum install -y openssl-devel
+yum install -y openssl-devel gd-devel
 #mail command
 yum install -y mailx
 
@@ -22,9 +22,7 @@ usermod -G nagios apache
 
 cd nagios-4.0.8
 ./configure --prefix=/srv/nagios-4.0.8
-make all
-make install && make install-init && make install-commandmode && make install-config
-make install-webconf
+make all && make install && make install-init && make install-commandmode && make install-config && make install-webconf
 # && make install-exfoliation && make install-classicui
 
 cd /usr/local/src

@@ -57,7 +57,7 @@ command[check_procs_command]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c 
 command[check_tcp]=/usr/lib64/nagios/plugins/check_tcp -w $ARG1$ -c $ARG2$ -H $ARG3$ -p $ARG4$
 command[check_http]=/usr/lib64/nagios/plugins/check_http -w $ARG1$ -c $ARG2$ -H $ARG3$ -p $ARG4$
 command[check_log]=/usr/lib64/nagios/plugins/check_log -F $ARG1$ -O /tmp/$ARG1$.old -q $ARG2$
-
+command[check_uptime]=/usr/lib64/nagios/plugins/check_uptime -c $ARG1$ -w $ARG2$
 EOF
 
 chkconfig nrpe on
