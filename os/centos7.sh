@@ -7,6 +7,8 @@ yum install -y telnet wget rsync vim-enhanced
 #rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
 yum localinstall -y http://ftp.cuhk.edu.hk/pub/linux/fedora-epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 
+curl -s https://raw.githubusercontent.com/oscm/shell/master/os/ntpd/ntp.sh | bash
+
 yum update -y
 
 cat >> /etc/security/limits.d/20-nofile.conf <<EOF

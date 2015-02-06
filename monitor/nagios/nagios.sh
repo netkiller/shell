@@ -100,8 +100,23 @@ define command{
 # 'notify-service-by-sms' command definition
 define command{
         command_name    notify-service-by-sms
-        command_line    /srv/sms/alert $CONTACTPAGER$ "Service: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nState: $SERVICESTATE$\n\nDate/Time: $SHORTDATETIME$\n\nAdditional Info:\n\n$SERVICEOUTPUT$"
+        command_line    /srv/sms/alert $CONTACTPAGER$ "State: $SERVICESTATE$\nService: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nTime: $SHORTDATETIME$\nInfo:\n$SERVICEOUTPUT$"
         }
+
+# 'check_http' command definition
+define command{
+        command_name    check_http_url
+        command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$'  -u '$ARG1$'
+        }
+define command{
+        command_name    check_http_url_string
+        command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$' -u '$ARG1$' -s '$ARG2$'
+        }
+define command{
+        command_name    check_http_status
+        command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$' -e '$ARG1$'
+        }
+
 EOD
 
 cat > /srv/nagios-4.0.8/etc/servers/hostgroups.cfg <<'EOD'
@@ -180,7 +195,7 @@ define host{
         notification_period		        24x7
         notification_interval           120
         notification_options            d,u,r
-        contact_groups                  admins
+        contact_groups                  admins, technology
         register                        0
         }
 
@@ -192,11 +207,11 @@ define service{
         max_check_attempts              3
         normal_check_interval           1
         retry_check_interval            1
-	    ;contact_groups					admins, technology
+	    contact_groups					admins, technology
         register                        0
 	    }
 EOD
-# check_interval * normal_check_interval = 检查次数 
+# check_interval * normal_check_interval = 检查次数
 
 cat > /srv/nagios-4.0.8/etc/servers/timeperiods.cfg <<'EOD'
 define timeperiod{
