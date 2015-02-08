@@ -1,4 +1,7 @@
 #!/bin/bash
+
+yum install -y easy-rsa
+
 cd /usr/share/easy-rsa/2.0
 
 cat >> vars <<EOF
