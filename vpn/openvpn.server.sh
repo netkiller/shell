@@ -3,7 +3,7 @@
 yum install openvpn easy-rsa -y
 chkconfig openvpn on
 
-cp /usr/share/doc/openvpn-2.3.2/sample/sample-config-files/server.conf /etc/openvpn/
+cp /usr/share/doc/openvpn-2.3.6/sample/sample-config-files/server.conf /etc/openvpn/
 cd /usr/share/easy-rsa/2.0
 
 cat >> vars <<EOF
@@ -28,8 +28,9 @@ source ./vars
 ./build-dh
 ./build-key node1
 
-cp keys/ca.key keys/ca.crt keys/dh1024.pem keys/server.key keys/server.crt /etc/openvpn/
+cp keys/ca.key keys/ca.crt keys/dh2048.pem keys/server.key keys/server.crt /etc/openvpn/
 
 service openvpn start
 
 iptables -A INPUT -p udp --dport 1194 -j ACCEPT
+iptables -t nat -A POSTROUTING -s 192.168.6.0/24 -o eth1 -j MASQUERADE
