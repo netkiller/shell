@@ -112,6 +112,10 @@ define command{
         command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$' -u '$ARG1$' -s '$ARG2$'
         }
 define command{
+        command_name    check_http_url_status
+        command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$' -u '$ARG1$' -e '$ARG2$'
+        }     
+define command{
         command_name    check_http_status
         command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$' -e '$ARG1$'
         }
