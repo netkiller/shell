@@ -119,6 +119,10 @@ define command{
         command_name    check_http_port
         command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$'  -p '$ARG1$'
         }
+define command{
+        command_name    check_http_port_status
+        command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$'  -p '$ARG1$' -e '$ARG2$'
+        }        
 EOD
 
 cat > /srv/nagios-4.0.8/etc/servers/hostgroups.cfg <<'EOD'
