@@ -112,12 +112,20 @@ define command{
         command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$' -u '$ARG1$' -s '$ARG2$'
         }
 define command{
+        command_name    check_http_url_status
+        command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$' -u '$ARG1$' -e '$ARG2$'
+        }     
+define command{
         command_name    check_http_status
         command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$' -e '$ARG1$'
         }
 define command{
         command_name    check_http_port
         command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$'  -p '$ARG1$'
+        }
+define command{
+        command_name    check_http_port_status
+        command_line    $USER1$/check_http -H '$HOSTADDRESS$' -I '$HOSTADDRESS$'  -p '$ARG1$' -e '$ARG2$'
         }
 
 #check mysql 
@@ -129,6 +137,7 @@ define command{
         command_name check_mysql_slave
         command_line $USER1$/check_mysql -H $HOSTADDRESS$ -u $ARG1$ -p $ARG2$ -d $ARG3$ -S
 }
+
 EOD
 
 cat > /srv/nagios-4.0.8/etc/servers/hostgroups.cfg <<'EOD'
