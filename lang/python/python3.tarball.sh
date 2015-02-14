@@ -11,10 +11,10 @@ cd Python-3.4.2
 make -j8
 make install
 
-strip /srv/python/bin/python3.4
-
 ln -s /srv/python-3.4.2 /srv/python
 ln -s /srv/python/bin/python3 /usr/bin/python3
+
+strip /srv/python/bin/python3.4
 
 cat >> ~/.bashrc <<EOF
 PATH=$PATH:/srv/python/bin:
