@@ -147,6 +147,8 @@ cat >> /etc/man.config <<EOF
 MANPATH  /srv/php/man/
 EOF
 
-cat >> /etc/profile.d/php.sh <<EOF
+cat >> /etc/profile.d/php.sh <<'EOF'
 export PATH=/srv/php/bin:$PATH
 EOF
+
+source /etc/profile.d/php.sh
