@@ -62,3 +62,7 @@ Donations
 We accept tips through [Gittip][tip].
 
 [![Gittip](http://img.shields.io/gittip/Homebrew.svg)](https://www.gittip.com/netkiller/)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/oscm/shell/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
