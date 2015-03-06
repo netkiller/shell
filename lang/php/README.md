@@ -1,9 +1,13 @@
 Installation
 ============
 
-PHP 5.5.9
+GCC
+-----
+	https://raw.githubusercontent.com/oscm/shell/master/compiler/gcc.sh
+
+PHP 5.6.6
 ---------
-    https://raw.github.com/oscm/shell/master/php/5.5.9.sh
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/5.6.6-centos7.sh | bash
 
 PHP 5.5.11
 ---------
