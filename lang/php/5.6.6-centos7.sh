@@ -143,7 +143,7 @@ EOF
 
 cat >> ~/.bashrc <<EOF
 
-alias php='php -c /srv/php/etc/php.cli.ini'
+alias php='php -c /srv/php/etc/php-cli.ini'
 PATH=$PATH:/srv/php/bin:
 EOF
 
