@@ -89,7 +89,7 @@ mkdir -p /srv/php-5.6.6/etc/fpm.d
 cp /srv/php-5.6.6/etc/pear.conf{,.original}
 cp php.ini-* /srv/php-5.6.6/etc/
 cp /srv/php-5.6.6/etc/php.ini-production /srv/php-5.6.6/etc/php.ini
-cp /srv/php-5.6.6/etc/php.ini-development /srv/php-5.6.6/etc/php.cli.ini
+cp /srv/php-5.6.6/etc/php.ini-development /srv/php-5.6.6/etc/php-cli.ini
 cp /srv/php-5.6.6/etc/php-fpm.conf.default /srv/php-5.6.6/etc/php-fpm.conf
 
 #\cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
