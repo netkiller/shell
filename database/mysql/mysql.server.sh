@@ -19,14 +19,17 @@ skip-name-resolve
 max_connections=8192
 default-storage-engine=INNODB
 
-wait_timeout=30
-interactive_timeout=30
+#wait_timeout=30
+#interactive_timeout=30
 
 character-set-server=utf8
 collation_server=utf8_general_ci
 init_connect='SET NAMES utf8'
 
 explicit_defaults_for_timestamp=true
+
+query_cache_type=1
+query_cache_size=512M
 
 [client]
 character_set_client=utf8
