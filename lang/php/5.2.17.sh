@@ -97,6 +97,7 @@ vim /srv/php-5.2.17/etc/php.ini <<EOF > /dev/null 2>&1
 :496,496s/magic_quotes_gpc = Off/magic_quotes_gpc = On/
 :499,499s/magic_quotes_runtime = Off/magic_quotes_runtime = On/
 :525,525s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.2.17/lib/php:/srv/php-5.2.17/share"!
+:542,542s/extension_dir/;extension_dir/
 :571,571s/; cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
 :716,716s:;date.timezone =:date.timezone = Asia/Hong_Kong:
 :1046,1046s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
