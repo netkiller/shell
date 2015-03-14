@@ -12,5 +12,5 @@ vim /etc/snmp/snmpd.conf <<VIM > /dev/null 2>&1
 :wq
 VIM
 
-systemctl enable snmpd
-systemctl start snmpd
+service snmpd start
+chkconfig snmpd on

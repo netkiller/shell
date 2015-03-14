@@ -37,11 +37,10 @@ cp /etc/nagios/nrpe.cfg{,.original}
 vim /etc/nagios/nrpe.cfg <<VIM > /dev/null 2>&1
 :%s/dont_blame_nrpe=0/dont_blame_nrpe=1/
 :210,214s/command/#command/
-:%s!/etc/nrpe.d/!/etc/nagios/nrpe.d/!
 :wq
 VIM
 #:%s/allowed_hosts=127.0.0.1/allowed_hosts=172.16.1.2/
-
+echo "include_dir=/etc/nagios/nrpe.d/" >> /etc/nagios/nrpe.cfg 
 mkdir /etc/nagios/nrpe.d/
 
 #cat > /etc/nrpe.d/plugins.cfg <<'EOF'
@@ -62,8 +61,8 @@ command[check_log]=/usr/lib64/nagios/plugins/check_log -F $ARG1$ -O /tmp/$ARG1$.
 command[check_uptime]=/usr/lib64/nagios/plugins/check_uptime -c $ARG1$ -w $ARG2$
 EOF
 
-systemctl enable nrpe
-systemctl start nrpe
+chkconfig nrpe on
+service nrpe start
 
 # check_nrpe -H localhost
 # NRPE v2.15
