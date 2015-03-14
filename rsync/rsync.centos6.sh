@@ -5,12 +5,17 @@
 # $Id$
 #================================================================================
 
-#if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
-#	echo 'Only for Redhat or CentOS'
-#	exit
-#fi
+if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
+	echo 'Only for Redhat or CentOS'
+	exit
+fi
 
-yum install rsync -y
+yum install xinetd rsync -y
+
+vim /etc/xinetd.d/rsync <<VIM > /dev/null 2>&1
+:%s/yes/no/
+:wq
+VIM
 
 cat > /etc/rsyncd.conf <<EOD
 uid = www
@@ -42,8 +47,7 @@ EOF
 chmod 600 /etc/rsyncd.*
 chmod 600 /etc/rsyncd.passwd
 
-systemctl enable rsyncd
-systemctl restart rsyncd
+service xinetd restart
 
 RETVAL=$?
 exit $RETVAL
