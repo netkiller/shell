@@ -3,7 +3,7 @@ Installation
 
 GCC
 -----
-	https://raw.githubusercontent.com/oscm/shell/master/compiler/gcc.sh
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/gcc/gcc.sh | bash
 
 PHP 5.6.6
 ---------
