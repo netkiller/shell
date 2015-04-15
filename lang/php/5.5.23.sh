@@ -138,7 +138,7 @@ EOF
 vim /srv/php-5.5.23/etc/php-cli.ini <<EOF > /dev/null 2>&1
 :393,393s/memory_limit = 128M/memory_limit = 4G/
 :572,572s/;error_log/error_log/
-:927,927s:;date.timezone =:date.timezone = Asia/Hong_Kong:
+:910,910s:;date.timezone =:date.timezone = Asia/Hong_Kong:
 :wq
 EOF
 
