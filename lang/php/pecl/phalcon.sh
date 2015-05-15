@@ -1,7 +1,7 @@
 #!/bin/sh
 cd /usr/local/src/
 		
-git clone git://github.com/phalcon/cphalcon.git
+git clone --depth=1 git://github.com/phalcon/cphalcon.git
 cd cphalcon/build
 ./install
 
