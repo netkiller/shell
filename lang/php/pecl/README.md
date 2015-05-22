@@ -12,3 +12,7 @@ pthreads
 Redis
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/redis.sh | bash
+	
+Phalcon
+-----
+	curl -Ss https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/phalcon.sh | bash
