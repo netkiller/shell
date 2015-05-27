@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yum install iptables-services -y
+
 systemctl stop firewalld
 systemctl disable firewalld
 
