@@ -1,6 +1,13 @@
-curl -s https://raw.github.com/netkiller/shell/master/centos6.sh | bash
-curl -s https://raw.github.com/netkiller/shell/master/modules/ntp.sh | bash
-curl -s https://raw.github.com/netkiller/shell/master/filesystem/btrfs.sh | bash
-curl -s https://raw.github.com/netkiller/shell/master/nginx/nginx.sh | bash
-curl -s https://raw.github.com/netkiller/shell/master/php/5.4.x.sh | bash
-curl -s https://raw.github.com/netkiller/shell/master/php/redis.sh | bash
+Automatic installation web server
+=====
+
+  curl -s https://raw.githubusercontent.com/oscm/shell/master/os/centos7.sh | bash
+  curl -s https://raw.githubusercontent.com/oscm/shell/master/os/iptables.sh | bash
+  curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/gcc/gcc.sh | bash
+  curl -s https://raw.githubusercontent.com/oscm/shell/master/web/nginx/nginx.centos7.sh | bash
+  curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/5.6.9-centos7.sh | bash
+  curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/redis.sh | bash
+  curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/pthreads.sh | bash
+  curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/amqp.sh | bash
+  curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/phalcon.sh | bash
+
