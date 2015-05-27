@@ -12,9 +12,6 @@ rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0
 
 yum install -y nginx
 
-systemctl enable nginx
-systemctl start nginx
-
 cp /etc/nginx/nginx.conf{,.original}
 
 vim /etc/nginx/nginx.conf <<VIM > /dev/null 2>&1
@@ -24,3 +21,8 @@ vim /etc/nginx/nginx.conf <<VIM > /dev/null 2>&1
 :%s/#gzip/gzip/
 :wq
 VIM
+
+sed -i '4iworker_rlimit_nofile 65530;' /etc/nginx/nginx.conf
+
+systemctl enable nginx
+systemctl start nginx
