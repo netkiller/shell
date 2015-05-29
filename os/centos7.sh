@@ -45,6 +45,6 @@ EOF
 sysctl -p
 
 cat >> /etc/bashrc <<EOF
-
+# Administrator specific aliases and functions for system security
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 EOF
