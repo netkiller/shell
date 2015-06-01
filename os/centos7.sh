@@ -1,13 +1,12 @@
 #!/bin/bash
 
-yum remove -y dhclient dhcp-*
-yum install -y telnet wget rsync vim-enhanced
-
 #yum install -y openssh-clients
 #rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
 yum localinstall -y http://ftp.cuhk.edu.hk/pub/linux/fedora-epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 
-curl -s https://raw.githubusercontent.com/oscm/shell/master/os/ntpd/ntpdate.sh | bash
+yum remove -y dhclient dhcp-*
+yum install -y telnet wget rsync vim-enhanced
+yum install -y net-tools
 
 yum update -y
 
