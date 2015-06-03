@@ -113,6 +113,9 @@ vim /srv/php-5.6.9/etc/php-fpm.conf <<end > /dev/null 2>&1
 :245,245s/pm.min_spare_servers = 1/pm.min_spare_servers = 8/
 :250,250s/pm.max_spare_servers = 3/pm.max_spare_servers = 16/
 :261,261s/;pm.max_requests = 500/pm.max_requests = 1024/
+:360,360s/;pm.status_path/pm.status_path/
+:372,372s/;ping.path/ping.path/
+:377,377s/;ping.response/ping.response/
 :454,454s/;request_terminate_timeout = 0/request_terminate_timeout = 30s/
 :458,458s/;rlimit_files = 1024/rlimit_files = 40960/
 :wq
