@@ -1,0 +1,24 @@
+FTP=ftp://ftp:passw0rd@192.168.80.23
+PUBLIC_HTML=/www/example.com/statement.example.com
+
+wget -P /www/example.com/statement.example.com/ $FTP
+
+if [ ! -f /usr/bin/unzip ]; then
+	yum install -y unzip
+fi
+
+for daily in $(ls -1 Daily/*_html.zip)
+do
+	daily_dir=$PUBLIC_HTML/$(basename $daily _005_html.zip)
+	if [ ! -d $daily_dir ]; then
+		unzip $daily -d $daily_dir
+	fi
+done 
+
+for daily in $(ls -1 Monthly/*_html.zip)
+do
+	daily_dir=$PUBLIC_HTML/$(basename $daily _005_html.zip)
+	if [ ! -d $daily_dir ]; then
+		unzip $daily -d $daily_dir
+	fi
+done 
