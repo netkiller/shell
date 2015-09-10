@@ -14,7 +14,7 @@ alternatives --config mta
 
 systemctl start exim
 
-iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 25 -j ACCEPT
+iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 25 -j ACCEPT
 service iptables save
 
 
