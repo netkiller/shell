@@ -150,16 +150,18 @@ EOF
 #:728,728s!; extension_dir = "./"!extension_dir = "./:/srv/php-5.6.13/lib/php/extensions:/srv/php-5.6.13/lib/php/extensions/no-debug-non-zts-20121212"!
 #:804,804s/upload_max_filesize = 2M/upload_max_filesize = 3M/
 
-vim /srv/php-5.6.13/etc/php.cli.ini <<EOF > /dev/null 2>&1
+vim /srv/php-5.6.13/etc/php-cli.ini <<EOF > /dev/null 2>&1
 :393,393s/memory_limit = 128M/memory_limit = 4G/
-:572,572s/;error_log/error_log/
+:572,572s:;error_log = php_errors.log:error_log = /var/tmp/php_errors.log:
 :926,926s:;date.timezone =:date.timezone = Asia/Hong_Kong:
 :wq
 EOF
 
+#:572,572s/;error_log/error_log/
+
 cat >> ~/.bashrc <<EOF
 
-alias php='php -d error_log=/tmp/php_errors.log -c /srv/php/etc/php-cli.ini'
+alias php='php -d error_log=/var/tmp/php_errors.log -c /srv/php/etc/php-cli.ini'
 PATH=$PATH:/srv/php/bin:
 EOF
 

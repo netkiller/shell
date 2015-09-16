@@ -150,7 +150,7 @@ EOF
 #:728,728s!; extension_dir = "./"!extension_dir = "./:/srv/php-5.6.11/lib/php/extensions:/srv/php-5.6.11/lib/php/extensions/no-debug-non-zts-20121212"!
 #:804,804s/upload_max_filesize = 2M/upload_max_filesize = 3M/
 
-vim /srv/php-5.6.11/etc/php.cli.ini <<EOF > /dev/null 2>&1
+vim /srv/php-5.6.11/etc/php-cli.ini <<EOF > /dev/null 2>&1
 :393,393s/memory_limit = 128M/memory_limit = 4G/
 :572,572s/;error_log/error_log/
 :927,927s:;date.timezone =:date.timezone = Asia/Hong_Kong:
