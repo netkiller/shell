@@ -1,0 +1,1 @@
+git clone https://github.com/Synchro/PHPMailer.git /srv/php/lib/php/PHPMailer
