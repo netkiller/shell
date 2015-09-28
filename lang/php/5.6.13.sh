@@ -94,8 +94,11 @@ mkdir -p /srv/php-5.6.13/etc/fpm.d
 cp /srv/php-5.6.13/etc/pear.conf{,.original}
 cp php.ini-* /srv/php-5.6.13/etc/
 cp /srv/php-5.6.13/etc/php.ini-production /srv/php-5.6.13/etc/php.ini
-cp /srv/php-5.6.13/etc/php.ini-development /srv/php-5.6.13/etc/php-cli.ini
+cp /srv/php-5.6.13/etc/php.ini-production /srv/php-5.6.13/etc/php-cli.ini
 cp /srv/php-5.6.13/etc/php-fpm.conf.default /srv/php-5.6.13/etc/php-fpm.conf
+
+#cp /srv/php-5.6.13/etc/php.ini-development /srv/php-5.6.13/etc/php.ini
+#cp /srv/php-5.6.13/etc/php.ini-development /srv/php-5.6.13/etc/php-cli.ini
 
 #/etc/init.d/php-fpm stop
 #\cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
@@ -107,7 +110,6 @@ cp /srv/php-5.6.13/etc/php-fpm.conf.default /srv/php-5.6.13/etc/php-fpm.conf
 cp ./sapi/fpm/php-fpm.service /etc/systemd/system/php-fpm.service 
 sed -i 's:${prefix}:/srv/php-5.6.13:g' /etc/systemd/system/php-fpm.service
 sed -i 's:${exec_prefix}:/srv/php-5.6.13:g' /etc/systemd/system/php-fpm.service
-
 
 systemctl enable php-fpm
 
@@ -138,6 +140,7 @@ vim /srv/php-5.6.13/etc/php.ini <<EOF > /dev/null 2>&1
 :303,303s/disable_functions =/disable_functions = ini_set,set_time_limit,set_include_path,passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket/
 :363,363s/expose_php = On/expose_php = Off/
 :393,393s/memory_limit = 128M/memory_limit = 32M/
+:572,572s:;error_log = php_errors.log:error_log = /var/tmp/php_errors.log:
 :773,773s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
 :926,926s:;date.timezone =:date.timezone = Asia/Hong_Kong:
 :1416,1416s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
