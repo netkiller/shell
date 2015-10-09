@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yum install tomcat-native
+
 cd /usr/local/src/
 wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-7/v7.0.64/bin/apache-tomcat-7.0.64.tar.gz
 tar zxf apache-tomcat-7.0.64.tar.gz 
