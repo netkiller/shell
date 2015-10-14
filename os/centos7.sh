@@ -27,9 +27,13 @@ mysql hard nofile 65535
 redis soft nofile 65535
 redis hard nofile 65535
 
-rabbitmq soft nofile 4096
+rabbitmq soft nofile 40960
 rabbitmq hard nofile 40960
+
 EOF
+
+#oracle soft nofile 65535
+#oracle hard nofile 65535
 
 cat >> /etc/sysctl.conf <<EOF
 
