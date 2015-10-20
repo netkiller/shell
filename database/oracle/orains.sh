@@ -8,6 +8,8 @@ function ECHO(){
 	echo "===================="
 }
 
+yum install gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel sysstat libaio-devel elfutils-libelf-devel unixODBC unixODBC-devel
+
 groupadd oinstall
 groupadd dba
 useradd -m -g oinstall -G dba oracle
@@ -38,7 +40,7 @@ EOF
 cat >> /etc/security/limits.conf <<EOF
 oracle soft nproc 2048
 oracle hard nproc 16384
-oracle soft nofile 1024
+oracle soft nofile 2048
 oracle hard nofile 65536
 EOF
 #ECHO $"$(grep oracle /etc/security/limits.conf)"
@@ -72,16 +74,3 @@ inventory_loc=$ORACLE_BASE/oraInventory
 inst_group=oinstall
 EOF
 chmod 664 /etc/oraInst.loc
-
-cat >> /etc/yum.repos.d/rhel-source-local.repo <<\EOF
-[rhel-source-local]
-name=Red Hat Enterprise Linux $releasever - Source
-baseurl=file:///media/cdrom0/Server
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
-EOF
-
-yum install gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel sysstat libaio-devel elfutils-libelf-devel unixODBC unixODBC-devel
-
-
