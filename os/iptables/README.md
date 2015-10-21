@@ -80,8 +80,16 @@ PostgreSQL
 -----
 
 	iptables -A INPUT -p tcp --dport 5432 -j ACCEPT
+
+Oracle
+-----
+	-A INPUT -m state --state NEW -m tcp -p tcp --dport 1521  -j ACCEPT
 	
 DHCP
 -----
 	iptables -A INPUT -p UDP -i eth0 --dport 67 -j ACCEPT
 	iptables -A INPUT -p UDP -i eth0 --dport 68 -j ACCEPT
+
+VNC
+-----	
+	-INPUT -m state --state NEW -m tcp -p tcp --dport 5901  -j ACCEPT	
