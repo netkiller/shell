@@ -8,8 +8,9 @@ function ECHO(){
 	echo "===================="
 }
 
-yum install -y ksh gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel sysstat libaio-devel elfutils-libelf-devel unixODBC unixODBC-devel \
-compat-libcap1 compat-libstdc++-33
+yum install -y ksh gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel libaio-devel \
+elfutils-libelf-devel unixODBC unixODBC-devel \
+compat-libcap1 compat-libstdc++-33 sysstat 
 
 groupadd oinstall
 groupadd dba
@@ -73,7 +74,7 @@ EOF
 
 cat >> /etc/hosts <<EOF
 
-127.0.0.1 oral.example.com
+127.0.0.1 orcl.example.com
 EOF
 
 
@@ -109,13 +110,3 @@ set pagesize 100
 col ename format a30 
 col sal format 999,999.999 
 EOF
-
-#cat >> /etc/oratab <<EOF
-#orcl:/opt/app/oracle/product/12.1.0/db_1:Y
-#EOF
-
-#cat >> /etc/oraInst.loc <<EOF
-#inventory_loc=$ORACLE_BASE/oraInventory
-#inst_group=oinstall
-#EOF
-#chmod 664 /etc/oraInst.loc
