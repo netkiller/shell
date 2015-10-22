@@ -8,7 +8,7 @@ function ECHO(){
 	echo "===================="
 }
 
-yum install gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel sysstat libaio-devel elfutils-libelf-devel unixODBC unixODBC-devel
+yum install gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel sysstat libaio-devel elfutils-libelf-devel unixODBC unixODBC-devel compat-libstdc++-33 pdksh
 
 groupadd oinstall
 groupadd dba
@@ -48,29 +48,29 @@ EOF
 cat >> /home/oracle/.bash_profile <<\EOF
 export TMP=/tmp
 export TMPDIR=$TMP
-ORACLE_HOSTNAME=your.example.org
+export ORACLE_HOSTNAME=oral.example.com
+export ORACLE_UNQNAME=orcl
 export ORACLE_BASE=/opt/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/dbhome_1
 export ORACLE_SID=orcl
-export ORACLE_TERM=xterm
+export ORACLE_HOME_LISTNER=$ORACLE_HOME
+export PATH=/usr/sbin:$PATH
 export PATH=$ORACLE_HOME/bin:$PATH
-export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib64:/usr/lib64:/usr/local/lib64
-export CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
-export LD_ASSUME_KERNEL=2.6.18
-export NLS_LANG="american_america.UTF8"
-export NLS_LANG="AMERICAN_AMERICA.US7ASCII"
-#export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"
-#export NLS_LANG="SIMPLIFIED CHINESE_CHINA.ZHS16GBK"
-#export NLS_LANG="TRADITIONAL CHINESE_TAIWAN.ZHT16MSWIN950"
-#export NLS_LANG="JAPANESE_JAPAN.WE8MSWIN1252"
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
+export CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+export NLS_LANG="AMERICAN_AMERICA.AL32UTF8"
 EOF
 
 cat >> /home/oracle/.bashrc <<\EOF
 alias sysdba='sqlplus "/ as sysdba"'
 EOF
 
-cat >> /etc/oraInst.loc <<EOF
-inventory_loc=$ORACLE_BASE/oraInventory
-inst_group=oinstall
+#cat >> /etc/oraInst.loc <<EOF
+#inventory_loc=$ORACLE_BASE/oraInventory
+#inst_group=oinstall
+#EOF
+#chmod 664 /etc/oraInst.loc
+
+cat >> /etc/hosts <<\EOF
+127.0.0.1	oral.example.com
 EOF
-chmod 664 /etc/oraInst.loc
