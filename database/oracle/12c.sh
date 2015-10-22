@@ -81,7 +81,7 @@ EOF
 cat >> /home/oracle/.bash_profile <<\EOF
 export TMP=/tmp
 export TMPDIR=$TMP
-export ORACLE_HOSTNAME=oral.example.com
+export ORACLE_HOSTNAME=orcl.example.com
 export ORACLE_UNQNAME=orcl
 export ORACLE_BASE=/opt/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/12.1.0/dbhome_1
