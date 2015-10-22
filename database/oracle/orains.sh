@@ -8,7 +8,8 @@ function ECHO(){
 	echo "===================="
 }
 
-yum install gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel sysstat libaio-devel elfutils-libelf-devel unixODBC unixODBC-devel compat-libstdc++-33 pdksh
+yum install gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel libaio-devel \ 
+elfutils-libelf-devel unixODBC unixODBC-devel compat-libstdc++-33 pdksh sysstat
 
 groupadd oinstall
 groupadd dba
@@ -48,7 +49,7 @@ EOF
 cat >> /home/oracle/.bash_profile <<\EOF
 export TMP=/tmp
 export TMPDIR=$TMP
-export ORACLE_HOSTNAME=oral.example.com
+export ORACLE_HOSTNAME=orcl.example.com
 export ORACLE_UNQNAME=orcl
 export ORACLE_BASE=/opt/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/dbhome_1
