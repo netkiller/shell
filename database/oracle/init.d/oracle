@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# Run-level Startup script for the Oracle Instance and Listener
+#
+# chkconfig: 345 91 19
+# description: Startup/Shutdown Oracle listener and instance
+
+ORACLE_HOME=/opt/oracle/product/11.2.0/dbhome_1
+
+ORA_HOME=$ORACLE_HOME
+ORA_OWNR="oracle"
+
+# if the executables do not exist -- display error
+
+if [ ! -f $ORA_HOME/bin/dbstart -o ! -d $ORA_HOME ]
+then
+        echo "Oracle startup: cannot start"
+        exit 1
+fi
+
+# depending on parameter -- startup, shutdown, restart 
+# of the instance and listener or usage display 
+
+case "$1" in
+    start)
+        # Oracle listener and instance startup
+        echo -n "Starting Oracle: "
+        #su - $ORA_OWNR -c "$ORA_HOME/bin/lsnrctl start"
+        su - $ORA_OWNR -c "$ORA_HOME/bin/dbstart $ORACLE_HOME"
+        touch /var/lock/subsys/oracle
+        echo "OK"
+        ;;
+    stop)
+        # Oracle listener and instance shutdown
+        echo -n "Shutdown Oracle: "
+        #su - $ORA_OWNR -c "$ORA_HOME/bin/lsnrctl stop"
+        su - $ORA_OWNR -c "$ORA_HOME/bin/dbshut $ORACLE_HOME"
+        rm -f /var/lock/subsys/oracle
+        echo "OK"
+        ;;
+    reload|restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 start|stop|restart|reload"
+        exit 1
+esac
+exit 0
