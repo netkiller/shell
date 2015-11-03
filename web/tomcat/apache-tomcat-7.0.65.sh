@@ -13,10 +13,6 @@ ln -s /srv/apache-tomcat-7.0.65 /srv/apache-tomcat
 rm -rf  /srv/apache-tomcat/webapps/{docs,examples,host-manager,ROOT/*}
 rm -rf /srv/apache-tomcat/logs/*
 
-wget -q https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/init.d/tomcat -O /etc/init.d/tomcat
-chkconfig tomcat on
-chmod +x /etc/init.d/tomcat
-
 cp /srv/apache-tomcat/conf/server.xml{,.original}
 cp /srv/apache-tomcat/conf/context.xml{,.original}
 cp /srv/apache-tomcat/conf/web.xml{,.original}

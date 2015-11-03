@@ -56,9 +56,13 @@ case $1 in
         stop
         ;;
     restart)
-        start
         stop
+		pkill -f "apache-tomcat"
+		start
 		;;
+    status)
+        status
+        ;;
 	*)
 		echo "Usage: $1 {start|stop|restart|status}"
 		;;
