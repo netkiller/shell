@@ -7,6 +7,7 @@ wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-7/v7.0.65/bin/
 tar zxf apache-tomcat-7.0.65.tar.gz 
 
 mv apache-tomcat-7.0.65 /srv/
+rm -f /srv/apache-tomcat
 ln -s /srv/apache-tomcat-7.0.65 /srv/apache-tomcat
 #rm -rf /srv/apache-tomcat/webapps/*
 rm -rf  /srv/apache-tomcat/webapps/{docs,examples,host-manager,ROOT/*}

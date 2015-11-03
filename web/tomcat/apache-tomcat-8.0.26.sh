@@ -5,6 +5,7 @@ wget http://apache.communilink.net/tomcat/tomcat-8/v8.0.26/bin/apache-tomcat-8.0
 tar zxf apache-tomcat-8.0.26.tar.gz 
 
 mv apache-tomcat-8.0.26 /srv/
+rm -f /srv/apache-tomcat
 ln -s /srv/apache-tomcat-8.0.26 /srv/apache-tomcat
 #rm -rf /srv/apache-tomcat/webapps/*
 rm -rf  /srv/apache-tomcat/webapps/{docs,examples,host-manager,ROOT/*}
