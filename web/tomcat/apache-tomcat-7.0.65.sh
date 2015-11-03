@@ -1,11 +1,13 @@
 #!/bin/bash
 
-cd /usr/local/src/
-wget http://apache.communilink.net/tomcat/tomcat-8/v8.0.26/bin/apache-tomcat-8.0.26.tar.gz
-tar zxf apache-tomcat-8.0.26.tar.gz 
+yum install tomcat-native
 
-mv apache-tomcat-8.0.26 /srv/
-ln -s /srv/apache-tomcat-8.0.26 /srv/apache-tomcat
+cd /usr/local/src/
+wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-7/v7.0.65/bin/apache-tomcat-7.0.65.tar.gz
+tar zxf apache-tomcat-7.0.65.tar.gz 
+
+mv apache-tomcat-7.0.65 /srv/
+ln -s /srv/apache-tomcat-7.0.65 /srv/apache-tomcat
 #rm -rf /srv/apache-tomcat/webapps/*
 rm -rf  /srv/apache-tomcat/webapps/{docs,examples,host-manager,ROOT/*}
 rm -rf /srv/apache-tomcat/logs/*
