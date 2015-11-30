@@ -110,3 +110,6 @@ set pagesize 100
 col ename format a30 
 col sal format 999,999.999 
 EOF
+
+cp $ORACLE_HOME/network/admin/listener.ora{,.original}
+cp $ORACLE_HOME/network/admin/tnsnames.ora{,.original}
