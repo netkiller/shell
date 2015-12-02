@@ -5,6 +5,14 @@ GCC
 -----
     curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/gcc/gcc.sh | bash
 
+Devel Library
+-----
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/devel.sh | bash
+
+PHP 7.0.0
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0.0.sh | bash
+	
 PHP 5.6.6
 ---------
     curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/5.6.6-centos7.sh | bash
