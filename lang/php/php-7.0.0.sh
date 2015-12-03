@@ -72,9 +72,6 @@ fi
 
 [[ $? -ne 0 ]] && echo "Error: make install" &&  exit $?
 
-rm -f /srv/php
-ln -s /srv/php-7.0.0/ /srv/php
-
 strip /srv/php-7.0.0/bin/php
 strip /srv/php-7.0.0/sbin/php-fpm 
 
@@ -119,14 +116,14 @@ end
 #:15,15s/;//
 
 vim /srv/php-7.0.0/etc/php.ini <<EOF > /dev/null 2>&1
-:298,298s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-7.0.0/lib/php/:/srv/php-7.0.0/bin/$
-:303,303s/disable_functions =/disable_functions = ini_set,set_time_limit,set_include_path,passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket/
-:363,363s/expose_php = On/expose_php = Off/
+:294,294s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-7.0.0/lib/php/:/srv/php-7.0.0/bin/$
+:299,299s/disable_functions =/disable_functions = ini_set,set_time_limit,set_include_path,passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket/
+:359,359s/expose_php = On/expose_php = Off/
 :393,393s/memory_limit = 128M/memory_limit = 32M/
-:773,773s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
-:927,927s:;date.timezone =:date.timezone = Asia/Hong_Kong:
-:1417,1417s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
-:1443,1443s/session.name = PHPSESSID/session.name = JSESSIONID/
+:762,762s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
+:913,913s:;date.timezone =:date.timezone = Asia/Hong_Kong:
+:1310,1310s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
+:1336,1336s/session.name = PHPSESSID/session.name = JSESSIONID/
 :wq
 EOF
 
@@ -136,9 +133,9 @@ EOF
 #:804,804s/upload_max_filesize = 2M/upload_max_filesize = 3M/
 
 vim /srv/php-7.0.0/etc/php-cli.ini <<EOF > /dev/null 2>&1
-:389,389s/memory_limit = 128M/memory_limit = 4G/
-:568,568s:;error_log = php_errors.log:error_log = /var/tmp/php_errors.log:
-:913,913s:;date.timezone =:date.timezone = Asia/Hong_Kong:
+:s/memory_limit = 128M/memory_limit = 4G/
+:s:;error_log = php_errors.log:error_log = php_errors.log:
+:s:;date.timezone =:date.timezone = Asia/Hong_Kong:
 :wq
 EOF
 

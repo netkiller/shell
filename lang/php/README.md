@@ -1,6 +1,9 @@
 Installation
 ============
-
+OS
+-----
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/os/user/www.sh | bash
+	
 GCC
 -----
     curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/gcc/gcc.sh | bash
