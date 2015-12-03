@@ -14,7 +14,11 @@ Devel Library
 
 PHP 7.0.0
 
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0.0.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/php-7.0.0.sh | bash
+	
+Default PHP
+-----
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/php-7.0.0-default.sh  | bash	
 	
 PHP 5.6.6
 ---------
