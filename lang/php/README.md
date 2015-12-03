@@ -30,14 +30,23 @@ PHP 5.5.11
     
 Pecl
 ----
-    https://github.com/oscm/shell/tree/master/php/pecl
+	https://github.com/oscm/shell/tree/master/php/pecl
+	
+### pthreads
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/pthreads.sh | bash
+    
 ### Redis
-    curl -s https://raw.github.com/oscm/shell/master/php/pecl/redis.sh | bash
-### Mongo
-    curl -s https://raw.github.com/oscm/shell/master/php/pecl/mongo.sh | bash
-### Phalcon
-    curl -s https://raw.github.com/oscm/shell/master/php/pecl/phalcon.sh | bash
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/redis.sh | bash
 
+### Mongo
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/mongo.sh | bash
+
+### Phalcon
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/phalcon.sh | bash
+
+### AMQP
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/pecl/amqp.sh | bash
+	
 Pear
 ----
     https://github.com/oscm/shell/tree/master/php/pear
