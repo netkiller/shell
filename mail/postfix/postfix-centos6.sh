@@ -5,7 +5,7 @@ cp /etc/postfix/main.cf{,.original}
 cp /etc/postfix/master.cf{,.original}
 
 cat > /etc/security/limits.d/95-postfix.conf <<EOF
-postfix    soft    nproc    1024
+postfix    soft    nproc    4096
 postfix    soft    nofile   40960
 EOF
 
@@ -20,6 +20,8 @@ sed -i '167s/^/#/' /etc/postfix/main.cf
 sed -i '168s/#//' /etc/postfix/main.cf
 # home_mailbox
 sed -i '422s/#//' /etc/postfix/main.cf
+# trust mynetworks
+#sed -i '269imynetworks = xxx.xxx.xxx.xxx' /etc/postfix/main.cf
 
 service postfix start
 
