@@ -1,0 +1,1 @@
+sudo apt-get install -y make cconv xsltproc docbook-xsl docbook-website
