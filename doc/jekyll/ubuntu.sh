@@ -1,2 +1,2 @@
-sudo apt-get install -y ruby
-sudo gem install jekyll
+sudo apt-get install -y ruby jekyll
+#sudo gem install jekyll
