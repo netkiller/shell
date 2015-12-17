@@ -18,10 +18,10 @@ cp /srv/apache-tomcat/conf/context.xml{,.original}
 cp /srv/apache-tomcat/conf/web.xml{,.original}
 
 vim /srv/apache-tomcat/conf/server.xml <<VIM > /dev/null 2>&1
-:71,71s:/>:maxThreads="4096" enableLookups="false" compression="on" compressionMinSize="2048" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,,application/octet-stream" server="Apache"/>:
-:91s/</<!-- </
-:91s/>/> -->/
-:124,124s/true/false/g
+:73,73s:/>:maxThreads="4096" enableLookups="false" compression="on" compressionMinSize="2048" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,application/octet-stream" server="Apache"/>:
+:93s/</<!-- </
+:93s/>/> -->/
+:126,126s/true/false/g
 :wq
 VIM
 
