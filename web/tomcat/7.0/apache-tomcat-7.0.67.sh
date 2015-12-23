@@ -1,7 +1,5 @@
 #!/bin/bash
 
-yum install tomcat-native
-
 cd /usr/local/src/
 wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-7/v7.0.67/bin/apache-tomcat-7.0.67.tar.gz
 tar zxf apache-tomcat-7.0.67.tar.gz 
@@ -17,6 +15,8 @@ cp /srv/apache-tomcat/conf/server.xml{,.original}
 cp /srv/apache-tomcat/conf/context.xml{,.original}
 cp /srv/apache-tomcat/conf/web.xml{,.original}
 
+chown www:www -R /srv/apache-tomcat-*
+
 vim /srv/apache-tomcat/conf/server.xml <<VIM > /dev/null 2>&1
 :73,73s:/>:maxThreads="4096" enableLookups="false" compression="on" compressionMinSize="2048" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,application/octet-stream" server="Apache"/>:
 :93s/</<!-- </
@@ -25,15 +25,4 @@ vim /srv/apache-tomcat/conf/server.xml <<VIM > /dev/null 2>&1
 :wq
 VIM
 
-#cat >> ~/.bash_profile <<'EOF'
-#export CATALINA_HOME=/srv/apache-tomcat
-#export CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib:$CATALINA_HOME/lib:
-#EOF
-
-chown www:www -R /srv/apache-tomcat-*
-
-su - www -c "/srv/apache-tomcat/bin/startup.sh"
-
-# Daemon Script
-# cp /srv/apache-tomcat/bin/daemon.sh /etc/init.d/tomcat
-# chmod +x /etc/init.d/tomcat
+sed -i "16s/3manager.org.apache.juli.FileHandler, 4host-manager.org.apache.juli.FileHandler,//" /srv/apache-tomcat/conf/logging.properties
