@@ -18,6 +18,7 @@ cp /srv/apache-tomcat/conf/web.xml{,.original}
 chown www:www -R /srv/apache-tomcat-*
 
 vim /srv/apache-tomcat/conf/server.xml <<VIM > /dev/null 2>&1
+:22,22s:port="8005":port="-1":
 :73,73s:/>:maxThreads="4096" enableLookups="false" compression="on" compressionMinSize="2048" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,application/octet-stream" server="Apache"/>:
 :93s/</<!-- </
 :93s/>/> -->/

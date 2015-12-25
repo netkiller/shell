@@ -19,6 +19,7 @@ cp /srv/apache-tomcat/conf/logging.properties{,.original}
 chown www:www -R /srv/apache-tomcat-*
 
 vim /srv/apache-tomcat/conf/server.xml <<VIM > /dev/null 2>&1
+:22,22s:port="8005":port="-1":
 :71,71s:/>:maxThreads="4096" enableLookups="false" compression="on" compressionMinSize="2048" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,,application/octet-stream" server="Apache"/>:
 :91s/</<!-- </
 :91s/>/> -->/
