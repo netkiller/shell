@@ -35,5 +35,7 @@ character_set_client=utf8
 
 EOF
 
+grep "A temporary password" /var/log/mysqld.log
+
 # /usr/bin/mysqladmin -u root password 'new-password'
 # /usr/bin/mysql_secure_installation
