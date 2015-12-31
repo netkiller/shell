@@ -6,3 +6,7 @@ echo "vm.swappiness = 0" >>/etc/sysctl.conf
 #EOF
 #echo deadline >/sys/block/sda/queue/scheduler
 
+chattr -R +A /var/lib/mysql
+chattr -R +A /var/spool/
+chattr -R +A /var/log
+

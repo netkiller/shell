@@ -1,0 +1,1 @@
+sed -i 's/default/default,noatime,nodiratime,nobarrier/' /etc/fstab
