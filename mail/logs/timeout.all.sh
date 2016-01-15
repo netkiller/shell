@@ -1,0 +1,1 @@
+cat /var/log/maillog* | egrep -o "to=<(.*)>, .* Connection timed out" | sed -e "s/to=<\(.*\)>.*/\1/" | sort | uniq
