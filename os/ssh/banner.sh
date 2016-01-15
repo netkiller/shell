@@ -16,7 +16,7 @@ cat > /etc/ssh/banner <<EOF
 EOF
 
 vim /etc/ssh/sshd_config <<EOF > /dev/null 2>&1
-:s$#Banner none$Banner /etc/ssh/banner$
+:%s$#Banner none$Banner /etc/ssh/banner$
 :wq
 EOF
 
