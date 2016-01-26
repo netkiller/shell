@@ -43,7 +43,7 @@ set output "$PNGFILE-hour.png"
 set autoscale
 set xdata time
 set timefmt "%H:%M"
-set xrange ["$hour:00":"$hour:24"]
+set xrange ["$hour:00":"$hour:60"]
 set format x "%H:%M"
 set style data lines
 set xlabel "$datetime GMT+800"
