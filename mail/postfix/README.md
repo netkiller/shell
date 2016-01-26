@@ -12,3 +12,11 @@ Centos Init
 Install Postfix
 ---------------
   curl -s https://raw.githubusercontent.com/oscm/shell/master/mail/postfix/postfix.sh | bash
+  
+Log
+-----
+	# Connect time out
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/mail/logs/timeout.all.sh | bash
+	
+	# Clean queue
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/mail/postfix/queue.deferred.sh | bash
