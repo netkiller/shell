@@ -77,7 +77,7 @@ function daemon(){
 	for (( ; ; )) do
 		collector
 		generate
-		sleep 5
+		sleep 60
 	done &
 	echo $! > $PIDFILE
 }	
