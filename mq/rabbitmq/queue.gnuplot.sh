@@ -2,6 +2,11 @@
 ##################################################
 # Website http://www.netkiller.cn
 # Author netkiller<netkiller@msn.com>
+# OSCM https://github.com/oscm/shell
+##################################################
+# You have to clean data  at midnight
+# crontab -e
+# 05 00 * * * /www/queue.gnuplot.sh clean
 ##################################################
 QUEUE=example
 ##################################################
