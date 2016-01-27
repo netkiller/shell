@@ -26,7 +26,7 @@ function collector(){
 
 function generate(){		
 
-datetime=$(date '+%Y/%m/%d %H:%M:%S')
+datetime=$(date '+%Y-%m-%d %H:%M:%S')
 gnuplot << EOF
 set terminal png truecolor size 1024,480
 set output "$PNGFILE-day.png"
