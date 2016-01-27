@@ -1,0 +1,1 @@
+grep "status=sent" /var/log/maillog
