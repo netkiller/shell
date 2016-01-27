@@ -3,12 +3,13 @@
 # Website http://www.netkiller.cn
 # Author netkiller<netkiller@msn.com>
 ##################################################
-PROG=$(basename $0)
+QUEUE=example
+##################################################
+PROG=$(basename $0 .sh)
 LOGFILE=/var/tmp/$PROG.log
 PIDFILE=/var/tmp/$PROG.pid
-GNUPLOTDATA=/var/tmp/queue.rrd
+GNUPLOTDATA=/var/tmp/queue.$PROG.$QUEUE.dat
 PNGFILE=/www/example.com/www.example.com/public/img/queue
-QUEUE=example
 ##################################################
 
 function collector(){
@@ -111,14 +112,14 @@ Options
 
 case "$1" in
     start)
-	start
+		start
 	;;
     stop)
-	stop
+		stop
 	;;
     restart)
-	stop
-	start
+		stop
+		start
 	;;
     status)
         status
