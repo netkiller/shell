@@ -25,6 +25,16 @@ function collector(){
 
 function generate(){		
 
+	captions=()
+	queues=($(echo $QUEUES | tr '|' ' '))
+	
+	for key in ${!queues[@]}; do
+		column=$((key+2))
+		captions+=("\"$GNUPLOTDATA\" using 1:${column} title \"${queues[${key}]}\"")
+	done
+
+	plot=$(IFS=,; echo "${captions[*]}")
+
 datetime=$(date '+%Y-%m-%d %H:%M:%S')
 gnuplot << EOF
 set terminal png truecolor size 1024,480
@@ -38,7 +48,7 @@ set xlabel "$datetime GMT+800"
 set ylabel "Burndown"
 set title "RabbitMQ Burndown - Day"
 set grid
-plot "$GNUPLOTDATA" using 1:2 title "example","$GNUPLOTDATA" using 1:3 title "other"
+plot $plot
 EOF
 
 hour=$(date '+%H')
@@ -55,7 +65,7 @@ set xlabel "$datetime GMT+800"
 set ylabel "Burndown"
 set title "RabbitMQ Burndown - Hour"
 set grid
-plot "$GNUPLOTDATA" using 1:2 title "example","$GNUPLOTDATA" using 1:3 title "other"
+plot $plot
 EOF
 
 minute=$(date '+%H:%M')
@@ -73,7 +83,7 @@ set xlabel "$datetime GMT+800"
 set ylabel "Burndown"
 set title "RabbitMQ Burndown - Minute"
 set grid
-plot "$GNUPLOTDATA" using 1:2 title "example","$GNUPLOTDATA" using 1:3 title "other"
+plot $plot
 EOF
 	
 }
@@ -87,8 +97,8 @@ function daemon(){
 	echo $! > $PIDFILE
 }	
 function start(){
-	if [ ! -f $RRDDATA ]; then
-		create
+	if [ ! -f $GNUPLOTDATA ]; then
+		collector
 	fi
 	daemon
 }
@@ -101,8 +111,11 @@ function status(){
 function clean(){
 	rm -rf $GNUPLOTDATA
 }
+function create(){
+	generate
+}
 function usage(){
-        echo $"Usage: $0 {start|stop|restart|status|clean}"
+        echo $"Usage: $0 {start|stop|restart|status|clean|create}"
         echo $"
 Options
  -v, --verbose               increase verbosity
@@ -117,14 +130,14 @@ Options
 case "$1" in
     start)
 		start
-	;;
+		;;
     stop)
 		stop
-	;;
+		;;
     restart)
 		stop
 		start
-	;;
+		;;
     status)
         status
         ;;
@@ -134,6 +147,9 @@ case "$1" in
     clean)
         clean
         ;;
+	create)
+		create
+		;;
     *)
         usage
         ;;

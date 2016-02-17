@@ -88,8 +88,8 @@ function daemon(){
 	echo $! > $PIDFILE
 }	
 function start(){
-	if [ ! -f $RRDDATA ]; then
-		create
+	if [ ! -f $GNUPLOTDATA ]; then
+		collector
 	fi
 	daemon
 }
@@ -102,8 +102,11 @@ function status(){
 function clean(){
 	rm -rf $GNUPLOTDATA
 }
+function create(){
+	generate
+}
 function usage(){
-        echo $"Usage: $0 {start|stop|restart|status|clean}"
+        echo $"Usage: $0 {start|stop|restart|status|clean|create}"
         echo $"
 Options
  -v, --verbose               increase verbosity
@@ -118,14 +121,14 @@ Options
 case "$1" in
     start)
 		start
-	;;
+		;;
     stop)
 		stop
-	;;
+		;;
     restart)
 		stop
 		start
-	;;
+		;;
     status)
         status
         ;;
@@ -135,6 +138,9 @@ case "$1" in
     clean)
         clean
         ;;
+	create)
+		create
+		;;		
     *)
         usage
         ;;
