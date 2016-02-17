@@ -9,6 +9,3 @@ sudo yum install -y docker-engine
 
 systemctl enable docker
 systemctl start docker
-
-docker pull centos
-docker images centos
