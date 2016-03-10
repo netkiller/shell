@@ -1,5 +1,7 @@
 #!/bin/sh
 cd /usr/local/src/
+
+rm -rf cphalcon
 		
 git clone --depth=1 git://github.com/phalcon/cphalcon.git
 cd cphalcon/build
