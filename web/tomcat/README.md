@@ -3,7 +3,8 @@ Apache Tomcat
 
 Install
 -----
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/apache-tomcat-8.0.26.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/os/user/www.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/apache-tomcat.sh | bash
 	
 systemd
 -----
