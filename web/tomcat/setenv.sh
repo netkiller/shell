@@ -2,7 +2,7 @@
 cat > /srv/apache-tomcat/bin/setenv.sh <<'EOF'
 export JRE_HOME=/srv/java
 export JAVA_HOME=/srv/java
-export JAVA_OPTS="-server -Xms1024m -Xmx8192m"
+export JAVA_OPTS="-server -Xms2048m -Xmx8192m"
 
 export CATALINA_HOME=/srv/apache-tomcat
 export LD_LIBRARY_PATH=/srv/apache-tomcat/lib
