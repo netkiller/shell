@@ -1,25 +1,20 @@
 #!/bin/bash
 
 cd /usr/local/src/
-wget http://apache.communilink.net/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz
-tar zxf apache-tomcat-8.0.32.tar.gz 
+wget http://apache.communilink.net/tomcat/tomcat-8/v8.0.33/bin/apache-tomcat-8.0.33.tar.gz
+tar zxf apache-tomcat-8.0.33.tar.gz 
 
-mv apache-tomcat-8.0.32 /srv/
-rm -f /srv/apache-tomcat
-ln -s /srv/apache-tomcat-8.0.32 /srv/apache-tomcat
-#rm -rf /srv/apache-tomcat/webapps/*
-rm -rf  /srv/apache-tomcat/webapps/{docs,examples,host-manager,ROOT/*}
-rm -rf /srv/apache-tomcat/logs/*
+#rm -rf apache-tomcat-8.0.33/webapps/*
+rm -rf apache-tomcat-8.0.33/webapps/{docs,examples,host-manager,ROOT/*}
+rm -rf apache-tomcat-8.0.33/logs/*
 
-cp /srv/apache-tomcat/conf/server.xml{,.original}
-cp /srv/apache-tomcat/conf/context.xml{,.original}
-cp /srv/apache-tomcat/conf/web.xml{,.original}
-cp /srv/apache-tomcat/conf/logging.properties{,.original}
+cp apache-tomcat-8.0.33/conf/server.xml{,.original}
+cp apache-tomcat-8.0.33/conf/context.xml{,.original}
+cp apache-tomcat-8.0.33/conf/web.xml{,.original}
+cp apache-tomcat-8.0.33/conf/logging.properties{,.original}
 
-chown www:www -R /srv/apache-tomcat-*
-
-vim /srv/apache-tomcat/conf/server.xml <<VIM > /dev/null 2>&1
-:22,22s:port="8305":port="-1":
+vim apache-tomcat-8.0.33/conf/server.xml <<VIM > /dev/null 2>&1
+:22,22s:port="8005":port="-1":
 :71,71s:/>:maxThreads="4096" enableLookups="false" compression="on" compressionMinSize="2048" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,,application/octet-stream" server="Apache"/>:
 :91s/</<!-- </
 :91s/>/> -->/
@@ -27,5 +22,16 @@ vim /srv/apache-tomcat/conf/server.xml <<VIM > /dev/null 2>&1
 :wq
 VIM
 
-sed -i "16s/3manager.org.apache.juli.FileHandler, 4host-manager.org.apache.juli.FileHandler,//" /srv/apache-tomcat/conf/logging.properties
+sed -i "16s/3manager.org.apache.juli.AsyncFileHandler, 4host-manager.org.apache.juli.AsyncFileHandler,//" apache-tomcat-8.0.33/conf/logging.properties
 
+mkdir -p apache-tomcat-8.0.33/lib/org/apache/catalina/util
+
+cat >> apache-tomcat-8.0.33/lib/org/apache/catalina/util/ServerInfo.properties <<EOF
+server.info=Apache
+server.number=
+server.built=
+EOF
+
+
+mv apache-tomcat-8.0.33 /srv/
+chown www:www -R /srv/apache-tomcat-8.0.33

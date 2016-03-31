@@ -5,6 +5,8 @@ Install
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/os/user/www.sh | bash
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/apache-tomcat.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/apache-tomcat-default.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/setenv.sh | bash
 	
 systemd
 -----
