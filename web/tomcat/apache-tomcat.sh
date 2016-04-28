@@ -32,6 +32,16 @@ server.number=
 server.built=
 EOF
 
+cat > apache-tomcat-8.0.33/bin/setenv.sh <<'EOF'
+JRE_HOME=/srv/java
+JAVA_HOME=/srv/java
+JAVA_OPTS="-server -Xms2048m -Xmx8192m"
+CATALINA_HOME=/srv/apache-tomcat-8.0.33
+LD_LIBRARY_PATH=$CATALINA_HOME/lib
+CATALINA_OPTS=" -Djava.awt.headless=true -Djava.library.path=$LD_LIBRARY_PATH"
+CLASSPATH=$JAVA_HOME/lib:$CATALINA_HOME/lib:
+PATH=$PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin:
+EOF
 
 mv apache-tomcat-8.0.33 /srv/
 chown www:www -R /srv/apache-tomcat-8.0.33
