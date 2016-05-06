@@ -5,7 +5,7 @@ wget http://apache.communilink.net/tomcat/tomcat-8/v8.0.33/bin/apache-tomcat-8.0
 tar zxf apache-tomcat-8.0.33.tar.gz 
 
 #rm -rf apache-tomcat-8.0.33/webapps/*
-rm -rf apache-tomcat-8.0.33/webapps/{docs,examples,host-manager,ROOT/*}
+rm -rf apache-tomcat-8.0.33/webapps/{docs,examples,manager,ROOT/*}
 rm -rf apache-tomcat-8.0.33/logs/*
 
 cp apache-tomcat-8.0.33/conf/server.xml{,.original}
