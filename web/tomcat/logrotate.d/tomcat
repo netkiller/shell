@@ -1,0 +1,10 @@
+cat >> /etc/logrotate.d/tomcat <<EOF
+/srv/apache-tomcat/logs/catalina.out {
+	rotate 14
+	daily
+	copytruncate
+	compress
+	notifempty
+	missingok
+}
+EOF

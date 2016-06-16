@@ -12,21 +12,21 @@ Devel Library
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/devel.sh | bash
 
-PHP 7.0.0
+PHP 7.0.7
 
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/php-7.0.1.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0/php-7.0.7.sh | bash
 	
 Default PHP
 -----
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/php-7.0.1-default.sh  | bash	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0/php-7.0.7-default.sh  | bash	
 	
 PHP 5.6.6
 ---------
-    curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/5.6.6-centos7.sh | bash
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/5.6/php-5.6.17.sh | bash
 
 PHP 5.5.11
 ---------
-    curl -s https://raw.githubusercontent.com/oscm/shell/master/php/5.5.11.sh | bash	
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/5.5/5.5.11.sh | bash	
     
 Pecl
 ----
