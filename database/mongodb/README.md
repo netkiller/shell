@@ -1,4 +1,4 @@
-Redis
+MongoDB
 =====
 
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb.sh | bash
