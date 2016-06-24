@@ -1,0 +1,2 @@
+yum install -y mutt
+
