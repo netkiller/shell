@@ -1,0 +1,78 @@
+#!/bin/bash
+
+BACKUP_DIR=/www/backup
+
+timepoint=$(date -u '+%Y%m%d_%H:%M:%S')
+
+#=mysqldump -h192.168.188.151 -unanxiudbconn -pZoshowNanxiu ecshop > /tmp/ecshop.sql
+
+
+function init {
+    if [ ! -d /opt/backup ]; then
+	mkdir /opt/backup
+    fi
+    if [ ! -d /opt/backup/database/ ]; then
+	mkdir /opt/backup/database
+    fi
+    if [ ! -d /opt/backup/subversion ]; then
+        mkdir /opt/backup/subversion
+    fi
+    if [ ! -d /opt/archive ]; then
+        mkdir /opt/archive
+    fi
+}
+
+function mysql {
+	MYSQLDUMP="mysqldump -h localhost -uroot -pchen"
+    $MYSQLDUMP nfshop | gzip > /opt/backup/database/nfshop_$timepoint.sql.gz
+
+}
+
+function subversion {
+    svnadmin dump /srv/svnroot/neo > /opt/backup/subversion/neo.repos
+}
+
+function www {
+	timepoint=$(date -u +%Y-%m-%d)
+	tar --exclude=/www/project/images --exclude=/www/project/product --exclude=/www/project/upload -zcf $BACKUP_DIR/www_$timepoint.tar.gz /www/project
+
+}
+function snapshot {
+    mysql
+    subversion
+    tar zcPf /opt/archive/backup.${timepoint}.tar.gz /opt/backup
+}
+function mirror {
+    scp -r /opt/archive neo@192.168.3.5:/backup
+}
+init
+
+case "$1" in
+    mysql)
+        mysql
+        ;;
+    subversion)
+        subversion
+        ;;
+    unstable)
+        clean
+        unstable
+        ;;
+    snapshot)
+        snapshot
+        ;;
+    mirror)
+        mirror
+        ;;
+    auto)
+        snapshot
+        mirror
+    clean)
+        clean
+        ;;
+    *)
+        echo $"Usage: $0 {mysql|subversion|www|snapshot|}"
+        echo $"switch"
+        exit 1
+esac
+

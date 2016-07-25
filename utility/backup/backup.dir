@@ -1,0 +1,32 @@
+#!/bin/bash
+VOLNAME=/tmp
+
+MONTH=$(date +%B)
+WEEKDAY=$(date +%A)
+DATE=$(date -u +%Y-%m-%d)
+TIME=$(date -u +%H:%M:%S)
+TIMEPOINT=$(date -u "+%Y-%m-%d %H:%M:%S")
+
+#BACKUP_DIR=$VOLNAME/backup/$MONTH/$WEEKDAY
+#BACKUP_DIR=$VOLNAME/backup/$TIMEPOINT
+BACKUP_DIR=$VOLNAME/backup/$DATE
+#echo $BACKUP_DIR
+
+BACKUP_SCRIPT=''
+CP="cp -ar "
+TAR="tar -zcf "
+RSYNC="rsync -auzvP -e ssh "
+
+mkdir -p $BACKUP_DIR
+
+#$TAR --exclude=/etc/init.d --exclude=/etc/xinet.d/ $BACKUP_DIR/etc.tgz /etc
+#$TAR $BACKUP_DIR/etc.tgz /etc
+
+backuplst=(/etc/fstab /etc/passwd)
+for item in ${backuplst[*]}
+do
+    printf "   %s\n" $item
+    $CP $item $BACKUP_DIR
+done
+
+
