@@ -10,9 +10,7 @@ mv solr-5.3.0 /srv/
 
 ln -s /srv/solr-5.3.0/ /srv/solr
 
-
--s /sbin/nologin
-adduser -d /srv/solr -c "Apache Solr" solr
+adduser -d /srv/solr -c "Apache Solr" -s /sbin/nologin solr 
 chown solr:solr -R /srv/solr-5.3.0
 
 cp /srv/solr-5.3.0/bin/init.d/solr /etc/init.d/
