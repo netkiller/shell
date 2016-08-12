@@ -1,0 +1,27 @@
+####################################################
+# Homepage: http://netkiller.github.io
+# Author: netkiller<netkiller@msn.com>
+# Script: https://github.com/oscm/shell
+# Date: 2015-11-03
+####################################################
+
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+After=syslog.target
+
+[Service]
+Type=oneshot
+
+User=www
+Group=www
+
+#EnvironmentFile=/etc/sysconfig/tomcat
+ExecStartPre="rm -rf /srv/apache-tomcat/logs/*"
+ExecStart=/srv/apache-tomcat/bin/startup.sh
+#ExecStartPost=
+
+ExecStop=/srv/apache-tomcat/bin/shutdown.sh
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
