@@ -9,3 +9,5 @@ cat >> /etc/logrotate.d/tomcat <<EOF
 	create 0644 www www
 }
 EOF
+
+logrotate --force /etc/logrotate.d/tomcat
