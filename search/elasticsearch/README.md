@@ -1,6 +1,10 @@
 Elasticsearch
 =====
 
+Java
+-----
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/java/openjdk/java-1.8.0-openjdk.sh | bash
+
 Install
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/install.yum.sh | bash
