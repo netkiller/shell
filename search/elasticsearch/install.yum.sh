@@ -9,7 +9,7 @@ gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch
 enabled=1
 EOF
 
-yum install elasticsearch
+yum install -y elasticsearch
 
 cp /etc/elasticsearch/elasticsearch.yml{,.original}
 cp /etc/elasticsearch/logging.yml{,.original}
