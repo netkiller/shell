@@ -1,5 +1,12 @@
 #!/bin/sh
+
 yum install -y opendkim
+
+cp /etc/opendkim.conf{,.original}
+cp /etc/opendkim/KeyTable{,.original}
+cp /etc/opendkim/SigningTable{,.original}
+cp /etc/opendkim/TrustedHosts{,.original}
+
 systemctl enable opendkim
 
 

@@ -14,5 +14,5 @@ yum install -y elasticsearch
 cp /etc/elasticsearch/elasticsearch.yml{,.original}
 cp /etc/elasticsearch/logging.yml{,.original}
 
-sudo /bin/systemctl daemon-reload
-sudo /bin/systemctl enable elasticsearch.service
+systemctl daemon-reload
+systemctl enable elasticsearch.service
