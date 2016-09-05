@@ -12,7 +12,13 @@ Devel Library
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/devel.sh | bash
 
-PHP 7.0.7
+PHP 
+-----
+### PHP 7.0.10
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0/php-7.0.10.sh | bash
+	
+### PHP 7.0.7
 
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0/php-7.0.7.sh | bash
 	
