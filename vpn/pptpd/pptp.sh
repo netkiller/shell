@@ -19,5 +19,3 @@ chmod +x /etc/ppp/ip-up.local /etc/ppp/ip-down.local
 pptpsetup --create vpn0 --server vpn.netkiller.cn \
 --username neo --password netkiller --encrypt
 
-/etc/ppp/ip-up.local
-
