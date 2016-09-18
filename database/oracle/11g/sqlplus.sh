@@ -4,6 +4,8 @@ yum localinstall -y oracle-instantclient11.2-*
 
 cat >> ~/.bash_profile <<EOF
 
+# Oracle SQLPlus Backspace<Key>
+stty erase ^h
 ORACLE_HOME=/usr/lib/oracle/11.2/client64
 PATH=$ORACLE_HOME/bin:$PATH
 LD_LIBRARY_PATH=$ORACLE_HOME/lib
@@ -16,6 +18,8 @@ EOF
 
 mkdir -p /usr/lib/oracle/11.2/client64/network/admin
 
+wget -O /usr/lib/oracle/11.2/client64/network/admin/glogin.sql https://raw.githubusercontent.com/oscm/shell/master/database/oracle/glogin.sql
+
 cat >> /usr/lib/oracle/11.2/client64/network/admin/tnsnames.ora <<EOF
 XXX =
    (DESCRIPTION =
@@ -26,3 +30,5 @@ XXX =
      )
    )
 EOF
+
+# sqlplus user/pass@XXX
