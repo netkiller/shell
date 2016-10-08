@@ -1,0 +1,1 @@
+echo "validate-password=OFF" >> /etc/my.cnf
