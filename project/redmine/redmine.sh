@@ -12,6 +12,7 @@ cd /srv/redmine
 
 #CREATE DATABASE redmine CHARACTER SET utf8;
 #GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost' IDENTIFIED BY 'my_password';
+
 cat >> config/database.yml <<EOF
 production:
   adapter: mysql2
@@ -21,6 +22,9 @@ production:
   password: my_password
   encoding: utf8
 EOF
+
+
+cp /srv/redmine/config/configuration.yml.example /srv/redmine/config/configuration.yml
 
 gem install bundler
 bundle install --without development test
