@@ -3,12 +3,21 @@ curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/mysql
 
 yum install -y ruby rubygems ruby-devel ImageMagick-devel
 
+groupadd -g 200 redmine
+adduser -o --home /srv/redmine --uid 200 --gid 200 -c "Redmine Application" redmine
+
 cd /usr/local/src/
-wget http://www.redmine.org/releases/redmine-3.3.0.tar.gz
-tar zxf redmine-3.3.0.tar.gz
-mv redmine-3.3.0 /srv/
-ln -s /srv/redmine-3.3.0 /srv/redmine
-cd /srv/redmine
+wget http://www.redmine.org/releases/redmine-3.3.1.tar.gz
+tar zxf redmine-3.3.1.tar.gz
+mv redmine-3.3.1 /srv/
+ln -s /srv/redmine-3.3.1 /srv/redmine
+
+cp /etc/skel/.bash* /srv/redmine
+
+chown redmine:redmine -R /srv/redmine*
+su - redmine
+
+#cd /srv/redmine
 
 #CREATE DATABASE redmine CHARACTER SET utf8;
 #GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost' IDENTIFIED BY 'my_password';
@@ -35,8 +44,8 @@ RAILS_ENV=production bundle exec rake db:migrate
 RAILS_ENV=production REDMINE_LANG=zh bundle exec rake redmine:load_default_data
 
 mkdir -p tmp tmp/pdf public/plugin_assets
-sudo chown -R redmine:redmine files log tmp public/plugin_assets
-sudo chmod -R 755 files log tmp public/plugin_assets
+chown -R redmine:redmine files log tmp public/plugin_assets
+chmod -R 755 files log tmp public/plugin_assets
 
 bundle exec rails server webrick -e production
 

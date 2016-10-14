@@ -1,0 +1,1 @@
+#GRANT ALL PRIVILEGES ON dba.* TO 'dba'@'localhost' IDENTIFIED BY 'my_password';
