@@ -5,6 +5,11 @@ cat > /srv/redmine/config/configuration.yml <<EOF
 production:
   email_delivery:
     delivery_method: :sendmail
-    sendmail_settings:
-      arguments: "-i"
 EOF
+
+# Exam4
+#production:
+#  email_delivery:
+#    delivery_method: :sendmail
+#    sendmail_settings:
+#      arguments: "-i"

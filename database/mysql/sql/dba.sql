@@ -1,1 +1,4 @@
-#GRANT ALL PRIVILEGES ON dba.* TO 'dba'@'localhost' IDENTIFIED BY 'my_password';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'219.90.123.138' IDENTIFIED BY 'my_password';
+GRANT ALL PRIVILEGES ON dba.* TO 'dba'@'localhost' IDENTIFIED BY 'my_password';
+
+FLUSH PRIVILEGES;
