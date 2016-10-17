@@ -27,7 +27,7 @@ if [ ! -f ${WHITELIST} ]; then
     touch ${WHITELIST}
 fi
 
-for ipaddr in $(grep rhost ${LOGFILE} | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" | sort | uniq -c | sort -r -n | head -n 30| awk '{print $2}')
+for ipaddr in $(grep rhost ${LOGFILE} | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" | sort | uniq -c | sort -r -n | head -n 10| awk '{print $2}')
 do
 
     if [ $(grep -c $ipaddr ${WHITELIST}) -gt 0 ]; then
