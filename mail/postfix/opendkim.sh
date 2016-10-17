@@ -9,25 +9,21 @@ cp /etc/opendkim/TrustedHosts{,.original}
 
 systemctl enable opendkim
 
+#cp /etc/opendkim.conf{,.original}
 
-cp /etc/opendkim.conf{,.original}
-
-mkdir /etc/opendkim/keys/YourDomain.com
-opendkim-genkey -D /etc/opendkim/keys/YourDomain.com/ -d YourDomain.com -s default
+mkdir /etc/opendkim/keys/example.com
+opendkim-genkey -D /etc/opendkim/keys/example.com/ -d example.com -s default
+#/etc/opendkim/keys/example.com/default.private
 
 cat /etc/opendkim/KeyTable
 
 cat >> /etc/opendkim/SigningTable <<EOF
-*@YourDomain.com default._domainkey.YourDomain.com
+*@example.com default._domainkey.example.com
 EOF
 
+systemctl start opendkim
 
-
-#/etc/opendkim/keys/YourDomain.com/default.txt
-
-systemctl start opendkim 
-
-cat >> /etc/postfix/main.cf
+cat >> /etc/postfix/main.cf <<EOF
 
 smtpd_milters           = inet:127.0.0.1:8891
 non_smtpd_milters       = inet:127.0.0.1:8891
