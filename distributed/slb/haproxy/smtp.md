@@ -1,4 +1,4 @@
-listen slave *:25
+listen stmp *:25
 	mode tcp
 	balance leastconn
 	option smtp-check

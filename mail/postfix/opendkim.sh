@@ -7,6 +7,10 @@ cp /etc/opendkim/KeyTable{,.original}
 cp /etc/opendkim/SigningTable{,.original}
 cp /etc/opendkim/TrustedHosts{,.original}
 
+sed -i '103s/# KeyTable/KeyTable/' /etc/opendkim.conf
+sed -i '108s/# SigningTable/SigningTable/' /etc/opendkim.conf
+sed -i '115s/# InternalHosts/InternalHosts/' /etc/opendkim.conf
+
 systemctl enable opendkim
 
 #cp /etc/opendkim.conf{,.original}
