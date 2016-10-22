@@ -1,9 +1,13 @@
 #!/bin/sh
-
+#==========================================
+# Process Keeper
+# Author: netkiller<netkiller@msn.com>
+# Home: http://netkiller.github.io
+#==========================================
 LOGFILE=/var/log/$(basename $0 .sh).log
 PATTERN="php-fpm"
 RECOVERY="/etc/init.d/php-fpm restart"
-
+#==========================================
 while true
 do
     TIMEPOINT=$(date -d "today" +"%Y-%m-%d_%H:%M:%S")
