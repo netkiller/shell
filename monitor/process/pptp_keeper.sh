@@ -19,15 +19,14 @@ function daemon(){
 	
 	while true
 	do
-		sleep 10
-	
+
 		TIMEPOINT=$(date -d "today" +"%Y-%m-%d_%H:%M:%S")	
 		
 		PROC=$(pgrep -o -f ${PATTERN})
 		if [ -z "${PROC}" ]; then
 			echo "[${TIMEPOINT}] [${NAME}] The system can not find the process ${RECOVERY}" >> $LOGFILE
 			${RECOVERY} 
-			continue
+			sleep 10
 		fi
 		
 		LINK=$(ip link | grep ppp0 | grep UP)
@@ -50,8 +49,10 @@ function daemon(){
 			#else 
 				#echo "[${TIMEPOINT}] [${NAME}] ${CONNECTED}" >> $LOGFILE
 			fi
-		fi	
-
+		fi
+		
+		sleep 10
+		
 	done &	
 
 	echo $! > $PIDFILE
