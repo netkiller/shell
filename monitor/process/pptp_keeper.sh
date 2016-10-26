@@ -25,16 +25,16 @@ function daemon(){
 		
 		PROC=$(pgrep -o -f ${PATTERN})
 		if [ -z "${PROC}" ]; then
-			${RECOVERY} 
 			echo "[${TIMEPOINT}] [${NAME}] The system can not find the process ${RECOVERY}" >> $LOGFILE
+			${RECOVERY} 
 			continue
 		fi
 		
 		LINK=$(ip link | grep ppp0 | grep UP)
 		if [ -z "${LINK}" ]; then
+			echo "[${TIMEPOINT}] [${NAME}] The adapter ppp0 isn't exist!" >> $LOGFILE
 			pkill ${PATTERN}
-			${RECOVERY} 
-			echo "[${TIMEPOINT}] [${NAME}] The adapter ppp0 isn't exist! ${RECOVERY}" >> $LOGFILE
+			echo "[${TIMEPOINT}] [${NAME}] pkill pppd successfuly!" >> $LOGFILE
 			continue
 		fi		
 		
@@ -43,9 +43,9 @@ function daemon(){
 			#CONNECTED=$(echo -e "\r\n"|nc -v -w ${TIMEOUT} ${ipaddr} ${port} 2>&1 | grep "Connection timed out")			
 			CONNECTED=$(echo -e "\r\n"|nc -v -w ${TIMEOUT} ${ipaddr} ${port} 2>&1 | grep Connected)
 			if [ -z "${CONNECTED}" ]; then
-				pkill ${PATTERN}
-				${RECOVERY}
 				echo "[${TIMEPOINT}] [${NAME}] ${ipaddr} ${port} Connection timed out!" >> $LOGFILE
+				pkill ${PATTERN}
+				echo "[${TIMEPOINT}] [${NAME}] pkill pppd successfuly!" >> $LOGFILE
 				continue
 			#else 
 				#echo "[${TIMEPOINT}] [${NAME}] ${CONNECTED}" >> $LOGFILE
