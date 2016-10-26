@@ -5,48 +5,52 @@
 # Home: http://netkiller.github.io
 #==========================================
 NAME="vpn0"
-IPADDR=
+DESTINATION="127.0.0.1 80"
 PATTERN="pppd"
 RECOVERY="/usr/sbin/pppd call ${NAME}"
 LOGFILE=/var/log/ppp/$(basename $0 .sh).log
 PIDFILE=/var/run/$NAME.pid
 PROG=$(basename $0)
 #==========================================
-#echo $$
+TIMEOUT=30
+read ipaddr port <<< $(echo $DESTINATION)
+
 function daemon(){
 	
 	while true
 	do
-		sleep 5
+		sleep 10
 	
-		TIMEPOINT=$(date -d "today" +"%Y-%m-%d_%H:%M:%S")
+		TIMEPOINT=$(date -d "today" +"%Y-%m-%d_%H:%M:%S")	
+		
 		PROC=$(pgrep -o -f ${PATTERN})
-		#echo ${PROC}
 		if [ -z "${PROC}" ]; then
 			${RECOVERY} 
-			echo "[${TIMEPOINT}] [${PATTERN}] The system can not find the process ${RECOVERY}" >> $LOGFILE
+			echo "[${TIMEPOINT}] [${NAME}] The system can not find the process ${RECOVERY}" >> $LOGFILE
 			continue
 		fi
-
+		
 		LINK=$(ip link | grep ppp0 | grep UP)
 		if [ -z "${LINK}" ]; then
 			pkill ${PATTERN}
 			${RECOVERY} 
-			echo "[${TIMEPOINT}] [${PATTERN}] The adapter ppp0 isn't exist! ${RECOVERY}" >> $LOGFILE
+			echo "[${TIMEPOINT}] [${NAME}] The adapter ppp0 isn't exist! ${RECOVERY}" >> $LOGFILE
 			continue
-		fi
+		fi		
 		
-		if [ -z "${IPADDR}" ]; then
-			continue
-		else
-		
-			PORT=$(echo -e "\r\n"|telnet ${IPADDR} 80 2> /dev/null | grep Connected)			
-			if [ -z "${LINK}" ]; then
-				echo "[${TIMEPOINT}] [${PATTERN}] The port of ${IPADDR} isn't exist!" >> $LOGFILE
+		if [ -n "${ipaddr}" ]; then
+			#CONNECTED=$(echo -e "\r\n"|telnet ${ipaddr} ${port} 2> /dev/null | grep Connected)
+			#CONNECTED=$(echo -e "\r\n"|nc -v -w ${TIMEOUT} ${ipaddr} ${port} 2>&1 | grep "Connection timed out")			
+			CONNECTED=$(echo -e "\r\n"|nc -v -w ${TIMEOUT} ${ipaddr} ${port} 2>&1 | grep Connected)
+			if [ -z "${CONNECTED}" ]; then
+				pkill ${PATTERN}
+				${RECOVERY}
+				echo "[${TIMEPOINT}] [${NAME}] ${ipaddr} ${port} Connection timed out!" >> $LOGFILE
 				continue
+			#else 
+				#echo "[${TIMEPOINT}] [${NAME}] ${CONNECTED}" >> $LOGFILE
 			fi
-		
-		fi
+		fi	
 
 	done &	
 
@@ -64,7 +68,6 @@ function start(){
 
 }
 function stop(){
-	pkill ${PATTERN}
 	[ -f $PIDFILE ] && kill `cat $PIDFILE` && rm -rf $PIDFILE
 	TIMEPOINT=$(date -d "today" +"%Y-%m-%d_%H:%M:%S")
 	echo "[${TIMEPOINT}] ----- end -----" >> $LOGFILE
