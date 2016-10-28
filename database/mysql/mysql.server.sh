@@ -12,6 +12,11 @@ mysql soft nofile 40960
 mysql hard nofile 40960
 EOF
 
+cat >> /etc/my.cnf <<EOF
+
+!includedir /etc/my.cnf.d
+EOF
+
 cat >> /etc/my.cnf.d/default.cnf <<EOF
 [mysqld]
 skip-name-resolve
@@ -31,6 +36,8 @@ query_cache_type=1
 query_cache_size=512M
 
 validate-password=OFF
+
+sql_mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 
 [client]
 character_set_client=utf8

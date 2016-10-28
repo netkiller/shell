@@ -1,0 +1,1 @@
+grep denied /var/log/maillog | egrep -o "to=<([a-zA-Z0-9_\-\.\+]+)@([a-zA-Z0-9_\-\.\+]+)\.([a-zA-Z]{2,5})>" | sed -e "s/to=<\(.*\)>.*/\1/" | sort | uniq
