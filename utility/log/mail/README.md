@@ -3,7 +3,7 @@ Mail Log
 
 Report
 -----------
-	# curl -s https://raw.githubusercontent.com/oscm/shell/master/monitor/mail/report.sh | bash
+	# curl -s https://raw.githubusercontent.com/oscm/shell/master/utility/log/mail/report.sh | bash
 	
 	Connection timed out 1060
 	Network is unreachable 6168
@@ -12,7 +12,7 @@ Report
 
 Connection timed out
 ---------------
-	# curl -s https://raw.githubusercontent.com/oscm/shell/master/monitor/mail/timeout.sh | bash 
+	# curl -s https://raw.githubusercontent.com/oscm/shell/master/utility/log/mail/timeout.sh | bash 
 	
 	07352771059@cz.2118.com.cn
 	1018563167@qq.cn
@@ -34,12 +34,3 @@ Connection timed out
 	13596075397@193.com
 	1371252125@qq.cn
 	1376657886@qq.cn
-
-
-	for email in $(curl -s https://raw.githubusercontent.com/oscm/shell/master/monitor/mail/timeout.sh | bash) 
-	do
-		echo "UPDATE contact SET status='Unsubscribe' where email_digest=md5('$email');" 
-	done
-	
-	
-	 | awk "{print UPDATE `contact` SET `status`='Unsubscribe' where email_digest=md5('$1}"
