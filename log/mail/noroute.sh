@@ -1,0 +1,1 @@
+egrep -o "to=<(.*)>, .* No route to host" /var/log/maillog | sed -e "s/to=<\(.*\)>.*/\1/"

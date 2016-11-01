@@ -3,7 +3,7 @@ Mail Log
 
 Report
 -----------
-	# curl -s https://raw.githubusercontent.com/oscm/shell/master/utility/log/mail/report.sh | bash
+	# curl -s https://raw.githubusercontent.com/oscm/shell/master/log/mail/report.sh | bash
 	
 	Connection timed out 1060
 	Network is unreachable 6168
@@ -12,7 +12,7 @@ Report
 
 Connection timed out
 ---------------
-	# curl -s https://raw.githubusercontent.com/oscm/shell/master/utility/log/mail/timeout.sh | bash 
+	# curl -s https://raw.githubusercontent.com/oscm/shell/master/log/mail/timeout.sh | bash 
 	
 	07352771059@cz.2118.com.cn
 	1018563167@qq.cn

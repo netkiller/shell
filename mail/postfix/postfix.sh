@@ -20,7 +20,7 @@ sed -i '119s/^/#/' /etc/postfix/main.cf
 sed -i '167s/^/#/' /etc/postfix/main.cf
 sed -i '168s/#//' /etc/postfix/main.cf
 # home_mailbox
-sed -i '422s/#//' /etc/postfix/main.cf
+#sed -i '422s/#//' /etc/postfix/main.cf
 # trust mynetworks
 #sed -i '269imynetworks = xxx.xxx.xxx.xxx' /etc/postfix/main.cf
 
