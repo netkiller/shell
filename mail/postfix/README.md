@@ -20,3 +20,6 @@ Log
 	
 	# Clean queue
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/mail/postfix/queue.deferred.sh | bash
+	
+	# Clean exception queue
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/mail/postfix/queue.exception.sh | bash
