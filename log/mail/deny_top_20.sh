@@ -5,10 +5,10 @@
 ########################################
 PIPE=/var/tmp/pipe
 pidfile=/var/tmp/$0.pid
-BLACKLIST=/var/tmp/black.lst
-WHITELIST=/var/tmp/white.lst
+BLACKLIST=/var/tmp/black.smtpd.lst
+WHITELIST=/var/tmp/white.smtpd.lst
 
-LOGFILE=/var/log/secure
+LOGFILE=/var/log/maillog
 DAY=5
 ########################################
 
@@ -29,7 +29,7 @@ if [ ! -f ${WHITELIST} ]; then
     touch ${WHITELIST}
 fi
 
-for ipaddr in $(grep rhost ${LOGFILE} | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" | sort | uniq -c | sort -r -n | head -n 10| awk '{print $2}')
+for ipaddr in $(grep "too many errors after AUTH from" ${LOGFILE} | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" | sort | uniq -c | sort -r -n | head -n 20| awk '{print $2}')
 do
 
     if [ $(grep -c $ipaddr ${WHITELIST}) -gt 0 ]; then
@@ -38,7 +38,7 @@ do
 
     if [ $(grep -c $ipaddr ${BLACKLIST}) -eq 0 ] ; then
 		echo $ipaddr >> ${BLACKLIST}
-        iptables -I INPUT -p tcp --dport 22 -s $ipaddr -j DROP
+        iptables -I INPUT -p tcp --dport 25 -s $ipaddr -j DROP
         #iptables -I INPUT -s $ipaddr -j DROP
     fi
 done

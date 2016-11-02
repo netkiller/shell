@@ -34,3 +34,11 @@ Connection timed out
 	13596075397@193.com
 	1371252125@qq.cn
 	1376657886@qq.cn
+
+No route to host
+-----
+	# curl -s https://raw.githubusercontent.com/oscm/shell/master/log/mail/noroute.sh | bash 
+	
+Denied
+-----
+	# curl -s https://raw.githubusercontent.com/oscm/shell/master/log/mail/denied.sh | bash 
