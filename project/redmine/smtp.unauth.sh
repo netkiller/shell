@@ -10,5 +10,4 @@ production:
       port: 25
       domain: :none
       autentication: :none
-      user_name: noreply@netkiller.cn
 EOF
