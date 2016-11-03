@@ -1,12 +1,23 @@
 domain=$1
 
-spf=$(dig ${domain} txt | grep "v=spf1")
+function include(){
+	txt=$1
+	for host in $(echo $txt | egrep -o "include:(.+) ")
+	do
+		txt=$(dig $(echo $host | cut -d":" -f2) txt | grep "v=spf1")
+		echo $txt;
+		if [ "$(echo $txt | grep "include")" ]; then
+			include "$txt"
+		fi
+	done
+}
+function main(){
+	spf=$(dig ${domain} txt | grep "v=spf1")
+	echo $spf
 
-echo $spf
+	if [ "$(echo $spf | grep "include")" ]; then
+		include "$spf"
+	fi
+}
 
-#echo $spf | egrep -o "\"(.+)\"" 
-
-for host in $(echo $spf | egrep -o "include:(.+) ")
-do
-	dig $(echo $host | cut -d":" -f2) txt | grep "v=spf1"
-done
+main $domain
