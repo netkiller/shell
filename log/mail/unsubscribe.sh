@@ -1,4 +1,4 @@
-for email in $(curl -s https://raw.githubusercontent.com/oscm/shell/master/log/mail/timeout.sh | bash) 
+for email in $(egrep -o "to=<(.*)>, .* Connection timed out" /var/log/maillog | sed -e "s/to=<\(.*\)>.*/\1/") 
 do
 	echo "UPDATE contact SET status='Unsubscribe' where status='Subscription' and email_digest=md5('$email');" 
 done

@@ -1,5 +1,11 @@
+#!/bin/bash
+########################################
+# Author: Neo <netiller@msn.com>
+# Home : http://netkiler.github.io
+# Project: https://github.com/oscm/shell
+########################################
 domain=$1
-
+########################################
 function include(){
 	txt=$1
 	for host in $(echo $txt | egrep -o "include:(.+) ")
