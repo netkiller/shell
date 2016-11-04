@@ -12,6 +12,10 @@ Change password
     
     $ mysqladmin -u root -p'<old_password>' password <new_password>
 
+Client
+-----
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/mysql.client.sh | bash
+	
 Devel
 -----
     curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/mysql.devel.sh | bash
