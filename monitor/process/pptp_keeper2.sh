@@ -17,6 +17,10 @@ LOGFILE=/var/log/ppp/$(basename $0 .sh).log
 PIDFILE=/var/run/$NAME.pid
 PROG=$(basename $0)
 #==========================================
+for module in nf_nat_pptp nf_conntrack_pptp nf_conntrack_proto_gre
+do
+    modprobe $module
+done
 
 function check(){
 	#printf %s "${CONNECT[@]}"
