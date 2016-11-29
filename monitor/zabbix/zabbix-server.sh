@@ -19,8 +19,10 @@ EOF
 
 systemctl enable httpd
 systemctl enable zabbix-server
+systemctl enable zabbix-agent
 
 systemctl start zabbix-server
+systemctl start zabbix-agent
 systemctl restart httpd
 
 # setup
