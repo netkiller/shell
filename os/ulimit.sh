@@ -1,8 +1,5 @@
 cat > /etc/security/limits.d/20-nofile.conf <<EOF
 
-* soft nofile 4096
-* hard nofile 4096
-
 www soft nofile 65535
 www hard nofile 65535
 

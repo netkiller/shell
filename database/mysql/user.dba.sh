@@ -1,3 +1,4 @@
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_password';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'chen' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO 'dba'@'localhost' IDENTIFIED BY 'chen' WITH GRANT OPTION;
 FLUSH PRIVILEGES;

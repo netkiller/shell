@@ -2,18 +2,17 @@
 yum localinstall -y http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
 yum install mysql-server -y
 systemctl enable mysqld
-systemctl start mysqld
 
 cp /etc/my.cnf{,.original}
 
-cat >> /etc/security/limits.d/80-mysql.conf <<EOF
+cat >> /etc/security/limits.d/20-nofile.conf <<EOF
 
 mysql soft nofile 40960
 mysql hard nofile 40960
 EOF
 
 cat >> /etc/my.cnf <<EOF
-
+validate-password=OFF
 !includedir /etc/my.cnf.d
 EOF
 
@@ -34,15 +33,17 @@ explicit_defaults_for_timestamp=true
 
 query_cache_type=1
 query_cache_size=512M
-
-validate-password=OFF
+table-open-cache=2000
 
 sql_mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 
 [client]
-character_set_client=utf8
+#character_set_client=utf8
+default-character-set=utf8
 
 EOF
+
+systemctl start mysqld
 
 grep "A temporary password" /var/log/mysqld.log
 
