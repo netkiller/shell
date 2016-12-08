@@ -1,11 +1,5 @@
 #!/bin/bash
-#cat > /etc/yum.repos.d/nginx.repo <<EOF
-#[nginx]
-#name=nginx repo
-#baseurl=http://nginx.org/packages/centos/6/x86_64/
-#gpgcheck=0
-#enabled=1
-#EOF
+
 rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 
 #yum search nginx

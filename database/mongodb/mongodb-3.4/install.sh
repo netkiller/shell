@@ -13,7 +13,6 @@ yum install -y mongodb-org-server
 
 cp /etc/mongod.conf{,.original}
 
-
 systemctl is-enabled mongod
 systemctl start mongod
 
