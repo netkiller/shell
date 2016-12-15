@@ -15,6 +15,7 @@ cp apache-tomcat-8.5.8/conf/logging.properties{,.original}
 
 vim apache-tomcat-8.5.8/conf/server.xml <<VIM > /dev/null 2>&1
 :22,22s:port="8005":port="-1":
+:70,70s/connectionTimeout="20000"/connectionTimeout="60000"/
 :71,71s:/>:maxThreads="4096" enableLookups="false" compression="on" compressionMinSize="2048" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,,application/octet-stream" server="Apache"/>:
 :111s/</<!-- </
 :111s/>/> -->/
