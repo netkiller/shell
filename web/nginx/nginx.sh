@@ -12,7 +12,7 @@ vim /etc/nginx/nginx.conf <<VIM > /dev/null 2>&1
 :%s/worker_processes  1;/worker_processes  8;/
 :%s/worker_connections  1024;/worker_connections  4096;/
 :%s/#gzip/server_tokens off;\r    gzip/
-:%s/#gzip/gzip/
+:%s:#gzip:gzip\r    gzip_types text/plain text/css application/json application/x-javascript application/xml;:
 :wq
 VIM
 
