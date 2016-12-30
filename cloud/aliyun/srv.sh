@@ -8,11 +8,11 @@ EOF
 mount /srv
 btrfs subvolume create /srv/@www
 
-mv /www/* /srv/@www
-
 cat << EOF >> /etc/fstab
 UUID=${UUID} /www btrfs noatime,nodiratime,subvol=@www 0 2
 EOF
+
+mv /www/.bash* /srv/@www
 
 mount /www
 
