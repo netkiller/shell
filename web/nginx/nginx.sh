@@ -16,7 +16,7 @@ vim /etc/nginx/nginx.conf <<VIM > /dev/null 2>&1
 VIM
 
 sed -i '4iworker_rlimit_nofile 65530;' /etc/nginx/nginx.conf
-sed -i "32i    gzip_types text/plain text/css application/json application/x-javascript application/xml;" /etc/nginx/nginx.conf
+sed -i "32 i \ \ \ \ gzip_types text/plain text/css application/json application/x-javascript application/xml;" /etc/nginx/nginx.conf
 
 systemctl enable nginx
 systemctl start nginx
