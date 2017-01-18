@@ -10,11 +10,10 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 EOF
 
 yum install -y mongodb-org-server
+yum install -y mongodb-org-shell
 
 cp /etc/mongod.conf{,.original}
 
 systemctl is-enabled mongod
 systemctl start mongod
-
-yum install -y mongodb-org-shell
 
