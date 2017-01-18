@@ -17,7 +17,7 @@ CentOS
 Nginx
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/cloud/aliyun/nginx.sh | bash
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/cloud/aliyun/ssi.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/nginx/ssi.sh | bash
 
 PHP 7.0.0
 -----

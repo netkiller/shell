@@ -7,11 +7,11 @@ MongoDB 3.4
 	
 ## Config
 
-	# bind 0.0.0.0
+### bind 0.0.0.0
 	
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb-3.4/net.bindIp.all.sh | bash
 	
-	# enable auth
+### enable auth
 	
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb-3.4/security.authorization.enabled.sh | bash
 	
