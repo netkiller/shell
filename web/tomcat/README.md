@@ -5,20 +5,22 @@ Install
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/os/user/www.sh | bash
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/apache-tomcat.sh | bash
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/apache-tomcat-default.sh | bash
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/setenv.sh | bash
-	
+
 systemd
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/systemctl.sh | bash
 	
+logrotate
+-----
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/logrotate.d/compress | bash
+	
 Create a test file
 -----
-	wget -O /srv/apache-tomcat/webapps/ROOT/index.jsp https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/webapps/ROOT/index.jsp
+	wget -O /srv/apache-tomcat/*/webapps/ROOT/index.jsp https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/webapps/ROOT/index.jsp
 
 Test
 -----
-	# curl http://203.88.168.157:8080/
+	# curl http://localhost:8080/
 
 	<HTML>
 	<HEAD>

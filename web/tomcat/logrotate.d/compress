@@ -1,6 +1,6 @@
 cat >> /etc/logrotate.d/tomcat.compress <<'EOF'
-/srv/apache-tomcat-*/logs/*.log
-/srv/apache-tomcat-*/logs/*.txt
+/srv/apache-tomcat/*/logs/*.log
+/srv/apache-tomcat/*/logs/*.txt
 {
 	rotate 30
 	daily
