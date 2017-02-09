@@ -1,1 +1,1 @@
-curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/apache-tomcat-8.5.11.sh | bash
+curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/8.5/apache-tomcat-8.5.11.sh | bash
