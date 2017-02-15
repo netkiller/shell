@@ -23,6 +23,11 @@ wget http://nginx.org/download/nginx-1.11.10.tar.gz
 tar zxvf nginx-1.11.10.tar.gz
 cd nginx-1.11.10
 ./configure --prefix=/srv/nginx-1.11.10 \
+--http-client-body-temp-path=/srv/nginx-1.11.10/var/cache/nginx/client_temp \
+--http-proxy-temp-path=/srv/nginx-1.11.10/var/cache/nginx/proxy_temp \
+--http-fastcgi-temp-path=/srv/nginx-1.11.10/var/cache/nginx/fastcgi_temp \
+--http-uwsgi-temp-path=/srv/nginx-1.11.10/var/cache/nginx/uwsgi_temp \
+--http-scgi-temp-path=/srv/nginx-1.11.10/var/cache/nginx/scgi_temp \
 --user=nginx \
 --group=nginx \
 --with-openssl=../openssl-1.1.0d \
