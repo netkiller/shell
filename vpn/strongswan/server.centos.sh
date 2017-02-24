@@ -13,30 +13,30 @@ systemctl enable haveged
 systemctl start haveged
 
 cd /etc/strongswan
-strongswan pki --gen --type rsa --size 4096 --outform der > ipsec.d/private/strongswanKey.der
-chmod 600 ipsec.d/private/strongswanKey.der
-strongswan pki --self --ca --lifetime 3650 --in ipsec.d/private/strongswanKey.der --type rsa --dn "C=NL, O=Example Company, CN=strongSwan Root CA" --outform der > ipsec.d/cacerts/strongswanCert.der
-strongswan  pki --print --in ipsec.d/cacerts/strongswanCert.der
+strongswan pki --gen --type rsa --size 4096 --outform der > ipsec.d/private/CARootKey.der
+chmod 600 ipsec.d/private/CARootKey.der
+strongswan pki --self --ca --lifetime 3650 --in ipsec.d/private/CARootKey.der --type rsa --dn "C=NL, O=Example Company, CN=StrongSwan Root CA" --outform der > ipsec.d/cacerts/CARootCert.der
+strongswan  pki --print --in ipsec.d/cacerts/CARootCert.der
 
-strongswan pki --gen --type rsa --size 2048 --outform der > ipsec.d/private/vpnHostKey.der
-chmod 600 ipsec.d/private/vpnHostKey.der
-strongswan pki --pub --in ipsec.d/private/vpnHostKey.der --type rsa | strongswan pki --issue --lifetime 730 --cacert ipsec.d/cacerts/strongswanCert.der --cakey ipsec.d/private/strongswanKey.der --dn "C=NL, O=Example Company, CN=vpn.example.org" --san vpn.example.com --san vpn.example.net --san 47.90.44.87  --san @47.90.44.87 --flag serverAuth --flag ikeIntermediate --outform der > ipsec.d/certs/vpnHostCert.der
-strongswan pki --print --in ipsec.d/certs/vpnHostCert.der
+strongswan pki --gen --type rsa --size 2048 --outform der > ipsec.d/private/ServerKey.der
+chmod 600 ipsec.d/private/ServerKey.der
+strongswan pki --pub --in ipsec.d/private/ServerKey.der --type rsa | strongswan pki --issue --lifetime 730 --cacert ipsec.d/cacerts/CARootCert.der --cakey ipsec.d/private/CARootKey.der --dn "C=NL, O=Example Company, CN=vpn.example.org" --san vpn.example.com --san vpn.example.net --san 47.90.44.87  --san @47.90.44.87 --flag serverAuth --flag ikeIntermediate --outform der > ipsec.d/certs/ServerCert.der
+strongswan pki --print --in ipsec.d/certs/ServerCert.der
 
-# openssl x509 -inform DER -in ipsec.d/certs/vpnHostCert.der -noout -text
+# openssl x509 -inform DER -in ipsec.d/certs/ServerCert.der -noout -text
 
 # Client certificate
 cd /etc/strongswan/
-strongswan pki --gen --type rsa --size 2048 --outform der > ipsec.d/private/JohnKey.der
-chmod 600 ipsec.d/private/JohnKey.der
+strongswan pki --gen --type rsa --size 2048 --outform der > ipsec.d/private/ClientKey.der
+chmod 600 ipsec.d/private/ClientKey.der
 
-strongswan pki --pub --in ipsec.d/private/JohnKey.der --type rsa | strongswan pki --issue --lifetime 730 --cacert ipsec.d/cacerts/strongswanCert.der --cakey ipsec.d/private/strongswanKey.der --dn "C=NL, O=Example Company, CN=john@example.org" --san "john@example.org" --san "john@example.net" --outform der > ipsec.d/certs/JohnCert.der
+strongswan pki --pub --in ipsec.d/private/ClientKey.der --type rsa | strongswan pki --issue --lifetime 730 --cacert ipsec.d/cacerts/CARootCert.der --cakey ipsec.d/private/CARootKey.der --dn "C=NL, O=Example Company, CN=john@example.org" --san "john@example.org" --san "john@example.net" --outform der > ipsec.d/certs/ClientCert.der
 
-openssl rsa -inform DER -in ipsec.d/private/JohnKey.der -out ipsec.d/private/JohnKey.pem -outform PEM
-openssl x509 -inform DER -in ipsec.d/certs/JohnCert.der -out ipsec.d/certs/JohnCert.pem -outform PEM
-openssl x509 -inform DER -in ipsec.d/cacerts/strongswanCert.der -out ipsec.d/cacerts/strongswanCert.pem -outform PEM
+openssl rsa -inform DER -in ipsec.d/private/ClientKey.der -out ipsec.d/private/ClientKey.pem -outform PEM
+openssl x509 -inform DER -in ipsec.d/certs/ClientCert.der -out ipsec.d/certs/ClientCert.pem -outform PEM
+openssl x509 -inform DER -in ipsec.d/cacerts/CARootCert.der -out ipsec.d/cacerts/CARootCert.pem -outform PEM
 
-openssl pkcs12 -export  -inkey ipsec.d/private/JohnKey.pem -in ipsec.d/certs/JohnCert.pem -name "John's VPN Certificate"  -certfile ipsec.d/cacerts/strongswanCert.pem -caname "strongSwan Root CA" -out John.p12
+openssl pkcs12 -export  -inkey ipsec.d/private/ClientKey.pem -in ipsec.d/certs/ClientCert.pem -name "Client's VPN Certificate"  -certfile ipsec.d/cacerts/CARootCert.pem -caname "strongSwan Root CA" -out Client.p12
 
 # IPSEC Configuration
 
@@ -55,10 +55,10 @@ conn %default
     rekey=no
     left=%any
     leftsubnet=0.0.0.0/0
-    leftcert=vpnHostCert.der
+    leftcert=ServerCert.der
     right=%any
     rightdns=8.8.8.8,8.8.4.4
-    rightsourceip=10.42.42.0/24
+    rightsourceip=10.10.10.0/24
 
 conn IPSec-IKEv2
     keyexchange=ikev2
@@ -81,11 +81,10 @@ EOF
 
 # VPN user accounts and secrets
 cat > /etc/strongswan/ipsec.secrets <<EOF
-: RSA vpnHostKey.der
+: RSA ServerKey.der
 
-alice : EAP "YzCgnveYuL429fH" 
-bob : EAP "E23pOjvW8z248iAp" 
-hipster: XAUTH "xauth_ikev1_example_password"
+neo : EAP "passw0rd" 
+jam : EAP "passw0rd" 
 EOF
 
 cat > /etc/sysctl.d/vpn.conf <<EOF
