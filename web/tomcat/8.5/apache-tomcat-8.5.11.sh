@@ -4,13 +4,10 @@ cd /usr/local/src/
 wget http://apache.communilink.net/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz
 tar zxf apache-tomcat-8.5.11.tar.gz
 
-#rm -rf apache-tomcat-8.5.11/webapps/*
-rm -rf apache-tomcat-8.5.11/webapps/{docs,examples,manager,ROOT/*}
-rm -rf apache-tomcat-8.5.11/logs/*
-
 cp apache-tomcat-8.5.11/conf/server.xml{,.original}
 cp apache-tomcat-8.5.11/conf/context.xml{,.original}
 cp apache-tomcat-8.5.11/conf/web.xml{,.original}
+cp apache-tomcat-8.5.11/conf/tomcat-users.xml{,.original}
 cp apache-tomcat-8.5.11/conf/logging.properties{,.original}
 
 vim apache-tomcat-8.5.11/conf/server.xml <<VIM > /dev/null 2>&1
@@ -22,6 +19,12 @@ vim apache-tomcat-8.5.11/conf/server.xml <<VIM > /dev/null 2>&1
 :149,149s/true/false/g
 :wq
 VIM
+
+#rm -rf apache-tomcat-8.5.11/webapps/*
+rm -rf apache-tomcat-8.5.11/webapps/{docs,examples,manager,ROOT/*}
+rm -rf apache-tomcat-8.5.11/logs/*
+
+echo > apache-tomcat-8.5.11/conf/tomcat-users.xml
 
 sed -i "16s/3manager.org.apache.juli.AsyncFileHandler, 4host-manager.org.apache.juli.AsyncFileHandler,//" apache-tomcat-8.5.11/conf/logging.properties
 
@@ -42,7 +45,7 @@ PATH=$PATH:$JAVA_HOME/bin:
 EOF
 
 mkdir -p /srv/apache-tomcat
-mv apache-tomcat-8.5.11 /srv/apache-tomcat
+mv apache-tomcat-8.5.11 /srv/apache-tomcat/
 chmod 755 -R /srv/apache-tomcat/apache-tomcat-8.5.11
 chown root:root -R /srv/apache-tomcat/apache-tomcat-8.5.11
 chown www:www -R /srv/apache-tomcat/apache-tomcat-8.5.11/{logs,temp,work}
