@@ -1,0 +1,16 @@
+[Unit]
+Description=nginx - high performance web server
+Documentation=http://netkiller.github.cn
+After=network-online.target remote-fs.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+ExecStartPre=/srv/nginx/sbin/nginx -t -c /srv/nginx/conf/nginx.conf
+ExecStart=/srv/nginx/sbin/nginx -c /srv/nginx/conf/nginx.conf
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+
+[Install]
+WantedBy=multi-user.target

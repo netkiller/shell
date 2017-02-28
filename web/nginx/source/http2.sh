@@ -7,15 +7,15 @@ yum install -y pcre-devel zlib-devel
 groupadd -r nginx
 useradd -s /sbin/nologin -g nginx -r nginx
 
-wget https://www.openssl.org/source/openssl-1.1.0d.tar.gz
-tar zxvf openssl-1.1.0d.tar.gz
-cd openssl-1.1.0d/
-./config --prefix=/srv/openssl-1.1.0d
+wget https://www.openssl.org/source/openssl-1.1.0e.tar.gz
+tar zxvf openssl-1.1.0e.tar.gz
+cd openssl-1.1.0e/
+./config --prefix=/srv/openssl-1.1.0e
 make depend
 make -j8
 make install
 
-ln -s /srv/openssl-1.1.0d/ /srv/openssl
+ln -s /srv/openssl-1.1.0e/ /srv/openssl
 
 cd /usr/local/src/
 
@@ -30,7 +30,7 @@ cd nginx-1.11.10
 --http-scgi-temp-path=/srv/nginx-1.11.10/var/cache/nginx/scgi_temp \
 --user=nginx \
 --group=nginx \
---with-openssl=../openssl-1.1.0d \
+--with-openssl=../openssl-1.1.0e \
 --with-file-aio \
 --with-threads \
 --with-http_addition_module \
@@ -100,7 +100,7 @@ ln -s /srv/nginx-1.11.10 /srv/nginx
 cp /srv/nginx-1.11.10/conf/nginx.conf{,.original}
 
 vim /srv/nginx-1.11.10/conf/nginx.conf <<VIM > /dev/null 2>&1
-:%s/worker_processes  1;/worker_processes  8;/
+:%s/worker_processes  1;/worker_processes  auto;/
 :%s/worker_connections  1024;/worker_connections  4096;/
 :%s/#gzip/server_tokens off;\r    gzip/
 :%s/#gzip/gzip/
