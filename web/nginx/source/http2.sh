@@ -96,6 +96,7 @@ make -j4  && make install
 
 ln -s /srv/nginx-1.11.10 /srv/nginx
 
+strip /srv/nginx-1.11.10/sbin/nginx
 
 cp /srv/nginx-1.11.10/conf/nginx.conf{,.original}
 
@@ -106,3 +107,10 @@ vim /srv/nginx-1.11.10/conf/nginx.conf <<VIM > /dev/null 2>&1
 :%s/#gzip/gzip/
 :wq
 VIM
+
+mkdir -p /srv/nginx-1.11.10/var/cache/nginx/client_temp
+chown nginx:nginx -R /srv/nginx-1.11.10/var/cache/
+
+wget -q https://raw.githubusercontent.com/oscm/shell/master/web/nginx/source/nginx.service -O /usr/lib/systemd/system/nginx.service
+systemctl enable nginx
+systemctl start nginx
