@@ -60,10 +60,11 @@ Node Install
 
 Donations
 ---------
-We accept tips through [Gittip][tip].
+We accept PayPal through:
 
-[![Gittip](http://img.shields.io/gittip/Homebrew.svg)](https://www.gittip.com/netkiller/)
+https://www.paypal.me/netkiller
 
+Wechat (微信) / Alipay (支付宝) 打赏:
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/oscm/shell/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+http://www.netkiller.cn/home/donations.html
 
