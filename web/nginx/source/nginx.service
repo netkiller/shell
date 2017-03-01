@@ -1,6 +1,6 @@
 [Unit]
 Description=nginx - high performance web server
-Documentation=http://netkiller.github.cn
+Documentation=http://netkiller.github.io
 After=network-online.target remote-fs.target nss-lookup.target
 Wants=network-online.target
 
