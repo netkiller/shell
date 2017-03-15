@@ -13,7 +13,6 @@ CentOS
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/os/personalise.sh | bash
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/os/user/www.sh | bash
 
-
 Nginx
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/cloud/aliyun/nginx.sh | bash
