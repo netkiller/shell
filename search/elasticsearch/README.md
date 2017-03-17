@@ -20,5 +20,12 @@ Auto create index
 
 elasticsearch-analysis-ik
 ----
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/elasticsearch-analysis-ik.sh | bash
+
+## For elasticsearch-2.4.4-1
+	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/elasticsearch-analysis-ik-1.10.4.sh | bash
+
+## Old version
+	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/elasticsearch-analysis-ik-1.9.4.sh | bash
 
