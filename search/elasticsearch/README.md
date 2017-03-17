@@ -7,7 +7,7 @@ Java
 
 Install
 -----
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/install.yum.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/elasticsearch-5.2.sh | bash
 
 Bind 0.0.0.0
 -----
@@ -20,6 +20,10 @@ Auto create index
 
 elasticsearch-analysis-ik
 ----
+
+## For elasticsearch-5.2.2
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/elasticsearch-analysis-ik-5.2.2.sh | bash
 
 ## For elasticsearch-2.4.4-1
 	
