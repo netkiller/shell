@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cat >> ~/.bashrc <<EOF
-
+export PHP_INI_SCAN_DIR=/srv/php/etc/cli.d
 alias php='php -d error_log=/var/tmp/php_errors.log -c /srv/php/etc/php-cli.ini'
 PATH=$PATH:/srv/php/bin:
 EOF

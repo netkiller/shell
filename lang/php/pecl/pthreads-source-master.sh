@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /usr/local/src/
-
+rm -rf pthreads
 git clone --depth=1 https://github.com/krakjoe/pthreads.git
 cd pthreads/
 /srv/php/bin/phpize 
@@ -11,6 +11,6 @@ cd pthreads/
 make -j8
 make install
 
-cat > /srv/php/etc/conf.d/pthreads.ini <<EOF
+cat > /srv/php/etc/cli.d/pthreads.ini <<EOF
 extension=pthreads.so
 EOF
