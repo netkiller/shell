@@ -84,8 +84,8 @@ strip /srv/php-7.0.17/bin/php
 strip /srv/php-7.0.17/bin/phpdbg
 strip /srv/php-7.0.17/sbin/php-fpm 
 
-mkdir -p /srv/php-7.0.17/etc/conf.d
-#mkdir -p /srv/php-7.0.17/etc/fpm.d
+mkdir -p /srv/php-7.0.17/etc/{fpm,cli}.d
+ln -s /srv/php-7.0.17/etc/fpm.d /srv/php-7.0.17/etc/conf.d
 cp /srv/php-7.0.17/etc/pear.conf{,.original}
 cp php.ini-* /srv/php-7.0.17/etc/
 cp /srv/php-7.0.17/etc/php.ini-production /srv/php-7.0.17/etc/php.ini
