@@ -1,9 +1,12 @@
 #!/bin/bash
 
 cd /usr/local/src/
-wget http://php.net/distributions/php-7.1.3.tar.bz2
 
-if [ -s php-7.1.3.tar.gz ]; then
+if [ ! -f php-7.1.3.tar.bz2 ];then
+	wget http://php.net/distributions/php-7.1.3.tar.bz2
+fi
+
+if [ -s php-7.1.3.tar.bz2 ]; then
 
 tar jxf php-7.1.3.tar.bz2
 cd php-7.1.3

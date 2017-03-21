@@ -3,7 +3,7 @@
 cd /usr/local/src/
 wget http://php.net/distributions/php-7.0.16.tar.bz2
 
-if [ -s php-7.0.16.tar.gz ]; then
+if [ -s php-7.0.16.tar.bz2 ]; then
 
 tar jxf php-7.0.16.tar.bz2
 cd php-7.0.16
