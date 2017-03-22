@@ -1,4 +1,4 @@
-rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 cat >> /etc/yum.repos.d/elasticsearch.repo <<EOF
 [elasticsearch-5.x]

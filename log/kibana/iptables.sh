@@ -1,0 +1,1 @@
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 5601 -j ACCEPT
