@@ -16,9 +16,7 @@ yum install -y logstash
 cp /etc/logstash/logstash.yml{,.original}
 
 systemctl daemon-reload
-systemctl enable kibana.service
-systemctl start kibana.service
-
-# http://localhost:5601
+systemctl enable logstash.service
+systemctl start logstash.service
 
 
