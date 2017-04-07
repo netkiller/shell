@@ -128,9 +128,9 @@ vim /srv/php-7.0.17/etc/php.ini <<EOF > /dev/null 2>&1
 :359,359s/expose_php = On/expose_php = Off/
 :389,389s/memory_limit = 128M/memory_limit = 16M/
 :760,760s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
-:912,912s:;date.timezone =:date.timezone = Asia/Hong_Kong:
-:1306,1306s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
-:1332,1332s/session.name = PHPSESSID/session.name = JSESSIONID/
+:924,924s:;date.timezone =:date.timezone = Asia/Hong_Kong:
+:1340,1340s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
+:1366,1366s/session.name = PHPSESSID/session.name = JSESSIONID/
 :wq
 EOF
 
