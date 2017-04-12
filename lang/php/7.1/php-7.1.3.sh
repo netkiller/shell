@@ -95,6 +95,7 @@ cp /srv/php-7.1.3/etc/php-fpm.d/www.conf.default /srv/php-7.1.3/etc/php-fpm.d/ww
 
 yes|cp ./sapi/fpm/php-fpm.service /usr/lib/systemd/system/php-fpm.service 
 
+systemctl daemon-reload
 systemctl enable php-fpm
 
 vim /srv/php-7.1.3/etc/php-fpm.conf <<end > /dev/null 2>&1
