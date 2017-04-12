@@ -126,8 +126,9 @@ vim /srv/php-7.1.3/etc/php.ini <<EOF > /dev/null 2>&1
 :374,374s/expose_php = On/expose_php = Off/
 :404,404s/memory_limit = 128M/memory_limit = 16M/
 :775,775s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
-:939,939s:;date.timezone =:date.timezone = Asia/Hong_Kong:
-:1355,1355s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
+:939,939s#;date.timezone =#date.timezone = Asia/Hong_Kong#
+:1020,1020s#pdo_mysql.default_socket=#pdo_mysql.default_socket=/var/lib/mysql/mysql.sock#
+:1355,1355s#;session.save_path = "/tmp"#session.save_path = "/dev/shm"#
 :1381,1381s/session.name = PHPSESSID/session.name = JSESSIONID/
 :wq
 EOF
