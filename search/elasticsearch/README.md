@@ -7,7 +7,7 @@ Java
 
 Install
 -----
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/elasticsearch-5.2.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/elasticsearch-5.x.sh | bash
 
 Bind 0.0.0.0
 -----
