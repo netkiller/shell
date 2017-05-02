@@ -4,8 +4,8 @@
 yum install -y https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
 yum install -y postgresql96-server postgresql96-contrib
 
-systemctl initdb postgresql-9.6
-chkconfig postgresql-9.6 on
+systemctl enable postgresql-9.6
+systemctl start postgresql-9.6
 
 cp /var/lib/pgsql/9.6/data/postgresql.conf{,.original}
 cp /var/lib/pgsql/9.6/data/pg_hba.conf{,.original}
