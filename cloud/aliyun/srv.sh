@@ -12,8 +12,6 @@ cat << EOF >> /etc/fstab
 UUID=${UUID} /www btrfs noatime,nodiratime,subvol=@www 0 2
 EOF
 
-mv /www/.bash* /srv/@www
-
+cp /etc/skel/.bash* /srv/@www
+mkdir /www
 mount /www
-
-chown www:www -R /www

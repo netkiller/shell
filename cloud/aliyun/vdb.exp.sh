@@ -5,7 +5,7 @@
 #############################################
 
 if [ ! -f /usr/bin/expect ]; then
-	yum install -y expect
+yum install -y expect
 fi
 
 /usr/bin/expect <<EOF
@@ -39,4 +39,4 @@ exit
 
 EOF
 
-mkfs.btrfs -L www -f /dev/vdb1
+mkfs.btrfs -L /srv -f /dev/vdb1
