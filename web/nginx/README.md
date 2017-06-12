@@ -3,7 +3,7 @@ Install Nginx
 
   # curl -s https://raw.githubusercontent.com/oscm/shell/master/ntpd/ntp.sh | bash
   
-  # curl -s https://raw.githubusercontent.com/oscm/shell/master/nginx/nginx.sh | bash
+  # curl -s https://raw.githubusercontent.com/oscm/shell/master/nginx/stable/nginx.sh | bash
   
 Log Clean
 -----

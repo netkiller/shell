@@ -1,0 +1,1 @@
+curl -o /dev/null -s -w "Connect: %{time_connect} \nTransfer: %{time_starttransfer}\nTotal: %{time_total}\nNamelookup: %{time_namelookup}\nDownload: %{speed_download}\n" $1

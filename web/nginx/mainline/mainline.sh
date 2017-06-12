@@ -1,7 +1,7 @@
 #!/bin/bash 
 ARCH=$(uname -i)
-SYSTEM=$(cat /etc/issue | awk -F' ' '{if(NR==1) print $1}')
-VERSION=$(cat /etc/issue | awk -F'[ |.]' '{if(NR==1) print $3}')
+SYSTEM=$(cat /etc/centos-release | awk -F' ' '{if(NR==1) print $1}')
+VERSION=$(cat /etc/centos-release | awk -F'[ |.]' '{if(NR==1) print $3}')
 
 cat > /etc/yum.repos.d/nginx.repo <<'EOF'
 [nginx]
