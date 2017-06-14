@@ -27,7 +27,7 @@ VIM
 #:139s/>/> -->/
 
 rm -rf apache-tomcat-8.5.15/webapps/*
-#rm -rf apache-tomcat-8.5.15/webapps/{docs,examples,manager,ROOT/*}
+#rm -rf apache-tomcat-8.5.15/webapps/{docs,examples,manager,host-manager,ROOT/*}
 rm -rf apache-tomcat-8.5.15/logs/*
 
 cat <<EOF> apache-tomcat-8.5.15/conf/tomcat-users.xml
