@@ -71,7 +71,6 @@ vim /srv/nginx-1.13.1/conf/nginx.conf <<VIM > /dev/null 2>&1
 :wq
 VIM
 
-
 sed -i '/gzip  on;/a \
     include /etc/nginx/conf.d/*.conf;' /srv/nginx-1.13.1/conf/nginx.conf
 

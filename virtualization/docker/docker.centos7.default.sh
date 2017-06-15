@@ -7,6 +7,7 @@ fi
 
 #yum update -y
 yum install -y docker
+systemctl enable docker
 systemctl start docker
 docker pull centos
 docker images centos
