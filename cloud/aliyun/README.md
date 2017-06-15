@@ -25,3 +25,7 @@ PHP 7.0.0
 Redis
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/redis/redis.sh | bash
+	
+Tomcat 
+-----
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/8.5/apache-tomcat-8.5.15.sh | bash
