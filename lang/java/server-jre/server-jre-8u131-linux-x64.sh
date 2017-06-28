@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /usr/local/src/
-#wget http://download.oracle.com/otn-pub/java/jdk/8u40-b26/server-jre-8u131-linux-x64.tar.gz?AuthParam=1427703756_960786b5c2b7cb90e20758efaec150da
+curl -LO -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/server-jre-8u131-linux-x64.tar.gz
 tar zxf server-jre-8u131-linux-x64.tar.gz*
 mv jdk1.8.0_131 /srv/
 ln -s /srv/jdk1.8.0_131 /srv/java
