@@ -1,14 +1,14 @@
 #hostnamectl set-hostname master
 
 mkdir -p /opt/hadoop/volume/{namenode,datanode}
-chown -R hadoop:hadoop /srv/hadoop* /opt/hadoop
+chown -R hadoop:hadoop /srv/apache-hadoop* /opt/hadoop
 
-cp /srv/hadoop/etc/hadoop/hadoop-env.sh{,.original}
+cp /srv/apache-hadoop/etc/hadoop/hadoop-env.sh{,.original}
 sed -i "25s:\${JAVA_HOME}:/usr/java/default:" hadoop-env.sh
 
-cp /srv/hadoop/etc/hadoop/core-site.xml{,.original}
+cp /srv/apache-hadoop/etc/hadoop/core-site.xml{,.original}
 
-cat > /srv/hadoop/etc/hadoop/core-site.xml <<EOF
+cat > /srv/apache-hadoop/etc/hadoop/core-site.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -19,9 +19,9 @@ cat > /srv/hadoop/etc/hadoop/core-site.xml <<EOF
 </configuration>
 EOF
 
-cp /srv/hadoop/etc/hadoop/hdfs-site.xml{,.original}
+cp /srv/apache-hadoop/etc/hadoop/hdfs-site.xml{,.original}
 
-cat > /srv/hadoop/etc/hadoop/hdfs-site.xml <<EOF
+cat > /srv/apache-hadoop/etc/hadoop/hdfs-site.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -36,9 +36,9 @@ cat > /srv/hadoop/etc/hadoop/hdfs-site.xml <<EOF
 </configuration>
 EOF
 
-cp /srv/hadoop/etc/hadoop/mapred-site.xml{,.original}
+cp /srv/apache-hadoop/etc/hadoop/mapred-site.xml{,.original}
 
-cat > /srv/hadoop/etc/hadoop/mapred-site.xml <<"EOF"
+cat > /srv/apache-hadoop/etc/hadoop/mapred-site.xml <<"EOF"
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -50,9 +50,9 @@ cat > /srv/hadoop/etc/hadoop/mapred-site.xml <<"EOF"
 EOF
 
  
-cp /srv/hadoop/etc/hadoop/yarn-site.xml{,.original}
+cp /srv/apache-hadoop/etc/hadoop/yarn-site.xml{,.original}
 
-cat > /srv/hadoop/etc/hadoop/yarn-site.xml <<"EOF"
+cat > /srv/apache-hadoop/etc/hadoop/yarn-site.xml <<"EOF"
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
