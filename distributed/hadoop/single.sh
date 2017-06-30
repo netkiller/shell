@@ -8,14 +8,24 @@ sed -i "25s:\${JAVA_HOME}:/usr/java/default:" hadoop-env.sh
 
 cp /srv/apache-hadoop/etc/hadoop/core-site.xml{,.original}
 
-cat > /srv/apache-hadoop/etc/hadoop/core-site.xml <<EOF
+cat > /srv/apache-hadoop/etc/hadoop/core-site.xml <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
 	<property>
 		<name>fs.defaultFS</name>
 		<value>hdfs://localhost:9000/</value>
-	</property>	
+	</property>
+    <property>
+        <name>hadoop.proxyuser.hadoop.groups</name>
+        <value>*</value>
+        <description>Allow the superuser oozie to impersonate any members of the group group1 and group2</description>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.hadoop.hosts</name>
+        <value>*</value>
+        <description>The superuser can connect only from host1 and host2 to impersonate a user</description>
+    </property>
 </configuration>
 EOF
 
