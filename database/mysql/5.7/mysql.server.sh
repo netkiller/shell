@@ -38,6 +38,9 @@ query_cache_type=1
 query_cache_size=512M
 table-open-cache=2000
 
+validate_password_policy=0
+validate_password_length=6
+
 sql_mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 
 [client]
