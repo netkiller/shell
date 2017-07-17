@@ -13,6 +13,8 @@ export CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib:.
 export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin:
 EOF
 
+source /etc/profile.d/java.sh
+
 cat >> /etc/man.config <<EOF
 MANPATH  /srv/java/man
 EOF

@@ -1,0 +1,18 @@
+if [ ! -f /usr/bin/vim ] ; then
+	alias vim='vi'
+fi
+
+if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
+	echo 'Only for Redhat or CentOS'
+	exit
+fi
+
+
+
+echo -ne "
+
+" >>/etc/security/limits.conf
+
+cat >> /etc/sysctl.conf <<EOF
+
+EOF
