@@ -4,6 +4,10 @@
 
     curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/gcc/gcc.sh | bash
 
+## Setup 
+
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/redis-4.0.0.sh | bash
+
 ## Systemd
 
     wget -q https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/systemd/redis.service -O /usr/lib/systemd/system/redis.service
