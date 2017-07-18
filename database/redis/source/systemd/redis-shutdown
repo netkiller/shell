@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Wrapper to close properly redis and sentinel
+test x"$REDIS_DEBUG" != x && set -x
+
+REDIS_CLI=/usr/local/bin/redis-cli
+
+# Retrieve service name
+SERVICE_NAME="$1"
+if [ -z "$SERVICE_NAME" ]; then
+   SERVICE_NAME=redis
+fi
+
+# Get the proper config file based on service name
+CONFIG_FILE="/usr/local/etc/$SERVICE_NAME.conf"
+
+# Use awk to retrieve host, port from config file
+HOST=`awk '/^[[:blank:]]*bind/ { print $2 }' $CONFIG_FILE`
+PORT=`awk '/^[[:blank:]]*port/ { print $2 }' $CONFIG_FILE`
+PASS=`awk '/^[[:blank:]]*requirepass/ { print $2 }' $CONFIG_FILE`
+
+# Just in case, use default host, port
+HOST=${HOST:-127.0.0.1}
+if [ "$SERVICE_NAME" = redis ]; then
+    PORT=${PORT:-6379}
+else
+    PORT=${PORT:-26739}
+fi
+
+# Setup additional parameters
+# e.g password-protected redis instances
+[ -z "$PASS"  ] || ADDITIONAL_PARAMS="-a $PASS"
+
+# shutdown the service properly
+$REDIS_CLI -h $HOST -p $PORT $ADDITIONAL_PARAMS shutdown
