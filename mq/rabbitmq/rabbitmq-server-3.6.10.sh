@@ -4,3 +4,4 @@ yum install -y http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/rabbitmq
 
 systemctl enable rabbitmq-server
 systemctl start rabbitmq-server
+systemctl status rabbitmq-server

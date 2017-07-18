@@ -1,3 +1,5 @@
+curl -s https://raw.githubusercontent.com/oscm/shell/master/distributed/hadoop/hadoop-2.8.0.sh | bash
+
 #hostnamectl set-hostname master
 
 mkdir -p /opt/hadoop/volume/{namenode,datanode}
@@ -72,3 +74,5 @@ cat > /srv/apache-hadoop/etc/hadoop/yarn-site.xml <<"EOF"
 	</property>
 </configuration>
 EOF
+
+
