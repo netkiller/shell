@@ -1,8 +1,7 @@
 #!/bin/sh
 yum localinstall -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 yum install mysql-community-server -y
-systemctl enable mysqld
-systemctl start mysqld
+
 grep "A temporary password" /var/log/mysqld.log
 
 cp /etc/my.cnf{,.original}
@@ -22,7 +21,7 @@ cat >> /etc/my.cnf.d/default.cnf <<EOF
 explicit_defaults_for_timestamp = 1
 
 skip-name-resolve
-max_connections=4096
+max_connections=2048
 default-storage-engine=INNODB
 
 #wait_timeout=300
@@ -53,3 +52,7 @@ EOF
 
 # /usr/bin/mysqladmin -u root password 'new-password'
 # /usr/bin/mysql_secure_installation
+
+
+systemctl enable mysqld
+systemctl start mysqld

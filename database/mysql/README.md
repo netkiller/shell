@@ -12,6 +12,9 @@ Change password
     
     $ mysqladmin -u root -p'<old_password>' password <new_password>
 
+    ALTER USER root@localhost identified by 'MQiEge1ikst7S_6tlXzBOmt_4b';
+    ALTER USER root@localhost PASSWORD EXPIRE NEVER;
+
 Client
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/5.7/mysql.client.sh | bash
