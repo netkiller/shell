@@ -1,6 +1,12 @@
 #!/bin/bash
-
+##################################################
+# Redis 4.0.0 setup script
+# Author: netkiller<netkiller@msn.com>
+# Website: http://www.netkiller.cn
+##################################################
 cd /usr/local/src
+
+adduser redis
 
 wget http://download.redis.io/releases/redis-4.0.0.tar.gz
 tar xzf redis-4.0.0.tar.gz
@@ -22,9 +28,10 @@ EOF
 
 sysctl vm.overcommit_memory=1
 
-
-wget -q https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/systemd/tomcat.service -O /usr/lib/systemd/system/redis.service
+wget -q https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/systemd/redis.service -O /usr/lib/systemd/system/redis.service
 wget -q https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/systemd/redis-shutdown -O /usr/local/bin/redis-shutdown
+chmod 700 /usr/local/bin/redis-shutdown
+chown redis:redis /usr/local/bin/redis-shutdown
 
 systemctl enable redis
 systemctl start redis
