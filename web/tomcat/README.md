@@ -35,3 +35,4 @@ Test
 Tomcat 8.5.15
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/8.5/apache-tomcat-8.5.15.sh | bash
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/web/tomcat/8.5/apache-tomcat-8.5.16.sh | bash

@@ -20,6 +20,10 @@ sed -i 's/timeout 0/timeout 30/' /usr/local/etc/redis.conf
 sed -i 's/tcp-keepalive 0/tcp-keepalive 120/' /usr/local/etc/redis.conf
 sed -i 's/# maxclients 10000/maxclients 10000/' /usr/local/etc/redis.conf
 sed -i 's/# maxmemory-policy noeviction/maxmemory-policy volatile-lru/g' /usr/local/etc/redis.conf
+sed -i 's#^dir ./#dir /var/lib/redis#' /usr/local/etc/redis.conf
+
+mkdir /var/lib/redis
+chown redis:redis /var/lib/redis
 
 cat >> /etc/sysctl.conf <<EOF
 # Set up for Redis
@@ -35,4 +39,5 @@ chown redis:redis /usr/local/bin/redis-shutdown
 
 systemctl enable redis
 systemctl start redis
+systemctl status redis
 

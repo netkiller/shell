@@ -7,18 +7,18 @@ tar zxf server-jre-8u131-linux-x64.tar.gz*
 mv jdk1.8.0_131 /srv/
 ln -s /srv/jdk1.8.0_131 /srv/java
 
-cat >> /etc/profile.d/java.sh <<'EOF'
-export JAVA_HOME=/srv/java
-export JAVA_OPTS="-server -Xms2048m -Xmx4096m"
-export CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib:.
-export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin:
-EOF
-
-source /etc/profile.d/java.sh
-
-cat >> /etc/man.config <<EOF
-MANPATH  /srv/java/man
-EOF
+#cat >> /etc/profile.d/java.sh <<'EOF'
+#export JAVA_HOME=/srv/java
+#export JAVA_OPTS="-server -Xms2048m -Xmx4096m"
+#export CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib:.
+#export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin:
+#EOF
+#
+#source /etc/profile.d/java.sh
+#
+#cat >> /etc/man.config <<EOF
+#MANPATH  /srv/java/man
+#EOF
 
 cp /srv/java/jre/lib/security/java.security{,.original}
 

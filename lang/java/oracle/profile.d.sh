@@ -10,3 +10,5 @@ EOF
 cat >> /etc/man.config <<EOF
 MANPATH  /srv/java/man
 EOF
+
+source /etc/profile.d/java.sh
