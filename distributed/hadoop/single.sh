@@ -2,12 +2,6 @@ curl -s https://raw.githubusercontent.com/oscm/shell/master/distributed/hadoop/h
 
 #hostnamectl set-hostname master
 
-mkdir -p /opt/hadoop/volume/{namenode,datanode}
-chown -R hadoop:hadoop /srv/apache-hadoop* /opt/hadoop
-
-cp /srv/apache-hadoop/etc/hadoop/hadoop-env.sh{,.original}
-sed -i "25s:\${JAVA_HOME}:/usr/java/default:" hadoop-env.sh
-
 cp /srv/apache-hadoop/etc/hadoop/core-site.xml{,.original}
 
 cat > /srv/apache-hadoop/etc/hadoop/core-site.xml <<'EOF'
