@@ -28,11 +28,10 @@ cd php-5.6.31
 --with-iconv \
 --with-mcrypt \
 --with-mhash \
---with-pdo-mysql \
 --with-mysql \
---with-mysql-sock=/var/lib/mysql/mysql.sock \
+--with-pdo-mysql \
 --with-mysqli=/usr/bin/mysql_config \
---with-pdo-pgsql=/usr/pgsql-9.4 \
+--with-mysql-sock=/var/lib/mysql/mysql.sock \
 --with-openssl \
 --with-xsl \
 --with-recode \
@@ -56,11 +55,13 @@ cd php-5.6.31
 --enable-maintainer-zts \
 --disable-debug
 
+#--with-pdo-pgsql=/usr/pgsql-9.4 \
+
 fi
 
 [[ $? -ne 0 ]] && echo "Error: configure" &&  exit $?
 
-make -j12
+make -j$(getconf _NPROCESSORS_ONLN)
 
 [[ $? -ne 0 ]] && echo "Error: make" &&  exit $?
 
