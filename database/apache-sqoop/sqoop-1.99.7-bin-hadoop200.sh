@@ -23,6 +23,8 @@ export HADOOP_HOME=/srv/apache-hadoop
 EOF
 
 cat >> ~/.bash_profile <<'EOF'
+export HADOOP_HOME=/srv/apache-hadoop
+export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
 export SQOOP_HOME=/srv/apache-sqoop
 export CATALINA_HOME=$SQOOP_HOME/server
 export LOGDIR=$SQOOP_HOME/logs
