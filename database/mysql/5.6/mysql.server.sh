@@ -2,8 +2,6 @@
 yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 yum update -y
 yum install mysql-server -y
-systemctl enable mysqld
-systemctl start mysqld
 
 cp /etc/my.cnf{,.original}
 
@@ -36,5 +34,8 @@ character_set_client=utf8
 
 EOF
 
+systemctl enable mysqld
+systemctl start mysqld
+systemctl status mysqld
 # /usr/bin/mysqladmin -u root password 'new-password'
 # /usr/bin/mysql_secure_installation

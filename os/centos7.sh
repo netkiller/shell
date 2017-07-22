@@ -17,3 +17,5 @@ cat >> /etc/profile.d/history.sh <<EOF
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 export TIME_STYLE=long-iso
 EOF
+
+source /etc/profile.d/history.sh
