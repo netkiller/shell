@@ -9,7 +9,7 @@ fi
 ###########################################
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="example"/' ~/.zshrc
 
 cat >> ~/.zshrc <<EOF
 
