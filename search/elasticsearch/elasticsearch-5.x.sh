@@ -18,3 +18,4 @@ cp /etc/elasticsearch/logging.yml{,.original}
 
 systemctl daemon-reload
 systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
