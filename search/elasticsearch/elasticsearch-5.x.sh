@@ -14,7 +14,7 @@ EOF
 yum install -y elasticsearch
 
 cp /etc/elasticsearch/elasticsearch.yml{,.original}
-cp /etc/elasticsearch/logging.yml{,.original}
+#cp /etc/elasticsearch/logging.yml{,.original}
 
 
 cat >> /etc/sysctl.d/elasticsearch.conf <<EOF
