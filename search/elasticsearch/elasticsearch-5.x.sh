@@ -16,6 +16,36 @@ yum install -y elasticsearch
 cp /etc/elasticsearch/elasticsearch.yml{,.original}
 cp /etc/elasticsearch/logging.yml{,.original}
 
+
+cat >> /etc/sysctl.d/elasticsearch.conf <<EOF
+# Set up for elasticsearch
+# Author netkiller@msn.com
+# Website http://netkiller.github.io
+
+vm.max_map_count=655360
+EOF
+
+sysctl -p /etc/sysctl.d/elasticsearch.conf
+
+cat >> /etc/security/limits.d/20-nofile.conf <<EOF
+
+# Set up for elasticsearch
+# Author netkiller@msn.com
+# Website http://netkiller.github.io
+
+elasticsearch soft nofile 65535
+elasticsearch hard nofile 65535
+EOF
+
+cat >> /etc/security/limits.d/20-nproc.conf <<EOF
+
+# Set up for elasticsearch
+# Author netkiller@msn.com
+# Website http://netkiller.github.io
+elasticsearch soft nproc 1024
+elasticsearch soft nproc 2048
+EOF
+
 systemctl daemon-reload
 systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
