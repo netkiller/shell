@@ -11,7 +11,8 @@ Install
 
 Bind 0.0.0.0
 -----
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/network.bind_host.sh | bash
+
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elasticsearch/network.host.all.sh | bash
 	
 	
 Auto create index

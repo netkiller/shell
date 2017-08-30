@@ -12,3 +12,6 @@ Install
 Config 
 -----
 	
+## Bind 0.0.0.0
+
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/search/kibana/server.host.all.sh | bash
