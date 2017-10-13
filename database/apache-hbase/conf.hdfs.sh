@@ -14,4 +14,4 @@ cat > /srv/apache-hbase/conf/hbase-site.xml <<"EOF"
 </configuration>
 EOF
 
-chown hadoop:hadoop -R /srv/apache-hbase-1.2.6
+chown hadoop:hadoop -R /srv/apache-hbase-*

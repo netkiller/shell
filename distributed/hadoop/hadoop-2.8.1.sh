@@ -3,14 +3,16 @@ cd /usr/local/src
 wget http://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.8.1/hadoop-2.8.1.tar.gz
 tar zxf hadoop-2.8.1.tar.gz
 mv hadoop-2.8.1 /srv/apache-hadoop-2.8.1
+rm -f /srv/apache-hadoop
 ln -s /srv/apache-hadoop-2.8.1 /srv/apache-hadoop
 
 chown hadoop:hadoop -R /srv/apache-hadoop-2.8.1
 mkdir -p /opt/hadoop/volume/{namenode,datanode}
-chown -R hadoop:hadoop /srv/apache-hadoop* /opt/hadoop
+mkdir -p /var/hadoop/pids
+chown -R hadoop:hadoop /srv/apache-hadoop* /opt/hadoop /var/hadoop
 
 cp /srv/apache-hadoop/etc/hadoop/hadoop-env.sh{,.original}
-sed -i "25s:\${JAVA_HOME}:/usr/java/default:" hadoop-env.sh
+# sed -i "25s:\${JAVA_HOME}:/usr/java/default:" hadoop-env.sh
 
 adduser hadoop
 
@@ -23,6 +25,9 @@ chmod 600 ~/.ssh/authorized_keys
 find /opt/hadoop/volume/
 
 cat >> ~/.bash_profile << 'EOF'
+export JAVA_HOME=/srv/java
+export HADOOP_HOME=/srv/apache-hadoop
+export CLASSPATH=$CLASSPATH:$HADOOP_HOME/lib
 export PATH=$PATH:/srv/apache-hadoop/bin:/srv/apache-hadoop/sbin:
 EOF
 
