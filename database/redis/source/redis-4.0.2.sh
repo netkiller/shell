@@ -1,6 +1,6 @@
 #!/bin/bash
 ##################################################
-# Redis 4.0.1 setup script
+# Redis 4.0.2 setup script
 # Author: netkiller<netkiller@msn.com>
 # Website: http://www.netkiller.cn
 ##################################################
@@ -8,9 +8,9 @@ cd /usr/local/src
 
 adduser redis
 
-wget http://download.redis.io/releases/redis-4.0.1.tar.gz
-tar xzf redis-4.0.1.tar.gz
-cd redis-4.0.1
+wget http://download.redis.io/releases/redis-4.0.2.tar.gz
+tar xzf redis-4.0.2.tar.gz
+cd redis-4.0.2
 make MALLOC=libc -j$(getconf _NPROCESSORS_ONLN) && make install
 
 cp redis.conf /usr/local/etc/
