@@ -26,6 +26,7 @@ Devel
 DBA User
 -----
     GRANT ALL ON *.* TO 'dba'@'192.168.%' IDENTIFIED BY 'chen';
+    GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY 'MQiEge1ikst7S_6tlXzBOmt_4b';
 
 Upgrade to MySQL 5.7.x from 5.6.x
 -----
