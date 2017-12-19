@@ -15,12 +15,20 @@ CentOS Init
 To add the Elastic repository for YUM
 -----
 
-Install 
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elastic/elastic-6.x.sh | bash
+
+Manual Install 
 -----
+
+	yum install elasticsearch
+	yum install logstash
+	yum install kibana
+	yum install filebeta
 	
-	
-Update
+OSCM Install
 -----
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/search/elastic/beats/beats.sh | bash
 
 
 Donations
