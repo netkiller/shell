@@ -8,4 +8,3 @@ curl -s https://raw.githubusercontent.com/oscm/shell/master/os/iptables/iptables
 curl -s https://raw.githubusercontent.com/oscm/shell/master/os/ntpd/ntpdate.sh | bash
 curl -s https://raw.githubusercontent.com/oscm/shell/master/os/ssh/sshd_config.sh | bash
 curl -s https://raw.githubusercontent.com/oscm/shell/master/os/zmodem.sh | bash
-curl -s https://raw.githubusercontent.com/oscm/shell/master/os/shell/zsh/oh-my-zsh.sh | bash

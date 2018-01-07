@@ -5,7 +5,8 @@ yum -y install epel-release
 #http://ftp.cuhk.edu.hk/pub/linux/fedora-epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 #yum install -y openssh-clients
 
-yum remove -y dhclient dhcp-*
+#yum remove -y dhclient dhcp-*
+yum install -y bzip2
 yum install -y telnet wget rsync vim-enhanced
 yum install -y net-tools bind-utils
 
