@@ -1,7 +1,7 @@
 MySQL
 ========
 
-    curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/5.7/mysql57-community-release-el7-11.sh | bash
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/5.7/mysql57-community-release.sh | bash
 
 Server
 ------

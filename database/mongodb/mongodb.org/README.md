@@ -3,6 +3,8 @@ MongoDB 3.4
 
 ## Install 
 
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb.org/mongodb-3.6.sh | bash
+
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb-3.4/install.sh | bash
 	
 ## Config

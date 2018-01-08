@@ -88,8 +88,9 @@ strip /srv/php-7.2.1/bin/php
 strip /srv/php-7.2.1/bin/phpdbg
 strip /srv/php-7.2.1/sbin/php-fpm
 
-mkdir -p /srv/php-7.2.1/etc/{fpm,cli}.d
+mkdir -p /srv/php-7.2.1/etc/fpm.d
 ln -s /srv/php-7.2.1/etc/fpm.d /srv/php-7.2.1/etc/conf.d
+ln -s /srv/php-7.2.1/etc/fpm.d /srv/php-7.2.1/etc/cli.d
 cp /srv/php-7.2.1/etc/pear.conf{,.original}
 cp php.ini-* /srv/php-7.2.1/etc/
 cp /srv/php-7.2.1/etc/php.ini-production /srv/php-7.2.1/etc/php.ini
