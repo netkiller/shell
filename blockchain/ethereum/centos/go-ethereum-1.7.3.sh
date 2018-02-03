@@ -64,6 +64,7 @@ NETWORKID=123456
 RPCADDR=0.0.0.0
 EOF
 
+wget -q https://raw.githubusercontent.com/oscm/shell/master/blockchain/ethereum/centos/go-ethereum.service 
 wget -q https://raw.githubusercontent.com/oscm/shell/master/blockchain/ethereum/centos/go-ethereum.service -O /usr/lib/systemd/system/go-ethereum.service
 
 systemctl daemon-reload
