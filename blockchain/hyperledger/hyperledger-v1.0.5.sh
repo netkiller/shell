@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FABRIC_TAG=x86_64-1.0.5
+
 cd /usr/local/src/
 
 if [ ! -f /usr/bin/bunzip2 ];then
@@ -16,21 +18,16 @@ fi
 
 [[ $? -ne 0 ]] && echo "Error: installing some of software" &&  exit $?
 
-if [ ! -f v1.7.3.tar.gz ];then
-	wget https://github.com/ethereum/go-ethereum/archive/v1.7.3.tar.gz
-fi
+for IMAGES in ca peer orderer couchdb ccenv javaenv kafka zookeeper tools; do
+    echo "==> FABRIC IMAGE: $IMAGES"
+    echo
+    docker pull hyperledger/fabric-$IMAGES:$FABRIC_TAG
+    docker tag hyperledger/fabric-$IMAGES:$FABRIC_TAG hyperledger/fabric-$IMAGES
+done
 
-if [ -s v1.7.3.tar.gz ]; then
+[[ $? -ne 0 ]] && echo "Error: Docker images" &&  exit $?
 
-tar zxvf v1.7.3.tar.gz
-cd go-ethereum-1.7.3/
-gmake all
-
-mv build /srv/go-ethereum-1.7.3
-
-fi
-
-[[ $? -ne 0 ]] && echo "Error: gmake" &&  exit $?
+docker images
 
 #if [ $(id -u) != "0" ]; then
 #    sudo make install
@@ -38,12 +35,7 @@ fi
 #	make install
 #fi
 
-rm -f /srv/go-ethereum
-ln -s /srv/go-ethereum-1.7.3 /srv/go-ethereum
-
 [[ $? -ne 0 ]] && echo "Error: install" &&  exit $?
-
-strip /srv/go-ethereum/bin/geth
 
 cat > /etc/profile.d/go-ethereum.sh <<'EOF'
 export PATH=$PATH:/srv/go-ethereum/bin
