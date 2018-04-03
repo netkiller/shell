@@ -1,5 +1,15 @@
 # Hyperledger Fabric 
 
+## 安装Docker
+			
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/virtualization/docker/docker.centos7.ce.sh	 | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/virtualization/docker/registry-mirror.sh	 | bash
+			
+			
+## 安装 docker-compose
+			
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/virtualization/docker/docker-compose.sh	 | bash	
+
 ## fabric
 
 ### v1.1.0
