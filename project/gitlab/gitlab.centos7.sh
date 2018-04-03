@@ -9,5 +9,7 @@ gitlab-ctl reconfigure
 
 cp /etc/gitlab/gitlab.rb{,.original}
 
+cat <<EOF
 # Username: root 
 # Password: 5iveL!fe
+EOF
