@@ -8,7 +8,7 @@
 			
 ## 安装 docker-compose
 			
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/virtualization/docker/docker-compose.sh	 | bash	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/virtualization/docker/docker-compose/docker-compose.sh | bash	
 
 ## fabric
 
