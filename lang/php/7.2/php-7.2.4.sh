@@ -108,16 +108,16 @@ vim /srv/php-7.2.4/etc/php-fpm.conf <<end > /dev/null 2>&1
 end
 
 vim /srv/php-7.2.4/etc/php-fpm.d/www.conf <<end > /dev/null 2>&1
-:107,107s/pm.max_children = 5/pm.max_children = 4096/
-:112,112s/pm.start_servers = 2/pm.start_servers = 8/
-:117,117s/pm.min_spare_servers = 1/pm.min_spare_servers = 8/
-:122,122s/pm.max_spare_servers = 3/pm.max_spare_servers = 16/
-:133,133s/;pm.max_requests = 500/pm.max_requests = 1024/
-:232,232s/;pm.status_path/pm.status_path/
-:244,244s/;ping.path/ping.path/
-:249,249s/;ping.response/ping.response/
-:334,334s/;request_terminate_timeout = 0/request_terminate_timeout = 30s/
-:338,338s/;rlimit_files = 1024/rlimit_files = 40960/
+:113,113s/pm.max_children = 5/pm.max_children = 4096/
+:118,118s/pm.start_servers = 2/pm.start_servers = 8/
+:123,123s/pm.min_spare_servers = 1/pm.min_spare_servers = 8/
+:128,128s/pm.max_spare_servers = 3/pm.max_spare_servers = 16/
+:139,139s/;pm.max_requests = 500/pm.max_requests = 1024/
+:238,238s/;pm.status_path/pm.status_path/
+:250,250s/;ping.path/ping.path/
+:255,255s/;ping.response/ping.response/
+:340,340s/;request_terminate_timeout = 0/request_terminate_timeout = 30s/
+:344,344s/;rlimit_files = 1024/rlimit_files = 40960/
 :wq
 end
 
