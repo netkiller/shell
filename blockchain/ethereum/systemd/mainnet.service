@@ -14,7 +14,7 @@ Group=ethereum
 Type=simple
 WorkingDirectory=/srv/go-ethereum
 EnvironmentFile=/etc/sysconfig/ethereum
-ExecStart=/srv/go-ethereum/bin/geth --networkid 1 --rpc --rpcaddr ${RPCADDR} --rpccorsdomain "*"
+ExecStart=/srv/go-ethereum/bin/geth --networkid 1 --syncmode fast --cache 1024 --mine --rpc --rpcaddr ${RPCADDR} --rpccorsdomain "*"
 
 [Install]
 WantedBy=multi-user.target
