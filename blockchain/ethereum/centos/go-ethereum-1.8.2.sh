@@ -60,7 +60,7 @@ source /etc/profile.d/go-ethereum.sh
 adduser ethereum
 
 cat > /etc/sysconfig/go-ethereum <<'EOF'
-NETWORKID=123456
+NETWORKID=4444
 RPCADDR=0.0.0.0
 EOF
 

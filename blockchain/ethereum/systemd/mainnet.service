@@ -1,0 +1,20 @@
+####################################################
+# Homepage: http://netkiller.github.io
+# Author: netkiller<netkiller@msn.com>
+# Script: https://github.com/oscm/shell
+# Date: 2018-04-14
+####################################################
+[Unit]
+Description=Ethereum Application by Netkiller
+After=network.target
+
+[Service]
+User=ethereum
+Group=ethereum
+Type=simple
+WorkingDirectory=/srv/go-ethereum
+EnvironmentFile=/etc/sysconfig/ethereum
+ExecStart=/srv/go-ethereum/bin/geth --networkid 1 --rpc --rpcaddr ${RPCADDR} --rpccorsdomain "*"
+
+[Install]
+WantedBy=multi-user.target
