@@ -26,7 +26,7 @@ tar zxvf v1.8.3.tar.gz
 cd go-ethereum-1.8.3/
 gmake all
 
-mv build /srv/go-ethereum-1.8.3
+cp -r build /srv/go-ethereum-1.8.3
 
 fi
 
