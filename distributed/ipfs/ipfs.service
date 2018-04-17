@@ -1,0 +1,9 @@
+[Unit] 
+Description=IPFS daemon - netkiller
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/ipfs daemon
+
+[Install]
+WantedBy=multiuser.target
