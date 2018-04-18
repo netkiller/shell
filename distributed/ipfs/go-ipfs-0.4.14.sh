@@ -1,5 +1,6 @@
 
 
+
 cd /usr/local/src/
 wget https://dist.ipfs.io/go-ipfs/v0.4.14/go-ipfs_v0.4.14_linux-amd64.tar.gz
 tar zxf go-ipfs_v0.4.14_linux-amd64.tar.gz
@@ -15,3 +16,9 @@ export PATH=$PATH:/srv/go-ipfs
 EOF
 
 source /etc/profile.d/go.sh
+
+wget -q https://raw.githubusercontent.com/oscm/shell/master/distributed/ipfs/ipfs.service -O /usr/lib/systemd/system/ipfs.service
+
+systemctl daemon-reload
+systemctl enable ipfs
+systemctl start ipfs
