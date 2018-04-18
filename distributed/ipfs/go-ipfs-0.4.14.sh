@@ -1,6 +1,4 @@
 
-
-
 cd /usr/local/src/
 wget https://dist.ipfs.io/go-ipfs/v0.4.14/go-ipfs_v0.4.14_linux-amd64.tar.gz
 tar zxf go-ipfs_v0.4.14_linux-amd64.tar.gz
