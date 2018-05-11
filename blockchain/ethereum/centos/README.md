@@ -7,4 +7,4 @@ Ethereum for CentOS
 ## 1.8.7
 
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/blockchain/ethereum/centos/go-ethereum-1.8.7.sh | bash
-	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/blockchain/ethereum/systemd/private.sh | bash
