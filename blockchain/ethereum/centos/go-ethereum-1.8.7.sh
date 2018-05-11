@@ -58,15 +58,3 @@ source /etc/profile.d/go-ethereum.sh
 #end
 
 adduser ethereum
-
-cat > /etc/sysconfig/go-ethereum <<'EOF'
-NETWORKID=4444
-RPCADDR=0.0.0.0
-EOF
-
-wget -q https://raw.githubusercontent.com/oscm/shell/master/blockchain/ethereum/centos/go-ethereum.service 
-wget -q https://raw.githubusercontent.com/oscm/shell/master/blockchain/ethereum/centos/go-ethereum.service -O /usr/lib/systemd/system/go-ethereum.service
-
-systemctl daemon-reload
-systemctl enable go-ethereum
-systemctl start go-ethereum
