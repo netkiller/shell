@@ -1,4 +1,4 @@
-﻿cat > /etc/sysconfig/ethereum <<'EOF'
+cat > /etc/sysconfig/ethereum <<'EOF'
 NETWORKID=4444
 RPCADDR=0.0.0.0
 EOF

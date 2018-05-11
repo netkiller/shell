@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 cd /usr/local/src/
 
@@ -8,10 +8,6 @@ fi
 
 if [ ! -f /usr/bin/git ];then
     yum install -y git
-fi
-
-if [ ! -f /usr/bin/go ];then
-    yum install -y golang
 fi
 
 [[ $? -ne 0 ]] && echo "Error: installing some of software" &&  exit $?
