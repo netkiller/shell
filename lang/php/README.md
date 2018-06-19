@@ -14,17 +14,10 @@ Devel Library
 
 PHP 
 -----
-### PHP 7.0.10
+### PHP 7.2.6
 
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0/php-7.0.10.sh | bash
-	
-### PHP 7.0.7
-
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0/php-7.0.7.sh | bash
-	
-Default PHP
------
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0/php-7.0.7-default.sh  | bash	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.2/php-7.2.6.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/php-profile.sh  | bash	
 	
 PHP 5.6.6
 ---------
@@ -33,6 +26,9 @@ PHP 5.6.6
 PHP 5.5.11
 ---------
     curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/5.5/5.5.11.sh | bash	
+    
+
+- - - 
     
 Pecl
 ----
@@ -56,3 +52,13 @@ Pecl
 Pear
 ----
     https://github.com/oscm/shell/tree/master/php/pear
+
+- - -
+    
+### PHP 7.0.10
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0/php-7.0.10.sh | bash
+	
+### PHP 7.0.7
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.0/php-7.0.7.sh | bash
