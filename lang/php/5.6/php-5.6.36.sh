@@ -17,7 +17,6 @@ cd php-5.6.36
 --with-fpm-group=www \
 --with-fpm-systemd \
 --with-fpm-acl \
---disable-cgi \
 --with-pear \
 --with-curl \
 --with-gd \
@@ -39,7 +38,6 @@ cd php-5.6.36
 --enable-sockets \
 --enable-soap \
 --enable-mbstring \
---enable-exif \
 --enable-gd-native-ttf \
 --enable-zip \
 --enable-xml \
@@ -53,8 +51,10 @@ cd php-5.6.36
 --enable-sysvmsg \
 --enable-pcntl \
 --enable-maintainer-zts \
+--disable-cgi \
 --disable-debug
 
+#--enable-exif \
 #--with-pdo-pgsql=/usr/pgsql-9.4 \
 
 fi
@@ -74,7 +74,6 @@ fi
 [[ $? -ne 0 ]] && echo "Error: make install" &&  exit $?
 
 strip /srv/php-5.6.36/bin/php
-#strip /srv/php-5.6.36/bin/php-cgi
 strip /srv/php-5.6.36/sbin/php-fpm 
 
 mkdir -p /srv/php-5.6.36/etc/conf.d
@@ -88,9 +87,9 @@ cp /srv/php-5.6.36/etc/php-fpm.conf.default /srv/php-5.6.36/etc/php-fpm.conf
 #cp /srv/php-5.6.36/etc/php.ini-development /srv/php-5.6.36/etc/php.ini
 #cp /srv/php-5.6.36/etc/php.ini-development /srv/php-5.6.36/etc/php-cli.ini
 
-cp ./sapi/fpm/php-fpm.service /etc/systemd/system/php-fpm.service 
-sed -i 's:${prefix}:/srv/php-5.6.36:g' /etc/systemd/system/php-fpm.service
-sed -i 's:${exec_prefix}:/srv/php-5.6.36:g' /etc/systemd/system/php-fpm.service
+sed -i 's:${prefix}:/srv/php-5.6.36:g' ./sapi/fpm/php-fpm.service
+sed -i 's:${exec_prefix}:/srv/php-5.6.36:g' ./sapi/fpm/php-fpm.service
+yes|cp ./sapi/fpm/php-fpm.service /etc/systemd/system/php-fpm.service 
 
 systemctl enable php-fpm
 
@@ -115,7 +114,6 @@ end
 
 vim /srv/php-5.6.36/etc/php.ini <<EOF > /dev/null 2>&1
 :298,298s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.6.36/lib/php/:/srv/php-5.6.36/bin/$
-:303,303s/disable_functions =/disable_functions = ini_set,set_time_limit,set_include_path,passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket/
 :363,363s/expose_php = On/expose_php = Off/
 :393,393s/memory_limit = 128M/memory_limit = 32M/
 :572,572s:;error_log = php_errors.log:error_log = /var/tmp/php_errors.log:
@@ -126,6 +124,7 @@ vim /srv/php-5.6.36/etc/php.ini <<EOF > /dev/null 2>&1
 :wq
 EOF
 
+#:303,303s/disable_functions =/disable_functions = ini_set,set_time_limit,set_include_path,passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket/
 #s/max_execution_time = 30/max_execution_time = 300/g
 #:706,706s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.6.36/lib/php:/srv/php-5.6.36/share"!
 #:728,728s!; extension_dir = "./"!extension_dir = "./:/srv/php-5.6.36/lib/php/extensions:/srv/php-5.6.36/lib/php/extensions/no-debug-non-zts-20121212"!

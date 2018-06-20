@@ -4,6 +4,7 @@
 # MySQL 8.0
 curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/8.0/mysql80-community-release.sh | bash
 yum install mysql-community-devel -y
+yum install mysql-community-client -y
 
 cd /usr/local/src/
 
@@ -41,6 +42,7 @@ cd php-7.2.6
 --with-iconv \
 --with-mhash \
 --with-pdo-mysql \
+--with-mysqli=/usr/bin/mysql_config \
 --with-openssl \
 --with-xsl \
 --with-recode \
