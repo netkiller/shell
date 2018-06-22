@@ -14,9 +14,9 @@ Devel Library
 
 PHP 
 -----
-### PHP 7.2.6
+### PHP 7.2.7
 
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.2/php-7.2.6.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/7.2/php-7.2.7.sh | bash
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/php/php-profile.sh  | bash	
 	
 PHP 5.6.6
