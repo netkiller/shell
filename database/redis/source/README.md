@@ -6,7 +6,7 @@
 
 ## Setup 
 
-    curl -s https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/redis-4.0.0.sh | bash
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/redis-4.0.10.sh | bash
 
 ## Redis 4.0.6
     curl -s https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/redis-4.0.6.sh | bash
