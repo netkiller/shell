@@ -118,9 +118,9 @@ vim /srv/php-5.6.36/etc/php.ini <<EOF > /dev/null 2>&1
 :393,393s/memory_limit = 128M/memory_limit = 32M/
 :572,572s:;error_log = php_errors.log:error_log = /var/tmp/php_errors.log:
 :773,773s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
-:926,926s:;date.timezone =:date.timezone = Asia/Hong_Kong:
-:1416,1416s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
-:1442,1442s/session.name = PHPSESSID/session.name = JSESSIONID/
+:937,937s:;date.timezone =:date.timezone = Asia/Hong_Kong:
+:1446,1446s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
+:1472,1472s/session.name = PHPSESSID/session.name = JSESSIONID/
 :wq
 EOF
 
