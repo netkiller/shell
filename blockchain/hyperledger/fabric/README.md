@@ -12,6 +12,12 @@
 
 ## fabric
 
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/blockchain/hyperledger/fabric/clean.sh | bash
+	
+### v1.2.0
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/blockchain/hyperledger/fabric/1.2.0/all-in-one.sh | bash
+
 ### v1.1.0
 	
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/blockchain/hyperledger/fabric/1.1.0/all-in-one.sh | bash
