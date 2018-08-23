@@ -1,6 +1,8 @@
 
 # MySQL 8.0
 
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/8.0/mysql80-community-release.sh | bash
+
 ## Change password
 
     [root@netkiller ~]# grep "A temporary password" /var/log/mysqld.log
