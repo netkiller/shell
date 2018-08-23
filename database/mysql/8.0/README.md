@@ -2,6 +2,10 @@
 # MySQL 8.0
 
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/8.0/mysql80-community-release.sh | bash
+	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/8.0/server.sh | bash
+	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/8.0/client.sh | bash
 
 ## Change password
 
@@ -14,6 +18,9 @@
     New password:
     Confirm new password:
     Warning: Since password will be sent to server in plain text, use ssl connection to ensure password safety.
+    
+    ALTER USER root@localhost identified by 'MQiEge1ikst7S_6tlXzBOmt_4b';
+    ALTER USER root@localhost PASSWORD EXPIRE NEVER;
    
 ## Add user
 
