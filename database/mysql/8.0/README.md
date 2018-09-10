@@ -19,7 +19,9 @@
     Confirm new password:
     Warning: Since password will be sent to server in plain text, use ssl connection to ensure password safety.
     
-    ALTER USER root@localhost identified by 'MQiEge1ikst7S_6tlXzBOmt_4b';
+### mysql client
+
+	ALTER USER root@localhost identified by 'MQiEge1ikst7S_6tlXzBOmt_4b';
     ALTER USER root@localhost PASSWORD EXPIRE NEVER;
    
 ## Add user
@@ -31,6 +33,9 @@
 
     mysql> GRANT ALL ON *.* TO 'root'@'%';
     Query OK, 0 rows affected (0.03 sec)
+    
+    mysql> flush privileges;
+	Query OK, 0 rows affected (0.00 sec)
     
 ### 兼容 5.7 使用 mysql_native_password 
     
