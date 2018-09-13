@@ -13,7 +13,7 @@ ln -s /srv/go-1.11 /srv/go
 #MANPATH  /srv/go/man
 #EOF
 
-cat >> /etc/profile.d/go.sh <<'EOF'
+cat > /etc/profile.d/go.sh <<'EOF'
 export GOROOT=/srv/go
 export PATH=$PATH:$GOROOT/bin
 EOF
