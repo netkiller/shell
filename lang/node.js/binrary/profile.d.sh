@@ -12,4 +12,3 @@ EOF
 source /etc/profile.d/node.sh
 
 fi
-
