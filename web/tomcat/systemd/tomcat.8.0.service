@@ -1,0 +1,32 @@
+[Unit]
+Description=Apache Tomcat 8 Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/tomcat.pid
+Environment=CATALINA_PID=/var/run/tomcat.pid
+Environment=JAVA_HOME=/usr/java/default
+Environment=CATALINA_HOME=/home/tomcat/apache-tomcat-default
+Environment=CATALINA_BASE=/home/tomcat/apache-tomcat-default
+Environment=CATALINA_OPTS=
+
+ExecStart=/home/tomcat/apache-tomcat-default/bin/jsvc \
+            -Dcatalina.home=${CATALINA_HOME} \
+            -Dcatalina.base=${CATALINA_BASE} \
+            -cp ${CATALINA_HOME}/bin/commons-daemon.jar:${CATALINA_HOME}/bin/bootstrap.jar:${CATALINA_HOME}/bin/tomcat-juli.jar \
+            -user tomcat \
+            -java-home ${JAVA_HOME} \
+            -pidfile /var/run/tomcat.pid \
+            -outfile ${CATALINA_HOME}/logs/jsvc_outfile.out \
+            -errfile '&1' \
+            $CATALINA_OPTS \
+            org.apache.catalina.startup.Bootstrap
+
+ExecStop=/home/tomcat/apache-tomcat-default/bin/jsvc \
+            -pidfile /var/run/tomcat.pid \
+            -stop \
+            org.apache.catalina.startup.Bootstrap
+
+[Install]
+WantedBy=multi-user.target
