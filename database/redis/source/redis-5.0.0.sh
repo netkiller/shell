@@ -6,16 +6,25 @@
 ##################################################
 cd /usr/local/src
 
+yum install -y jemalloc-devel
+
+curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/gcc/gcc.sh | bash
+
 id redis
 if [ $? -eq 1 ] 
 then
 	adduser -s /bin/false -d /var/lib/redis redis
 fi
 
-wget http://download.redis.io/releases/redis-5.0.0.tar.gz
+if [ ! -f redis-5.0.0.tar.gz ]; then
+	wget http://download.redis.io/releases/redis-5.0.0.tar.gz	
+fi
+
 tar xzf redis-5.0.0.tar.gz
 cd redis-5.0.0
-make && make install
+# make && make install
+make MALLOC=libc -j$(getconf _NPROCESSORS_ONLN) && make install
+
 
 cp redis.conf /usr/local/etc/
 cp /usr/local/etc/redis.conf{,.original}
