@@ -1,0 +1,1 @@
+cat /dev/urandom | tr -dc [:graph:] | head -c 16

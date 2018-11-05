@@ -7,6 +7,10 @@
 	
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/8.0/client.sh | bash
 
+## Random password tools
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/8.0/password.sh | bash
+
 ## Change password
 
     [root@netkiller ~]# grep "A temporary password" /var/log/mysqld.log

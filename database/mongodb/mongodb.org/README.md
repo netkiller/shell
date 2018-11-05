@@ -3,10 +3,24 @@ MongoDB
 
 ## MongoDB 4.x
 
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb.org/mongodb-4.0.2.sh | bash
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb.org/mongodb-4.x.sh | bash
 
+## Config
 
+### bind 0.0.0.0
 	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb.org/net.bindIp.all.sh | bash
+	
+### enable auth
+	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb-org/security.authorization.enabled.sh | bash
+	
+	
+## Tools
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb.org/mongodb-org-tools.sh | bash
+	
+
 ## Administrator
 
 ```
@@ -40,19 +54,4 @@ db.createUser(
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb.org/mongodb-3.6.sh | bash
 
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb-3.4/install.sh | bash
-	
-## Config
-
-### bind 0.0.0.0
-	
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb-3.4/net.bindIp.all.sh | bash
-	
-### enable auth
-	
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb-3.4/security.authorization.enabled.sh | bash
-	
-	
-## Tools
-
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mongodb/mongodb-3.4/mongodb-org-tools.sh | bash
 	
