@@ -14,4 +14,3 @@ sudo cp MMDVM.ini /srv/mmdvm/etc
 sudo cp DMRIds.dat /srv/mmdvm/etc
 sudo cp NXDN.csv /srv/mmdvm/etc
 sudo cp RSSI.dat /srv/mmdvm/etc
-
