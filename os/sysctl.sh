@@ -9,6 +9,10 @@ net.core.netdev_max_backlog=3000
 net.ipv4.tcp_max_syn_backlog = 8192
 net.ipv4.tcp_max_tw_buckets = 4096
 net.core.somaxconn = 1024
+
+# TCP BBR
+net.core.default_qdisc=fq
+net.ipv4.tcp_congestion_control=bbr
 EOF
 #net.ipv4.tcp_syncookies = 1
 #net.ipv4.tcp_fin_timeout = 60
