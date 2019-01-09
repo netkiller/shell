@@ -9,3 +9,5 @@ systemctl enable jenkins.service
 systemctl start jenkins.service
 
 # /etc/sysconfig/jenkins
+
+cat /var/lib/jenkins/secrets/initialAdminPassword
