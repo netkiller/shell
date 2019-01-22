@@ -10,7 +10,8 @@ exim    soft    nproc    1024
 exim    soft    nofile   40960
 EOF
 
-alternatives --config mta
+# alternatives --config mta
+alternatives --set mta /usr/sbin/sendmail.exim
 
 systemctl start exim
 
