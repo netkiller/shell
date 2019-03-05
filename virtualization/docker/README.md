@@ -13,4 +13,8 @@ Check
 Remove
 -----
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/virtualization/docker/docker.remove.sh | bash
+	
+## docker-compose
+
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/virtualization/docker/docker-compose/docker-compose.sh | bash
 
