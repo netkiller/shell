@@ -35,7 +35,7 @@ sed -i 's/# maxclients 10000/maxclients 10000/' /usr/local/etc/redis.conf
 sed -i 's/# maxmemory-policy noeviction/maxmemory-policy volatile-lru/g' /usr/local/etc/redis.conf
 sed -i 's#^dir ./#dir /var/lib/redis#' /usr/local/etc/redis.conf
 
-mkdir /var/lib/redis
+mkdir -p /var/lib/redis
 touch /var/log/redis.log
 chown redis:redis /var/lib/redis /var/log/redis.log
 
