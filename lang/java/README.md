@@ -10,4 +10,4 @@
 	
 ## Oracle Server Jre
 
-	
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/java/oracle/server-jre/server-jre-8u212.sh | bash

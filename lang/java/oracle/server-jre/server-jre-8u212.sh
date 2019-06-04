@@ -13,8 +13,7 @@ export CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib:.
 export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin:
 EOF
 
-sed -i '117s/securerandom.source/#securerandom.source/' /srv/java/jre/lib/security/java.security
-sed -i '117isecurerandom.source=file:/dev/./urandom' /srv/java/jre/lib/security/java.security
+sed -i "117s|securerandom.source=file:/dev/random|securerandom.source=file:/dev/urandom|" /srv/java/jre/lib/security/java.security
 
 cat >> /etc/man.config <<EOF
 MANPATH  /srv/java/man

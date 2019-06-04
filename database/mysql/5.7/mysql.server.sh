@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ -z $(rpm -qa mysql57-community-release-el7-11) ]; then
+    curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/5.7/mysql57-community-release.sh | bash
+fi
+
 yum install -y mysql-community-server
 
 cp /etc/my.cnf{,.original}
