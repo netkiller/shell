@@ -17,5 +17,4 @@ sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" /var/lib/pgsq
 systemctl enable postgresql-9.4
 systemctl start postgresql-9.4
 
-iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 5432 -j ACCEPT
-systemctl save iptables
+cp /etc/skel/.bash* /var/lib/pgsql/
