@@ -4,6 +4,7 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 yum remove -y firewalld
+
 yum install iptables-services -y
 
 systemctl start iptables
