@@ -9,6 +9,8 @@ Install
 	
 ### Binrary
 
+	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/node.js/binrary/node-v12.4.0.sh | bash
+	
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/node.js/binrary/node-v10.10.0.sh | bash
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/node.js/binrary/profile.d.sh | bash
 	
