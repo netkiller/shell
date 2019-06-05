@@ -14,6 +14,7 @@ section "Check login password"
 grep '\$' /etc/shadow
 
 section "Check SSH authorized_keys file"
+find /home/ -name "authorized_keys"
 for key in $(ls -1 /home) 
 do 
 	if [ -e $key/.ssh/authorized_keys ]; then 

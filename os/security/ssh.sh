@@ -1,1 +1,0 @@
-find /home/ -name "authorized_keys"

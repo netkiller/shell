@@ -14,6 +14,17 @@ cp /var/lib/pgsql/9.4/data/pg_ident.conf{,.original}
 
 sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" /var/lib/pgsql/9.4/data/postgresql.conf
 
+vim /var/lib/pgsql/9.4/data/pg_hba.conf <<VIM > /dev/null 2>&1
+:82,82s/ident/md5/
+:84,84s/ident/md5/
+:wq!
+VIM
+
+cat >> /var/lib/pgsql/9.4/data/pg_hba.conf <<EOF
+
+host    all             all             0.0.0.0/0                 md5
+EOF
+
 systemctl enable postgresql-9.4
 systemctl start postgresql-9.4
 
