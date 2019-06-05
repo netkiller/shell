@@ -1,3 +1,3 @@
 #!/bin/bash
 
-curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+curl -s https://raw.githubusercontent.com/oscm/shell/master/virtualization/docker/docker-compose/docker-compose-1.24.0.sh | bash
