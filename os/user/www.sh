@@ -4,3 +4,9 @@ adduser -o --uid 80 --gid 80 -c "Web Application" www
 #chown www:www -R /www
 
 usermod -aG wheel www
+
+PASSWORD=$(cat /dev/urandom | tr -dc [:alnum:] | head -c 32)
+
+echo "www password: ${PASSWORD}"
+
+echo www:${PASSWORD} | chpasswd
