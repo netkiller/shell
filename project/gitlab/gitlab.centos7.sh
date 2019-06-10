@@ -10,9 +10,9 @@ export LC_CTYPE=UTF-8
 
 yum install -y gitlab-ce
 
-gitlab-ctl reconfigure
-
 cp /etc/gitlab/gitlab.rb{,.original}
+
+#gitlab-ctl reconfigure
 
 cat <<EOF
 # Username: root 
