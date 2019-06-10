@@ -6,7 +6,9 @@ vim /etc/ssh/sshd_config <<EOF > /dev/null 2>&1
 :40,40s/#MaxAuthTries 6/MaxAuthTries 3/
 :79,79s/GSSAPIAuthentication yes/GSSAPIAuthentication no/
 :99,99s/#AllowTcpForwarding yes/AllowTcpForwarding no/
-:113,113s/#ClientAliveCountMax 3/ClientAliveCountMax 30/
+:107,107s/#TCPKeepAlive yes/TCPKeepAlive yes/
+:112,112s/#ClientAliveInterval 0/ClientAliveInterval 30/
+:113,113s/#ClientAliveCountMax 3/ClientAliveCountMax 9/
 :115,115s/#UseDNS yes/UseDNS no/
 :wq
 EOF
