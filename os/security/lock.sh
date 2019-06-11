@@ -51,8 +51,8 @@ chattr +i /etc/gshadow*
 chattr +a /root/.bash_history
 chattr +i /root/.bash_history
 
-echo "system timeout 5 minite auto logout" >>/etc/profile
-echo "TMOUT=300" >>/etc/profile
+#echo "system timeout 5 minite auto logout" >>/etc/profile
+#echo "TMOUT=300" >>/etc/profile
 
 RETVAL=0
 exit $RETVAL
