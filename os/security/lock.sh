@@ -1,21 +1,17 @@
 #!/bin/bash
 #================================================================================
-# CentOS 6 Installing script by Neo <netkiller@msn.com>
-# http://netkiller.sourceforge.net/ , http://netkiller.github.io/
+# CentOS 7 Installing script by Neo <netkiller@msn.com>
+# http://netkiller.sourceforge.net/, http://netkiller.github.io/
 # $Id$
 #================================================================================
 if [ ! -f /usr/bin/vim ] ; then
 	alias vim='vi'
 fi
 
-if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
-	echo 'Only for Redhat or CentOS'
-	exit
-fi
-
-#================================================================================
-sed -i "s/#PermitRootLogin yes/PermitRootLogin no/" /etc/ssh/sshd_config
-#================================================================================
+#if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
+#	echo 'Only for Redhat or CentOS'
+#	exit
+#fi
 
 #vim /etc/ssh/sshd_config <<VIM > /dev/null 2>&1
 #:s/#PermitRootLogin yes/PermitRootLogin no/
