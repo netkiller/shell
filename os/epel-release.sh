@@ -6,8 +6,8 @@ yum -y install epel-release
 #yum install -y openssh-clients
 
 #yum remove -y dhclient dhcp-*
-yum install -y bzip2 tree
-yum install -y telnet wget rsync vim-enhanced
-yum install -y net-tools bind-utils
+yum install -y bzip2 tree psmisc \
+telnet wget rsync vim-enhanced \
+net-tools bind-utils
 
 yum update -y
