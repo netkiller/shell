@@ -1,4 +1,4 @@
-yum install -y nfs-utils
+dnf install -y nfs-utils
 
 cat >> /etc/exports <<EOF
 /www 		192.168.6.0/24(rw,sync,fsid=0,anonuid=80,anongid=80)

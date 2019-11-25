@@ -5,6 +5,6 @@
 #        exit
 #fi
 
-if [ -f /usr/bin/yum ]; then
-        yum install git -y
+if [ -f /usr/bin/dnf ]; then
+        dnf install git -y
 fi

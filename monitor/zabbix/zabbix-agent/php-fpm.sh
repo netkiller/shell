@@ -1,5 +1,5 @@
 
-# Yum php-fpm
+# dnf php-fpm
 sed -i "s/;pm.status_path/pm.status_path/" /etc/php-fpm.d/www.conf
 sed -i "s/;ping/ping/" /etc/php-fpm.d/www.conf
 

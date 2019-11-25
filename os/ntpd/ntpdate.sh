@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install ntpdate -y
+dnf install ntpdate -y
 
 #echo '0.poll.ntp.org' >> /etc/ntp/step-tickers
 sed -i 's/^SYNC_HWCLOCK=no/SYNC_HWCLOCK=yes/' /etc/sysconfig/ntpdate

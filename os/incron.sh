@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y incron
+dnf install -y incron
 
 systemctl enable incrond
 systemctl start incrond

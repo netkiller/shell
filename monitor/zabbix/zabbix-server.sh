@@ -3,9 +3,9 @@
 # Author: Neo <netkiller@msn.com>
 # Website http://netkiller.github.io
 ##################################################
-yum localinstall -y http://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm
+dnf localinstall -y http://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm
 
-yum install -y zabbix-server-mysql zabbix-web-mysql
+dnf install -y zabbix-server-mysql zabbix-web-mysql
 
 # CREATE DATABASE `zabbix` /*!40100 COLLATE 'utf8_general_ci' */
 

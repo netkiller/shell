@@ -5,7 +5,7 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/centos-release)" ]; then
         exit
 fi
 
-sudo yum install -y docker-engine
+sudo dnf install -y docker-engine
 
 systemctl enable docker
 systemctl start docker

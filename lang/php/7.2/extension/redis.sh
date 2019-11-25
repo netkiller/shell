@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -f /usr/bin/unzip ]; then
-yum install -y unzip 
+dnf install -y unzip 
 fi
 
 cd /usr/local/src

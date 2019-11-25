@@ -1,4 +1,4 @@
-yum install -y exim
+dnf install -y exim
 chkconfig exim on
 
 cp /etc/exim/exim.conf{,.original}

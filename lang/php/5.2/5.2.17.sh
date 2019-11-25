@@ -9,11 +9,11 @@ rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
 rpm -K http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
 rpm -i http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
 
-yum install -y gcc gcc-c++ make automake autoconf patch \
+dnf install -y gcc gcc-c++ make automake autoconf patch \
 curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel openssl-devel recode-devel 
-#yum install openldap-devel net-snmp-devel
+#dnf install openldap-devel net-snmp-devel
 
-yum localinstall MySQL-*
+dnf localinstall MySQL-*
 
 wget http://curl.haxx.se/download/curl-7.30.0.tar.gz
 tar zxvf curl-7.30.0.tar.gz

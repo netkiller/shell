@@ -8,7 +8,7 @@ function ECHO(){
 	echo "===================="
 }
 
-yum install gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel libaio-devel \ 
+dnf install gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel libaio-devel \ 
 elfutils-libelf-devel unixODBC unixODBC-devel compat-libstdc++-33 pdksh sysstat
 
 groupadd oinstall

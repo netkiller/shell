@@ -1,4 +1,4 @@
 #!/bin/bash
 
 sudo -i
-yum install -y MariaDB-devel
+dnf install -y MariaDB-devel

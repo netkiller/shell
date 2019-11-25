@@ -4,7 +4,7 @@ cd /usr/local/src/
 rm -rf cphalcon
 
 if [ ! -f /usr/bin/git ]; then 
-yum install -y git
+dnf install -y git
 fi
 		
 git clone --depth=1 git://github.com/phalcon/cphalcon.git

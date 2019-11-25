@@ -1,5 +1,5 @@
 
-yum install java-11-openjdk
+dnf install java-11-openjdk
 
 cat >> /etc/profile.d/java.sh <<'EOF'
 #export JAVA_HOME=/etc/alternatives/jre

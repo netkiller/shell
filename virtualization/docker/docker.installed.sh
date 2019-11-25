@@ -1,2 +1,2 @@
 #!/bin/bash
-yum list installed | grep docker
+dnf list installed | grep docker

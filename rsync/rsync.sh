@@ -10,7 +10,7 @@
 #	exit
 #fi
 
-yum install rsync -y
+dnf install rsync -y
 
 cat > /etc/rsyncd.conf <<EOD
 uid = www

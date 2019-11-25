@@ -1,2 +1,2 @@
 #!/bin/bash
-yum install -y postgresql10
+dnf install -y postgresql10

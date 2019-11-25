@@ -4,15 +4,15 @@ groupadd -g 80 www
 adduser -o --home /www --uid 80 --gid 80 -c "Web Application" www
 
 #automake autoconf
-yum install -y gcc gcc-c++ make patch \
+dnf install -y gcc gcc-c++ make patch \
 curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel openssl-devel recode-devel 
-#yum install openldap-devel net-snmp-devel
+#dnf install openldap-devel net-snmp-devel
 
-yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
-yum install mysql-community-devel -y
+dnf localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+dnf install mysql-community-devel -y
 
-yum install -y http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm
-yum install -y postgresql93-devel
+dnf install -y http://dnf.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm
+dnf install -y postgresql93-devel
 
 cd /usr/local/src/
 wget http://cn2.php.net/distributions/php-5.5.16.tar.bz2

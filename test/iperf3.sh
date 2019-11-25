@@ -1,2 +1,2 @@
 # TCP/IP 测试工具
-yum install iperf3
+dnf install iperf3

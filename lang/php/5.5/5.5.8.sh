@@ -3,9 +3,9 @@
 groupadd -g 80 www
 adduser -o --home /www --uid 80 --gid 80 -c "Web Application" www
 
-yum install -y gcc gcc-c++ make automake autoconf patch \
+dnf install -y gcc gcc-c++ make automake autoconf patch \
 curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel openssl-devel recode-devel 
-#yum install openldap-devel net-snmp-devel
+#dnf install openldap-devel net-snmp-devel
 
 cd /usr/local/src/
 wget http://tw2.php.net/get/php-5.5.8.tar.gz/from/this/mirror

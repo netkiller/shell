@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y pptp pptp-setup
+dnf install -y pptp pptp-setup
 systemctl enable pptpd
 
 cp /etc/ppp/options.pptp{,.original}

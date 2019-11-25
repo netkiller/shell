@@ -8,7 +8,7 @@ if [ $(egrep -c '(vmx|svm)' /proc/cpuinfo) == 0 ]; then
 	exit
 fi
 #================================================================================
-yum install -y qemu-kvm libvirt virt-install bridge-utils
+dnf install -y qemu-kvm libvirt virt-install bridge-utils
 systemctl start libvirtd 
 systemctl enable libvirtd 
 #================================================================================

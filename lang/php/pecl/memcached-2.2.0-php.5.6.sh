@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum install libmemcached-devel
+dnf install libmemcached-devel
 pecl install memcached
 
 cat > /srv/php/etc/conf.d/memcached.ini <<EOF

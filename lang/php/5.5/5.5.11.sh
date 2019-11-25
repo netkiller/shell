@@ -4,12 +4,12 @@ groupadd -g 80 www
 adduser -o --home /www --uid 80 --gid 80 -c "Web Application" www
 
 #automake autoconf
-yum install -y gcc gcc-c++ make patch \
+dnf install -y gcc gcc-c++ make patch \
 curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel openssl-devel recode-devel 
-#yum install openldap-devel net-snmp-devel
+#dnf install openldap-devel net-snmp-devel
 
-yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
-yum install mysql-community-devel -y
+dnf localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+dnf install mysql-community-devel -y
 
 cd /usr/local/src/
 wget http://is1.php.net/distributions/php-5.5.11.tar.gz

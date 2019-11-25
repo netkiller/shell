@@ -1,4 +1,4 @@
-yum install -y postfix
+dnf install -y postfix
 chkconfig postfix on
 
 cp /etc/postfix/main.cf{,.original}

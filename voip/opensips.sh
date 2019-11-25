@@ -1,7 +1,7 @@
 #!/bin/bash
 
-rpm -ivh http://yum.opensips.org/1.10/releases/el/6/x86_64/opensips-yum-releases-1.10-1.el6.noarch.rpm
-yum install opensips opensips-mysql -y
+rpm -ivh http://dnf.opensips.org/1.10/releases/el/6/x86_64/opensips-dnf-releases-1.10-1.el6.noarch.rpm
+dnf install opensips opensips-mysql -y
 
 
 cp /etc/opensips/opensipsctlrc{,.original}

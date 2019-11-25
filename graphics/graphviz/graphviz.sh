@@ -1,1 +1,1 @@
-yum install -y graphviz
+dnf install -y graphviz

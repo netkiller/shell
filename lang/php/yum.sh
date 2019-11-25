@@ -1,5 +1,5 @@
 
-yum install -y php-fpm
+dnf install -y php-fpm
 
 systemctl enable php-fpm
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install ntp -y
+dnf install ntp -y
 
 #vim /etc/ntp.conf <<VIM > /dev/null 2>&1
 #:22,24s/^/#/

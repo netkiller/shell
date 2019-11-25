@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y pgbouncer
+dnf install -y pgbouncer
 
 cp /etc/pgbouncer/pgbouncer.ini{,.original}
 

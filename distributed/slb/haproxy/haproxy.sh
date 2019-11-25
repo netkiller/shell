@@ -1,4 +1,4 @@
-yum install -y haproxy
+dnf install -y haproxy
 
 cp /etc/haproxy/haproxy.cfg{,.original}
 

@@ -1,2 +1,2 @@
 
-yum install -y lrzsz
+dnf install -y lrzsz

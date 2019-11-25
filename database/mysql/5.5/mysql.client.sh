@@ -6,5 +6,5 @@ wget http://cdn.mysql.com/Downloads/MySQL-5.5/MySQL-embedded-5.5.28-1.el6.x86_64
 wget http://cdn.mysql.com/Downloads/MySQL-5.5/MySQL-test-5.5.28-1.el6.x86_64.rpm &
 
 rpm -e --nodeps mysql-libs
-yum localinstall MySQL-*
+dnf localinstall MySQL-*
 

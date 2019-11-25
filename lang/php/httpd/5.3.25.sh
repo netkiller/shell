@@ -3,13 +3,13 @@
 groupadd -g 80 www
 adduser -o --home /www --uid 80 --gid 80 -c "Web Application" www
 
-yum install -y gcc gcc-c++ make automake autoconf patch
-yum install -y libtool-ltdl-devel
-yum install -y curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel openssl-devel recode-devel 
+dnf install -y gcc gcc-c++ make automake autoconf patch
+dnf install -y libtool-ltdl-devel
+dnf install -y curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel openssl-devel recode-devel 
  
-yum localinstall -y MySQL-devel-5.5.32-1.el6.x86_64.rpm 
-yum localinstall -y MySQL-shared-5.5.32-1.el6.x86_64.rpm
-yum localinstall -y MySQL-shared-compat-5.5.32-1.el6.x86_64.rpm
+dnf localinstall -y MySQL-devel-5.5.32-1.el6.x86_64.rpm 
+dnf localinstall -y MySQL-shared-5.5.32-1.el6.x86_64.rpm
+dnf localinstall -y MySQL-shared-compat-5.5.32-1.el6.x86_64.rpm
 
 cd /usr/local/src/
 wget http://hk2.php.net/get/php-5.3.25.tar.gz/from/this/mirror

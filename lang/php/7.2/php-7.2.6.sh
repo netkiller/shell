@@ -3,8 +3,8 @@
 
 # MySQL 8.0
 curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/8.0/mysql80-community-release.sh | bash
-yum install mysql-community-devel -y
-yum install mysql-community-client -y
+dnf install mysql-community-devel -y
+dnf install mysql-community-client -y
 
 cd /usr/local/src/
 
@@ -13,7 +13,7 @@ if [ ! -f php-7.2.6.tar.bz2 ];then
 fi
 
 if [ ! -f /usr/bin/bunzip2 ];then
-    yum install -y bzip2
+    dnf install -y bzip2
 fi
 
 if [ -s php-7.2.6.tar.bz2 ]; then

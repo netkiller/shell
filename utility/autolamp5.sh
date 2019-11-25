@@ -33,23 +33,23 @@ function clean(){
 }
 
 function depend(){
-        yum install gcc gcc-c++ make autoconf -y
-        yum install curl-devel libmcrypt-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel mhash-devel openldap-devel -y
-        yum install ncurses-devel -y
-#        yum install mysql-devel -y
-        yum install libevent-devel -y
+        dnf install gcc gcc-c++ make autoconf -y
+        dnf install curl-devel libmcrypt-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel mhash-devel openldap-devel -y
+        dnf install ncurses-devel -y
+#        dnf install mysql-devel -y
+        dnf install libevent-devel -y
 	
-	yum install e4fsprogs -y
-	yum install net-snmp-devel -y
-	yum install setuptool ntsysv system-config-network-tui -y
+	dnf install e4fsprogs -y
+	dnf install net-snmp-devel -y
+	dnf install setuptool ntsysv system-config-network-tui -y
 	rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
 }
 
 function tools(){
-	yum install wget telnet tcpdump -y
+	dnf install wget telnet tcpdump -y
 }
 function ntp(){
-	yum install ntp -y
+	dnf install ntp -y
 	ntpdate 172.16.1.10
 
 vim /etc/ntp.conf <<VIM > /dev/null 2>&1
@@ -61,7 +61,7 @@ VIM
 	chkconfig ntpd on
 }
 function snmp (){
-	yum install net-snmp -y
+	dnf install net-snmp -y
 
 vim /etc/snmp/snmpd.conf <<VIM > /dev/null 2>&1
 :62,62s/systemview/all/
@@ -342,7 +342,7 @@ $PREFIX_DIR/$MYSQL_DIR/bin/mysqladmin -u root password '9S5wxCVPMY'
 
 function java(){
 	JAVA_DIR=${JAVA_BIN%%.bin}
-        #yum install java-1.6.0-openjdk -y
+        #dnf install java-1.6.0-openjdk -y
         chmod +x $JAVA_BIN
         ./$JAVA_BIN
         mv $JAVA_DIR ..
@@ -413,12 +413,12 @@ EOF
 }
 
 function nagios(){
-	yum install nagios
+	dnf install nagios
 }
 
 function nrpe(){
-	yum install nrpe -y
-	yum install -y nagios-plugins-disk nagios-plugins-load nagios-plugins-ping nagios-plugins-procs nagios-plugins-swap nagios-plugins-users
+	dnf install nrpe -y
+	dnf install -y nagios-plugins-disk nagios-plugins-load nagios-plugins-ping nagios-plugins-procs nagios-plugins-swap nagios-plugins-users
 
 vim /etc/nagios/nrpe.cfg <<VIM > /dev/null 2>&1
 :%s/allowed_hosts=127.0.0.1/allowed_hosts=172.16.1.2/
@@ -471,7 +471,7 @@ chmod 644 .ssh/authorized_keys
 }
 
 function vsftpd(){
-	yum install -y vsftpd
+	dnf install -y vsftpd
 	adduser --home-dir /www/target/logs/ --shell /sbin/nologin --password logs.xiu.com logs
 	echo logs >> /etc/vsftpd/chroot_list
 	vim /etc/vsftpd/vsftpd.conf <<VIM > /dev/null 2>&1

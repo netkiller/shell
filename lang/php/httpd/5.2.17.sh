@@ -2,11 +2,11 @@
 
 cd /usr/local/src/
 
-yum install -y curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel openssl-devel recode-devel 
-#yum install openldap-devel net-snmp-devel
+dnf install -y curl-devel libmcrypt-devel mhash-devel gd-devel libjpeg-devel libpng-devel libXpm-devel libxml2-devel libxslt-devel openssl-devel recode-devel 
+#dnf install openldap-devel net-snmp-devel
 
-yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
-yum install mysql-community-devel -y
+dnf localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+dnf install mysql-community-devel -y
 
 wget http://museum.php.net/php5/php-5.2.17.tar.gz
 tar zxf php-5.2.17.tar.gz

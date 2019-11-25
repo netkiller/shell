@@ -1,13 +1,13 @@
 #!/bin/bash
-# yum 与 apt 版本过低所以需要编译安装
+# dnf 与 apt 版本过低所以需要编译安装
 
 curl -s https://raw.githubusercontent.com/oscm/shell/master/compiler/gcc.sh | bash
 
-curl -s https://raw.githubusercontent.com/oscm/shell/master/web/httpd/httpd.yum.sh | bash
+curl -s https://raw.githubusercontent.com/oscm/shell/master/web/httpd/httpd.dnf.sh | bash
 
-yum install -y openssl-devel gd-devel
+dnf install -y openssl-devel gd-devel
 #mail command
-yum install -y mailx
+dnf install -y mailx
 
 cd /usr/local/src
 wget http://softlayer-sng.dl.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.8/nagios-4.0.8.tar.gz

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install mongodb-server mongodb -y
+dnf install mongodb-server mongodb -y
 
 systemctl enable mongod.service
 systemctl start mongod 

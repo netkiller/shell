@@ -3,7 +3,7 @@ ARCH=$(uname -i)
 SYSTEM=$(cat /etc/centos-release | awk -F' ' '{if(NR==1) print $1}')
 VERSION=$(cat /etc/centos-release | awk -F'[ |.]' '{if(NR==1) print $3}')
 
-cat > /etc/yum.repos.d/nginx.repo <<'EOF'
+cat > /etc/dnf.repos.d/nginx.repo <<'EOF'
 [nginx]
 name=nginx repo
 baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/
@@ -11,7 +11,7 @@ gpgcheck=0
 enabled=1
 EOF
 
-yum install -y nginx
+dnf install -y nginx
 
 cp /etc/nginx/nginx.conf{,.original}
 

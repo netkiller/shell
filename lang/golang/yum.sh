@@ -1,2 +1,2 @@
-yum install -y git
-yum install -y golang
+dnf install -y git
+dnf install -y golang

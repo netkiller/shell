@@ -1,1 +1,1 @@
-yum install -y GraphicsMagick
+dnf install -y GraphicsMagick

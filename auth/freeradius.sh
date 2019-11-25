@@ -1,4 +1,4 @@
-yum install -y freeradius freeradius-utils
+dnf install -y freeradius freeradius-utils
 
 chkconfig radiusd on
 service radiusd start

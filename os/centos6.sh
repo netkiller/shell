@@ -7,14 +7,14 @@ fi
 
 lokkit --disabled --selinux=disabled
 
-yum remove dhclient -y
+dnf remove dhclient -y
 
-yum update -y
-yum install -y telnet wget rsync
-yum install -y system-config-network-tui bind-utils
-yum install -y vim-enhanced
+dnf update -y
+dnf install -y telnet wget rsync
+dnf install -y system-config-network-tui bind-utils
+dnf install -y vim-enhanced
 
-#yum install -y openssh-clients
+#dnf install -y openssh-clients
 
 rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 

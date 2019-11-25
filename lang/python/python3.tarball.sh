@@ -1,7 +1,7 @@
 #!/bin/sh
 cd /usr/local/src
 
-yum install -y zlib-devel
+dnf install -y zlib-devel
 
 wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
 

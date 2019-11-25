@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum install -y opendkim
+dnf install -y opendkim
 
 cp /etc/opendkim.conf{,.original}
 cp /etc/opendkim/KeyTable{,.original}

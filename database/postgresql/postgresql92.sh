@@ -1,7 +1,7 @@
 #!/bin/bash
 
-yum install http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm
-yum install postgresql92-server postgresql92 postgresql92-contrib
+dnf install http://dnf.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm
+dnf install postgresql92-server postgresql92 postgresql92-contrib
 
 chkconfig postgresql-9.2 on
 service postgresql-9.2 initdb

@@ -8,7 +8,7 @@ function ECHO(){
 	echo "===================="
 }
 
-yum install -y ksh gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel libaio-devel \
+dnf install -y ksh gcc gcc-c++ glibc-devel libstdc++ libstdc++-devel libaio-devel libaio-devel \
 elfutils-libelf-devel unixODBC unixODBC-devel \
 compat-libcap1 compat-libstdc++-33 sysstat 
 

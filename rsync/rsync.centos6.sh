@@ -10,7 +10,7 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
 	exit
 fi
 
-yum install xinetd rsync -y
+dnf install xinetd rsync -y
 
 vim /etc/xinetd.d/rsync <<VIM > /dev/null 2>&1
 :%s/yes/no/

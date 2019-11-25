@@ -3,9 +3,9 @@
 systemctl stop firewalld
 systemctl disable firewalld
 
-yum remove -y firewalld
+dnf remove -y firewalld
 
-yum install iptables-services -y
+dnf install iptables-services -y
 
 systemctl start iptables
 systemctl enable iptables

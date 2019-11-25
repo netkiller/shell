@@ -8,7 +8,7 @@ SYSTEM=$(awk -F' ' 'NR==1 {print $(1)}' /etc/issue)
 VERSION=$(awk -F' ' 'NR==1 {print $(3)}' /etc/issue)
 ###########################################
 if [ ${SYSTEM} = 'CentOS' ]; then
-	yum install -y zsh
+	dnf install -y zsh
 fi
 
 if [ ${SYSTEM} = 'Ubuntu' ]; then

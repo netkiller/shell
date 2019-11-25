@@ -1,5 +1,5 @@
 #!/bin/sh
-yum install -y exim
+dnf install -y exim
 systemctl enable exim
 
 

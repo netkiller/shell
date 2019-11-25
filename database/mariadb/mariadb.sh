@@ -1,1 +1,1 @@
-yum install -y mariadb
+dnf install -y mariadb

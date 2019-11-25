@@ -1,3 +1,3 @@
 #!/bin/sh
 
-yum install -y nodejs
+dnf install -y nodejs

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install net-snmp -y
+dnf install net-snmp -y
 
 cp /etc/snmp/snmpd.conf{,.original}
 vim /etc/snmp/snmpd.conf <<VIM > /dev/null 2>&1

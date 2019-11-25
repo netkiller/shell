@@ -1,3 +1,3 @@
-yum install -y cronie
+dnf install -y cronie
 chkconfig crond on
 service crond start

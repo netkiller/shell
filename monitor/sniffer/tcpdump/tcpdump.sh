@@ -1,1 +1,1 @@
-yum install -y tcpdump
+dnf install -y tcpdump

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install cacti
+dnf install cacti
 
 cp /etc/cacti/db.php{,.original}
 cp /etc/httpd/conf.d/cacti.conf{,.original}

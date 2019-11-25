@@ -5,8 +5,8 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/centos-release)" ]; then
         exit
 fi
 
-#yum update -y
-yum install -y docker
+#dnf update -y
+dnf install -y docker
 systemctl enable docker
 systemctl start docker
 docker pull centos

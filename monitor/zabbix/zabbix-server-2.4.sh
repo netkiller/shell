@@ -1,8 +1,8 @@
 #!/bin/bash
 
-yum localinstall -y http://repo.zabbix.com/zabbix/2.4/rhel/7/x86_64/zabbix-release-2.4-1.el7.noarch.rpm
+dnf localinstall -y http://repo.zabbix.com/zabbix/2.4/rhel/7/x86_64/zabbix-release-2.4-1.el7.noarch.rpm
 
-yum install -y zabbix-server-mysql zabbix-web-mysql
+dnf install -y zabbix-server-mysql zabbix-web-mysql
 
 cd /usr/share/doc/zabbix-server-mysql-2.4.0/create/
 

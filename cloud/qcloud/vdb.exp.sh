@@ -5,7 +5,7 @@
 #############################################
 
 if [ ! -f /usr/bin/expect ]; then
-yum install -y expect
+dnf install -y expect
 fi
 
 /usr/bin/expect <<EOF

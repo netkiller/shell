@@ -2,9 +2,9 @@
 
 rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 
-#yum search nginx
+#dnf search nginx
 
-yum install -y nginx
+dnf install -y nginx
 
 cp /etc/nginx/nginx.conf{,.original}
 

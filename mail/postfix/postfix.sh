@@ -1,5 +1,5 @@
 
-yum install -y postfix
+dnf install -y postfix
 systemctl enable postfix
 
 cp /etc/postfix/main.cf{,.original}

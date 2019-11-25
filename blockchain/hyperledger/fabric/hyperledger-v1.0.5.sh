@@ -5,15 +5,15 @@ FABRIC_TAG=x86_64-1.0.5
 cd /usr/local/src/
 
 if [ ! -f /usr/bin/bunzip2 ];then
-    yum install -y bzip2
+    dnf install -y bzip2
 fi
 
 if [ ! -f /usr/bin/git ];then
-    yum install -y git
+    dnf install -y git
 fi
 
 if [ ! -f /usr/bin/go ];then
-    yum install -y golang
+    dnf install -y golang
 fi
 
 [[ $? -ne 0 ]] && echo "Error: installing some of software" &&  exit $?

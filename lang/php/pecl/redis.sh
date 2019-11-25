@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#yum install git -y
+#dnf install git -y
 #git clone git://github.com/nicolasff/phpredis.git
 
 #cd phpredis

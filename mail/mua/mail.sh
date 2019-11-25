@@ -1,2 +1,2 @@
-yum install -y mail
+dnf install -y mail
 

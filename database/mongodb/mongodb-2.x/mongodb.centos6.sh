@@ -4,12 +4,12 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
         exit
 fi
 
-yum install mongodb-server mongodb -y
+dnf install mongodb-server mongodb -y
 
 chkconfig mongod on
 service mongod start
 
-#yum install mongodb
+#dnf install mongodb
 
 cat <<EOF | mongo
 use admin

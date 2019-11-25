@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y openssl-devel
+dnf install -y openssl-devel
 #apr-devel
 
 cd /usr/local/src/

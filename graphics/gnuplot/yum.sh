@@ -1,1 +1,1 @@
-yum install -y gnuplot
+dnf install -y gnuplot

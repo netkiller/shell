@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # CentOS 7
-yum install -y http://yum.postgresql.org/9.3/redhat/rhel-7-x86_64/pgdg-centos93-9.3-1.noarch.rpm
-yum install -y postgresql93-server postgresql93-contrib
+dnf install -y http://dnf.postgresql.org/9.3/redhat/rhel-7-x86_64/pgdg-centos93-9.3-1.noarch.rpm
+dnf install -y postgresql93-server postgresql93-contrib
 
 systemctl initdb postgresql-9.3
 chkconfig postgresql-9.3 on

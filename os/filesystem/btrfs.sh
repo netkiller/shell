@@ -1,3 +1,3 @@
 #!/bin/bash
 
-yum install -y btrfs-progs
+dnf install -y btrfs-progs

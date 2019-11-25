@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install openvpn easy-rsa -y
+dnf install openvpn easy-rsa -y
 chkconfig openvpn on
 
 cp /usr/share/doc/openvpn-2.4.6/sample/sample-config-files/server.conf /etc/openvpn/

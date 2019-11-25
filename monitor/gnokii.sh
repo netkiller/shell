@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y gnokii	
+dnf install -y gnokii	
 
 chmod +x  /usr/bin/sendsms
 

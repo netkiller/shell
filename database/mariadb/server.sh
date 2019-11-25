@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo -i
-yum install MariaDB-server MariaDB-client
+dnf install MariaDB-server MariaDB-client
 
 chkconfig mysql on
 service mysql start

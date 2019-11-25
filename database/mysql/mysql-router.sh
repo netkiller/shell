@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum install mysql-router -y
+dnf install mysql-router -y
 
 cp /etc/mysqlrouter/mysqlrouter.ini{,.original}
 

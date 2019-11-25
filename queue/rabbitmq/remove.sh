@@ -1,1 +1,1 @@
-yum remove rabbitmq-*
+dnf remove rabbitmq-*

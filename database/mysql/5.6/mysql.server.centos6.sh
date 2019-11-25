@@ -1,7 +1,7 @@
 #!/bin/sh
-yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
-yum update -y
-yum install mysql-server -y
+dnf localinstall -y http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+dnf update -y
+dnf install mysql-server -y
 chkconfig mysqld on
 service mysqld start
 

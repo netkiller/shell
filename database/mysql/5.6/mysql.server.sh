@@ -1,7 +1,7 @@
 #!/bin/sh
-yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-yum update -y
-yum install mysql-server -y
+dnf localinstall -y http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+dnf update -y
+dnf install mysql-server -y
 
 cp /etc/my.cnf{,.original}
 

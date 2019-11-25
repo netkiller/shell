@@ -5,4 +5,4 @@
 #	exit
 #fi
 
-yum install -y gcc gcc-c++ make automake autoconf patch
+dnf install -y gcc gcc-c++ make automake autoconf patch

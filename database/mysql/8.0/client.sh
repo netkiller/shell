@@ -1,3 +1,3 @@
 #!/bin/sh
 
-yum install mysql-community-client -y
+dnf install mysql-community-client -y

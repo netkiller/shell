@@ -1,1 +1,1 @@
-yum install -y siege
+dnf install -y siege

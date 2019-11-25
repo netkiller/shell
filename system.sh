@@ -23,7 +23,7 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
 fi
 
 function ntp(){
-	yum install ntp -y
+	dnf install ntp -y
 	ntpdate $NTPDATE
 
 vim /etc/ntp.conf <<VIM > /dev/null 2>&1
@@ -36,7 +36,7 @@ VIM
 	chkconfig ntpd on
 }
 function snmp (){
-	yum install net-snmp -y
+	dnf install net-snmp -y
 
 vim /etc/snmp/snmpd.conf <<VIM > /dev/null 2>&1
 :62,62s/systemview/all/
@@ -49,11 +49,11 @@ VIM
 }
 
 function nagios(){
-	yum install -y nagios
+	dnf install -y nagios
 }
 
 function nrpe(){
-	yum install -y nrpe nagios-plugins
+	dnf install -y nrpe nagios-plugins
 
 vim /etc/nagios/nrpe.cfg <<VIM > /dev/null 2>&1
 :%s/allowed_hosts=127.0.0.1/allowed_hosts=172.16.1.2/
@@ -73,12 +73,12 @@ EOF
 
 
 function init(){
-	yum update -y
-	yum install -y telnet wget rsync
-	yum install -y openssh-clients
-	yum install -y system-config-network-tui
-	yum install -y tcpdump nmap lsof
-	yum remove dhclient -y
+	dnf update -y
+	dnf install -y telnet wget rsync
+	dnf install -y openssh-clients
+	dnf install -y system-config-network-tui
+	dnf install -y tcpdump nmap lsof
+	dnf remove dhclient -y
 	lokkit --disabled --selinux=disabled
 	
 	rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt

@@ -1,5 +1,5 @@
 
-yum install -y samba samba-client
+dnf install -y samba samba-client
 
 cp /etc/samba/smb.conf{,.original}
 

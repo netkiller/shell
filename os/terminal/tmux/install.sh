@@ -4,4 +4,4 @@ if [ -z $( egrep "CentOS|Redhat" /etc/issue) ]; then
 	exit
 fi
 
-yum install tmux -y
+dnf install tmux -y

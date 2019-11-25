@@ -6,7 +6,7 @@
 ##################################################
 cd /usr/local/src
 
-# yum install -y jemalloc-devel
+# dnf install -y jemalloc-devel
 
 if [ ! -f /usr/bin/gcc ]; then
 	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/gcc/gcc.sh | bash

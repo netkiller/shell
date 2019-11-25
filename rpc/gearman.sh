@@ -1,4 +1,4 @@
-yum install gearmand -y
+dnf install gearmand -y
 chkconfig gearmand on
 service gearmand start
 

@@ -1,4 +1,4 @@
-yum remove -y nodejs
+dnf remove -y nodejs
 
 cd /usr/local/src
 wget https://nodejs.org/dist/v12.4.0/node-v12.4.0-linux-x64.tar.xz

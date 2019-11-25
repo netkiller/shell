@@ -1,8 +1,8 @@
 #!/bin/bash
 
-yum install -y nrpe 
-#yum install -y nagios-plugins-all
-yum install -y \
+dnf install -y nrpe 
+#dnf install -y nagios-plugins-all
+dnf install -y \
 nagios-plugins-disk \
 nagios-plugins-load \
 nagios-plugins-log \

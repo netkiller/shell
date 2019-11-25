@@ -1,4 +1,4 @@
-yum install -y vsftpd
+dnf install -y vsftpd
 
 systemctl enable vsftpd
 

@@ -2,13 +2,13 @@
 
 # Install Strongswan
 
-yum install -y strongswan
+dnf install -y strongswan
 
 cp /etc/strongswan/ipsec.conf{,.original}
 
 # Certificates
 
-yum install -y haveged
+dnf install -y haveged
 systemctl enable haveged
 systemctl start haveged
 

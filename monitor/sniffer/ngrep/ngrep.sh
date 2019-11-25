@@ -1,1 +1,1 @@
-yum install -y ngrep
+dnf install -y ngrep

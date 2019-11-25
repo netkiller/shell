@@ -1,1 +1,1 @@
-yum install ruby rubygems
+dnf install ruby rubygems

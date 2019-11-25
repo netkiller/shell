@@ -4,7 +4,7 @@
 # Neo chen <netkiller@msn.com>
 ###########################################
 if [ $(id -u) = "0" ]; then
-	yum install -y zsh
+	dnf install -y zsh
 fi
 ###########################################
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

@@ -2,7 +2,7 @@
 
 cd /usr/local/src/
 
-yum install -y pcre-devel zlib-devel
+dnf install -y pcre-devel zlib-devel
 
 wget https://fastdfs.googlecode.com/files/fastdfs-nginx-module_v1.15.tar.gz
 tar zxf fastdfs-nginx-module_v1.15.tar.gz 

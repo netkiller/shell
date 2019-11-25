@@ -2,7 +2,7 @@
 
 cd /usr/local/src/
 
-yum install -y pcre-devel zlib-devel
+dnf install -y pcre-devel zlib-devel
 
 groupadd -r nginx
 useradd -s /sbin/nologin -g nginx -r nginx

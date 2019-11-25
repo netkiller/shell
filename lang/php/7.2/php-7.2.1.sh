@@ -7,7 +7,7 @@ if [ ! -f php-7.2.1.tar.bz2 ];then
 fi
 
 if [ ! -f /usr/bin/bunzip2 ];then
-    yum install -y bzip2
+    dnf install -y bzip2
 fi
 
 if [ -s php-7.2.1.tar.bz2 ]; then

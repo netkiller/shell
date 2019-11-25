@@ -1,5 +1,5 @@
 
-yum install -y python34-pip
+dnf install -y python34-pip
 pip3 install --upgrade pip
 pip3 install shadowsocks
 

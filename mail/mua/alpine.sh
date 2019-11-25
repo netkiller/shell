@@ -1,1 +1,1 @@
-yum install -y alpine
+dnf install -y alpine

@@ -1,1 +1,1 @@
-yum install -y httpd-tools
+dnf install -y httpd-tools

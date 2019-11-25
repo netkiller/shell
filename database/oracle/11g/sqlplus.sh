@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum localinstall -y oracle-instantclient11.2-*	
+dnf localinstall -y oracle-instantclient11.2-*	
 
 cat >> ~/.bash_profile <<EOF
 

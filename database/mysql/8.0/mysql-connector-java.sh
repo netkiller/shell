@@ -6,5 +6,5 @@ if [ -z $(rpm -qa mysql80-community-release) ]; then
 
 fi
 
-yum install -y mysql-connector-java
+dnf install -y mysql-connector-java
 ls /usr/share/java/mysql-connector-java.jar

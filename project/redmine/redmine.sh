@@ -1,7 +1,7 @@
 curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/mysql.server.sh | bash
 curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/mysql.devel.sh | bash
 
-yum install -y ruby rubygems ruby-devel ImageMagick-devel
+dnf install -y ruby rubygems ruby-devel ImageMagick-devel
 
 groupadd -g 200 redmine
 adduser --uid 200 --gid 200 -c "Redmine Application" redmine

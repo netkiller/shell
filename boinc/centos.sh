@@ -1,5 +1,5 @@
 
-yum install -y boinc-client
+dnf install -y boinc-client
 
 systemctl enable boinc-client
 systemctl start boinc-client

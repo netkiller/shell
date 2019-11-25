@@ -6,9 +6,9 @@
 PREFIX_DIR=/srv
 HTTPD_DIR=$HTTPD_DIR/httpd-2.4.12
 
-#yum install -y apr apr-util 
-yum -y install pcre-devel openssl-devel
-yum install -y bzip2
+#dnf install -y apr apr-util 
+dnf -y install pcre-devel openssl-devel
+dnf install -y bzip2
  
 cd /usr/local/src/
 wget http://apache.01link.hk/apr/apr-1.5.2.tar.bz2

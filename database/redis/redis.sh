@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install redis -y
+dnf install redis -y
 
 cp /etc/redis.conf{,.original}
 sed -i 's/daemonize no/daemonize yes/' /etc/redis.conf 

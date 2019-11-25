@@ -1,4 +1,4 @@
 #!/bin/sh
 
-yum install libmemcached-devel
+dnf install libmemcached-devel
 pecl install memcached

@@ -1,1 +1,1 @@
-yum install -y memcached
+dnf install -y memcached

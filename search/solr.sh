@@ -4,7 +4,7 @@ wget http://www.us.apache.org/dist/lucene/solr/5.3.0/solr-5.3.0.tgz
 
 tar zxvf solr-5.3.0.tgz 
 
-yum install -y java-1.8.0-openjdk unzip lsof
+dnf install -y java-1.8.0-openjdk unzip lsof
 
 mv solr-5.3.0 /srv/
 

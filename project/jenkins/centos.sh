@@ -1,9 +1,9 @@
 #!/bin/bash
 
-wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+wget -O /etc/dnf.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 
-yum install -y jenkins
+dnf install -y jenkins
 
 systemctl enable jenkins.service
 systemctl start jenkins.service

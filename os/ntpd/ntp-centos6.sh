@@ -5,7 +5,7 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/issue)" ]; then
         exit
 fi
 
-yum install ntp -y
+dnf install ntp -y
 
 #vim /etc/ntp.conf <<VIM > /dev/null 2>&1
 #:22,24s/^/#/

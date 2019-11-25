@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y zabbix-java-gateway
+dnf install -y zabbix-java-gateway
 
 cp /etc/zabbix/zabbix_java_gateway.conf{,.original}
 

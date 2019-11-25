@@ -1,4 +1,4 @@
-yum install -y filebeat
+dnf install -y filebeat
 
 cp /etc/filebeat/filebeat.yml{,.original}
 

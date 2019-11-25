@@ -1,2 +1,2 @@
-yum install -y mutt
+dnf install -y mutt
 

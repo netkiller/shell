@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -f /usr/bin/git ]; then
-	yum install -y git
+	dnf install -y git
 fi
 
 git clone --depth=1 https://github.com/oscm/shell.git /srv/oscm

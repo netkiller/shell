@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y java-1.8.0-openjdk
+dnf install -y java-1.8.0-openjdk
 
 cat >> /etc/profile.d/java.sh <<'EOF'
 export JAVA_HOME=/etc/alternatives/jre

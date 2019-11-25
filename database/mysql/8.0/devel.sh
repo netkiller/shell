@@ -1,2 +1,2 @@
 #!/bin/sh
-yum install mysql-community-devel -y
+dnf install mysql-community-devel -y

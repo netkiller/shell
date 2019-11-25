@@ -1,5 +1,5 @@
 #!/bin/bash
-yum install -y postgresql10-server postgresql10-contrib
+dnf install -y postgresql10-server postgresql10-contrib
 
 /usr/pgsql-10/bin/postgresql10-setup initdb
 

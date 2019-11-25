@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # CentOS 7
-yum install -y https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm
-yum install -y postgresql94-server postgresql94-contrib
+dnf install -y https://download.postgresql.org/pub/repos/dnf/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm
+dnf install -y postgresql94-server postgresql94-contrib
 
 /usr/pgsql-9.4/bin/postgresql94-setup initdb
 

@@ -1,3 +1,3 @@
 #!/bin/sh
-yum install -y mongodb-org-tools
+dnf install -y mongodb-org-tools
 

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-yum install -y yum-utils
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+dnf install -y dnf-utils
+dnf-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-yum makecache fast
+dnf makecache fast
 
-yum -y install docker-ce
-yum list docker-ce
+dnf -y install docker-ce
+dnf list docker-ce
 
 systemctl enable docker
 systemctl start docker
