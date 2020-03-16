@@ -5,7 +5,11 @@ if [ -z "$( egrep "CentOS|Redhat" /etc/centos-release)" ]; then
         exit
 fi
 
-sudo dnf install -y docker-engine
+dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+dnf install -y docker-ce
 
 systemctl enable docker
 systemctl start docker
+
+# usermod -aG docker $USER
