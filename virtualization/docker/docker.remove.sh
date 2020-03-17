@@ -1,4 +1,4 @@
 #!/bin/bash
 
-dnf -y remove docker-engine.x86_64
+dnf -y remove docker-ce
 rm -rf /var/lib/docker
