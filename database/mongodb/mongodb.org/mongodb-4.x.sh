@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat << 'EOF' >> /etc/dnf.repos.d/mongodb-org-4.0.repo
+cat << 'EOF' >> /etc/yum.repos.d/mongodb-org-4.0.repo
 [mongodb-org-4.0]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/dnf/redhat/$releasever/mongodb-org/4.0/x86_64/
