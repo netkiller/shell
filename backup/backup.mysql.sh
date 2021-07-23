@@ -22,7 +22,7 @@ MYSQLDUMP="/usr/bin/mysqldump"
 LOGFILE=/var/tmp/mysql.backup.log
 TIMEPOINT=$(date -u +%Y-%m-%d)
 #TIMEPOINT=$(date -u +%Y-%m-%d.%H:%M:%S)
-MYSQLDUMP_OPTS="-h $BACKUP_HOST -u$BACKUP_USER -p$BACKUP_PASS --events --triggers --routines --log-error=$LOGFILE"
+MYSQLDUMP_OPTS="-h $BACKUP_HOST -u$BACKUP_USER -p$BACKUP_PASS --compress --events --triggers --routines --log-error=$LOGFILE"
 # --skip-lock-tables
 ####################################
 umask 0077
