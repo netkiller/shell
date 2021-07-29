@@ -14,3 +14,10 @@ visudo <<EOF > /dev/null 2>&1
 EOF
 
 visudo -c
+
+sed -i '88s#$#:/usr/local/sbin:/usr/local/bin#' /etc/sudoers
+
+
+#cat > /etc/sudoers.d/secure_path.conf <<'EOF'
+#Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+#EOF
