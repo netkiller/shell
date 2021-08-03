@@ -1,4 +1,3 @@
-cat <<-EOF> /etc/sudoers.d/www
 cat > /etc/sudoers.d/www <<-EOF
 #Cmnd_Alias DOCKER = /usr/local/bin/docker-compose
 #www    ALL=/usr/local/bin/docker-compose    NOPASSWD: ALL
