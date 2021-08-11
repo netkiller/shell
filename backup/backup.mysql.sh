@@ -15,14 +15,13 @@ BACKUP_USER="root"
 BACKUP_PASS="PA3nScWWdqC3Ww4KPu"
 BACKUP_DIR=/opt/backup
 BACKUP_DBNAME="dbname"
+TIMEPOINT=$(date -u +%Y-%m-%d)
+#TIMEPOINT=$(date -u +%Y-%m-%d.%H:%M:%S)
 #Number of copies
 COPIES=30
 ####################################
 MYSQLDUMP="/usr/bin/mysqldump"
-LOGFILE=/var/tmp/mysql.backup.log
-TIMEPOINT=$(date -u +%Y-%m-%d)
-#TIMEPOINT=$(date -u +%Y-%m-%d.%H:%M:%S)
-MYSQLDUMP_OPTS="-h $BACKUP_HOST -u$BACKUP_USER -p$BACKUP_PASS --compress --events --triggers --routines --log-error=$LOGFILE"
+MYSQLDUMP_OPTS="-h $BACKUP_HOST -u$BACKUP_USER -p$BACKUP_PASS --compress --events --triggers --routines"
 # --skip-lock-tables
 ####################################
 umask 0077
@@ -32,7 +31,8 @@ test ! -w $BACKUP_DIR && echo "Error: $BACKUP_DIR is un-writeable." && exit 0
 for dbname in $BACKUP_DBNAME
 do
 	test ! -d "$BACKUP_DIR/$dbname" && mkdir -p "$BACKUP_DIR/$dbname"
-
-	$MYSQLDUMP $MYSQLDUMP_OPTS $dbname | gzip > $BACKUP_DIR/$dbname/$dbname.$TIMEPOINT.sql.gz > /dev/null 2>&1
+	LOGFILE=$BACKUP_DIR/$dbname/error.log
+	$MYSQLDUMP $MYSQLDUMP_OPTS --log-error=$LOGFILE $dbname | gzip > $BACKUP_DIR/$dbname/$dbname.$TIMEPOINT.sql.gz
+	#> /dev/null 2>&1
 done
 find $BACKUP_DIR -type f -mtime +$COPIES -delete
