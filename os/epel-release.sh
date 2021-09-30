@@ -1,4 +1,9 @@
 #!/bin/bash
+
+cp /etc/dnf/dnf.conf{,.original}		
+echo "fastestmirror=True" >> /etc/dnf/dnf.conf
+dnf makecache
+
 dnf -y install epel-release
 dnf -y update
 
