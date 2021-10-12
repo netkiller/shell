@@ -1,7 +1,0 @@
-Backup shell
-=====
-
-Install
------
-	
-	
