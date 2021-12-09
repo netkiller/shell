@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /usr/local/src/
-wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
+wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
 tar zxf apache-maven-3.8.4-bin.tar.gz
 mv apache-maven-3.8.4 /srv/
 rm -f /srv/apache-maven
