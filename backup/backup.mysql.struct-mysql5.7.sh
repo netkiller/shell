@@ -25,7 +25,7 @@ PROG=$BASEDIR/bin/$(basename $0)
 LOGFILE=/var/tmp/$NAME.log
 PIDFILE=/var/tmp/$NAME.pid
 MYSQLDUMP="/usr/bin/mysqldump"
-MYSQLDUMP_OPTS="-h $BACKUP_HOST -u$BACKUP_USER -p$BACKUP_PASS --events --triggers --routines --skip-comments --skip-opt --log-error=$LOGFILE -d"
+MYSQLDUMP_OPTS="-h $BACKUP_HOST -u$BACKUP_USER -p$BACKUP_PASS --events --triggers --routines --skip-comments --skip-opt --log-error=$LOGFILE -d --column_statistics=0"
 ####################################
 umask 0077
 ##############################################
