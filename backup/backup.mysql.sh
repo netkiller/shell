@@ -6,7 +6,7 @@
 ###################################
 # SELECT `user`, `host`, `password` FROM `mysql`.`user`;
 # CREATE USER 'backup'@'localhost' IDENTIFIED BY 'SaJePoM6BAPOmOFOd7Xo3e1A52vEPE';
-# GRANT SELECT, LOCK TABLES  ON *.* TO 'backup'@'localhost';
+# GRANT SELECT,PROCESS,LOCK TABLES,EVENT ON *.* TO 'backup'@'localhost';
 # FLUSH PRIVILEGES;
 # SHOW GRANTS FOR 'backup'@'localhost';
 ###################################
