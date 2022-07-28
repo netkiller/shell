@@ -1,6 +1,6 @@
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-cat >> /etc/dnf.repos.d/elastic.repo <<EOF
+cat >> /etc/yum.repos.d/elastic.repo <<EOF
 [elastic-6.x]
 name=Elastic repository for 6.x packages
 baseurl=https://artifacts.elastic.co/packages/6.x/dnf
