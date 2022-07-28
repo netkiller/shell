@@ -9,7 +9,7 @@ cd /usr/local/src
 # dnf install -y jemalloc-devel
 
 if [ ! -f /usr/bin/gcc ]; then
-	curl -s https://raw.githubusercontent.com/oscm/shell/master/lang/gcc/gcc.sh | bash
+	curl -s https://raw.githubusercontent.com/netkiller/shell/master/lang/gcc/gcc.sh | bash
 fi
 
 id redis
@@ -58,8 +58,8 @@ EOF
 
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
-wget -q https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/systemd/redis.service -O /usr/lib/systemd/system/redis.service
-wget -q https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/systemd/redis-shutdown -O /usr/local/bin/redis-shutdown
+wget -q https://raw.githubusercontent.com/netkiller/shell/master/database/redis/source/systemd/redis.service -O /usr/lib/systemd/system/redis.service
+wget -q https://raw.githubusercontent.com/netkiller/shell/master/database/redis/source/systemd/redis-shutdown -O /usr/local/bin/redis-shutdown
 chmod 700 /usr/local/bin/redis-shutdown
 chown redis:redis /usr/local/bin/redis-shutdown
 

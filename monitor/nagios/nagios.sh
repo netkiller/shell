@@ -1,9 +1,9 @@
 #!/bin/bash
 # dnf 与 apt 版本过低所以需要编译安装
 
-curl -s https://raw.githubusercontent.com/oscm/shell/master/compiler/gcc.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/compiler/gcc.sh | bash
 
-curl -s https://raw.githubusercontent.com/oscm/shell/master/web/httpd/httpd.dnf.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/web/httpd/httpd.dnf.sh | bash
 
 dnf install -y openssl-devel gd-devel
 #mail command
@@ -54,9 +54,9 @@ chkconfig --add nagios
 chkconfig nagios on
 chkconfig --list nagios
 
-wget https://raw.githubusercontent.com/oscm/shell/master/monitor/nagios/media/warning.wav -O /srv/nagios-4.0.8/share/media/warning.wav
-wget https://raw.githubusercontent.com/oscm/shell/master/monitor/nagios/media/critical.wav -O /srv/nagios-4.0.8/share/media/critical.wav
-wget https://raw.githubusercontent.com/oscm/shell/master/monitor/nagios/media/hostdown.wav -O /srv/nagios-4.0.8/share/media/hostdown.wav
+wget https://raw.githubusercontent.com/netkiller/shell/master/monitor/nagios/media/warning.wav -O /srv/nagios-4.0.8/share/media/warning.wav
+wget https://raw.githubusercontent.com/netkiller/shell/master/monitor/nagios/media/critical.wav -O /srv/nagios-4.0.8/share/media/critical.wav
+wget https://raw.githubusercontent.com/netkiller/shell/master/monitor/nagios/media/hostdown.wav -O /srv/nagios-4.0.8/share/media/hostdown.wav
 
 systemctl restart httpd
 

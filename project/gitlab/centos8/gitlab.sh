@@ -1,4 +1,4 @@
-URL=https://github.com/oscm/shell
+URL=https://github.com/netkiller/shell
 
 # Check if opening the firewall is needed with: 
 sudo systemctl status firewalld 

@@ -111,6 +111,6 @@ VIM
 mkdir -p /srv/nginx-1.11.11/var/cache/nginx/client_temp
 chown nginx:nginx -R /srv/nginx-1.11.11/var/cache/
 
-wget -q https://raw.githubusercontent.com/oscm/shell/master/web/nginx/source/nginx.service -O /usr/lib/systemd/system/nginx.service
+wget -q https://raw.githubusercontent.com/netkiller/shell/master/web/nginx/source/nginx.service -O /usr/lib/systemd/system/nginx.service
 systemctl enable nginx
 systemctl start nginx

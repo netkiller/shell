@@ -2,8 +2,8 @@ cd /usr/local/src
 
 # MySQL
 
-curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/5.7/mysql57-community-release-el7-11.sh | bash
-curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/5.7/mysql-connector-java.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/database/mysql/5.7/mysql57-community-release-el7-11.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/database/mysql/5.7/mysql-connector-java.sh | bash
 
 wget https://mirrors.tuna.tsinghua.edu.cn/apache/sqoop/1.99.7/sqoop-1.99.7-bin-hadoop200.tar.gz
 

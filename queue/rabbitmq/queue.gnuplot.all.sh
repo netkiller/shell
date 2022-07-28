@@ -2,7 +2,7 @@
 ##################################################
 # Website http://www.netkiller.cn
 # Author netkiller<netkiller@msn.com>
-# OSCM https://github.com/oscm/shell
+# netkiller https://github.com/netkiller/shell
 ##################################################
 # You have to clean data  at midnight
 # crontab -e

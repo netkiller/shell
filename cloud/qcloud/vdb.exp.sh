@@ -1,6 +1,6 @@
 #!/bin/sh
 #############################################
-# OSCM - http://www.netkiller.cn
+# netkiller - http://www.netkiller.cn
 # Author: Neo <netkiller@msn.com>
 #############################################
 

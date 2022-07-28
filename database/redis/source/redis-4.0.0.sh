@@ -32,8 +32,8 @@ EOF
 
 sysctl vm.overcommit_memory=1
 
-wget -q https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/systemd/redis.service -O /usr/lib/systemd/system/redis.service
-wget -q https://raw.githubusercontent.com/oscm/shell/master/database/redis/source/systemd/redis-shutdown -O /usr/local/bin/redis-shutdown
+wget -q https://raw.githubusercontent.com/netkiller/shell/master/database/redis/source/systemd/redis.service -O /usr/lib/systemd/system/redis.service
+wget -q https://raw.githubusercontent.com/netkiller/shell/master/database/redis/source/systemd/redis-shutdown -O /usr/local/bin/redis-shutdown
 chmod 700 /usr/local/bin/redis-shutdown
 chown redis:redis /usr/local/bin/redis-shutdown
 

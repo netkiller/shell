@@ -15,7 +15,7 @@ EOF
 
 source /etc/profile.d/go.sh
 
-wget -q https://raw.githubusercontent.com/oscm/shell/master/distributed/ipfs/ipfs.service -O /usr/lib/systemd/system/ipfs.service
+wget -q https://raw.githubusercontent.com/netkiller/shell/master/distributed/ipfs/ipfs.service -O /usr/lib/systemd/system/ipfs.service
 
 systemctl daemon-reload
 systemctl enable ipfs

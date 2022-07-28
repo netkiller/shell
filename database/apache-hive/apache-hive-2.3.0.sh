@@ -1,7 +1,7 @@
 cd /usr/local/src
 
-curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/5.7/mysql57-community-release-el7-11.sh | bash
-curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/5.7/mysql-connector-java.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/database/mysql/5.7/mysql57-community-release-el7-11.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/database/mysql/5.7/mysql-connector-java.sh | bash
 
 wget http://mirror.bit.edu.cn/apache/hive/hive-2.3.0/apache-hive-2.3.0-bin.tar.gz
 

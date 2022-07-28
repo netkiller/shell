@@ -77,6 +77,6 @@ sed -i '/gzip  on;/a \
 mkdir -p /var/cache/nginx/
 chown nginx:nginx -R /var/cache/nginx/
 
-wget -q https://raw.githubusercontent.com/oscm/shell/master/web/nginx/source/nginx.service -O /usr/lib/systemd/system/nginx.service
+wget -q https://raw.githubusercontent.com/netkiller/shell/master/web/nginx/source/nginx.service -O /usr/lib/systemd/system/nginx.service
 systemctl enable nginx
 systemctl start nginx

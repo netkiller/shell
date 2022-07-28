@@ -2,7 +2,7 @@
 
 
 # MySQL 8.0
-curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/8.0/mysql80-community-release.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/database/mysql/8.0/mysql80-community-release.sh | bash
 dnf install mysql-community-devel -y
 dnf install mysql-community-client -y
 

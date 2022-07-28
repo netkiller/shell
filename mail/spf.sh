@@ -2,7 +2,7 @@
 ########################################
 # Author: Neo <netiller@msn.com>
 # Home : http://netkiler.github.io
-# Project: https://github.com/oscm/shell
+# Project: https://github.com/netkiller/shell
 ########################################
 domain=$1
 ########################################

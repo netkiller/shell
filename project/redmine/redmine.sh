@@ -1,5 +1,5 @@
-curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/mysql.server.sh | bash
-curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/mysql.devel.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/database/mysql/mysql.server.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/database/mysql/mysql.devel.sh | bash
 
 dnf install -y ruby rubygems ruby-devel ImageMagick-devel
 

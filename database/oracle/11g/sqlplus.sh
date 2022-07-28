@@ -18,7 +18,7 @@ EOF
 
 mkdir -p /usr/lib/oracle/11.2/client64/network/admin
 
-wget -O /usr/lib/oracle/11.2/client64/network/admin/glogin.sql https://raw.githubusercontent.com/oscm/shell/master/database/oracle/glogin.sql
+wget -O /usr/lib/oracle/11.2/client64/network/admin/glogin.sql https://raw.githubusercontent.com/netkiller/shell/master/database/oracle/glogin.sql
 
 cat >> /usr/lib/oracle/11.2/client64/network/admin/tnsnames.ora <<EOF
 XXX =

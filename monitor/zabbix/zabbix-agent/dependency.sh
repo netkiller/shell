@@ -1,7 +1,7 @@
 
 mkdir -p /srv/zabbix/libexec
-wget https://raw.githubusercontent.com/oscm/zabbix/master/Dependency/dependency -P /srv/zabbix/libexec
-wget https://raw.githubusercontent.com/oscm/zabbix/master/Dependency/userparameter_dependency.conf -P /etc/zabbix/zabbix_agentd.d/
+wget https://raw.githubusercontent.com/netkiller/zabbix/master/Dependency/dependency -P /srv/zabbix/libexec
+wget https://raw.githubusercontent.com/netkiller/zabbix/master/Dependency/userparameter_dependency.conf -P /etc/zabbix/zabbix_agentd.d/
 
 chmod +x  /srv/zabbix/libexec/dependency
 

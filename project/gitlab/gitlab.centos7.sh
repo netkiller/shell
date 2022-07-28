@@ -1,5 +1,5 @@
 #!/bin/bash[InternetShortcut]
-URL=https://github.com/oscm/shell
+URL=https://github.com/netkiller/shell
 
 
 curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | bash

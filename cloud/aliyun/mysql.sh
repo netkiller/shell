@@ -1,3 +1,3 @@
-curl -s https://raw.githubusercontent.com/oscm/shell/master/database/mysql/mysql.server.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/database/mysql/mysql.server.sh | bash
 
 

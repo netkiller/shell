@@ -1,4 +1,4 @@
-curl -s https://raw.githubusercontent.com/oscm/shell/master/distributed/hadoop/hadoop-2.8.0.sh | bash
+curl -s https://raw.githubusercontent.com/netkiller/shell/master/distributed/hadoop/hadoop-2.8.0.sh | bash
 
 #hostnamectl set-hostname master
 

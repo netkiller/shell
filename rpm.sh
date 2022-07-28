@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone https://github.com/oscm/shell.git
+git clone https://github.com/netkiller/shell.git
 
 topdir=~/rpmbuild
 #rm -rf $topdir
@@ -19,7 +19,7 @@ cat << EOF >> ~/.rpmmacros
 EOF
 
 #rpm -Vp
-name=oscm
+name=netkiller
 rpmbuild -ba --sign test.spec --define "book ${name}"
 rpm -qpi ~/rpmbuild/RPMS/x86_64/netkiller-${name}-*.x86_64.rpm
 rpm -qpl ~/rpmbuild/RPMS/x86_64/netkiller-${name}-*.x86_64.rpm
