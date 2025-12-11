@@ -2,8 +2,14 @@ cp /etc/dnf/dnf.conf{,.original}
 echo "fastestmirror=true" >> /etc/dnf/dnf.conf
 dnf makecache
 
+dnf install -y https://mirrors.aliyun.com/epel/epel-release-latest-10.noarch.rpm
+sed -i 's|^#baseurl=https://download.example/pub|baseurl=https://mirrors.aliyun.com|' /etc/yum.repos.d/epel*
+sed -i 's|^metalink|#metalink|' /etc/yum.repos.d/epel*
+
 dnf -y upgrade
-dnf -y install epel-release
+#dnf -y install epel-release
+
+
 
 dnf install -y lrzsz
 
@@ -23,8 +29,15 @@ source /etc/profile.d/history.sh
 
 dnf install java-21-openjdk maven-openjdk21
 
+dnf install -y python3.13
+rm -f /usr/bin/python3
+ln -s /usr/bin/python3.13 /usr/bin/python3
+pip install netkiller-devops
+
 dnf -y install dnf-plugins-core
-dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+#dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+dnf config-manager --add-repo http://mirrors.cloud.aliyuncs.com/docker-ce/linux/centos/docker-ce.repo
+sed -i 's|https://mirrors.aliyun.com|http://mirrors.cloud.aliyuncs.com|g' /etc/yum.repos.d/docker-ce.repo
 dnf install -y docker-ce docker-compose-plugin
 
 GID=$(egrep -o 'docker:x:([0-9]+)' /etc/group | egrep -o '([0-9]+)')
@@ -66,4 +79,4 @@ EOF
 
 
 systemctl enable docker
-[root@netkiller ~]# systemctl start docker
+systemctl start docker
