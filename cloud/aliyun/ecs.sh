@@ -7,9 +7,7 @@ sed -i 's|^#baseurl=https://download.example/pub|baseurl=https://mirrors.aliyun.
 sed -i 's|^metalink|#metalink|' /etc/yum.repos.d/epel*
 
 dnf -y upgrade
-#dnf -y install epel-release
-
-
+dnf -y install epel-release
 
 dnf install -y lrzsz
 
@@ -27,7 +25,7 @@ EOF
 
 source /etc/profile.d/history.sh
 
-dnf install java-21-openjdk maven-openjdk21
+dnf install java-25-openjdk maven-openjdk25
 
 dnf install -y python3.13
 rm -f /usr/bin/python3
@@ -49,34 +47,19 @@ EOF
 
 cat << EOF > /etc/docker/daemon.json
 {
+  "dns": [
+    "119.29.29.29",
+    "114.114.114.114"
+  ],
+  "insecure-registries": [
+    "docker.1ms.run"
+  ],
   "registry-mirrors": [
-    "https://docker.registry.cyou",
-    "https://docker-cf.registry.cyou",
-    "https://dockercf.jsdelivr.fyi",
-    "https://docker.jsdelivr.fyi",
-    "https://dockertest.jsdelivr.fyi",
-    "https://mirror.aliyuncs.com",
-    "https://dockerproxy.com",
-    "https://mirror.baidubce.com",
-    "https://docker.m.daocloud.io",
-    "https://docker.nju.edu.cn",
-    "https://docker.mirrors.sjtug.sjtu.edu.cn",
-    "https://docker.mirrors.ustc.edu.cn",
-    "https://mirror.iscas.ac.cn",
-    "https://docker.rainbond.cc",
-    "https://do.nark.eu.org",
-    "https://dc.j8.work",
-    "https://dockerproxy.com",
-    "https://gst6rzl9.mirror.aliyuncs.com",
-    "https://registry.docker-cn.com",
-    "http://hub-mirror.c.163.com",
-    "http://mirrors.ustc.edu.cn/",
-    "https://mirrors.tuna.tsinghua.edu.cn/",
-    "http://mirrors.sohu.com/"
+    "https://docker.1ms.run",
+    "https://docker.xuanyuan.me"
   ]
 }
 EOF
-
 
 systemctl enable docker
 systemctl start docker
