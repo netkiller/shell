@@ -27,7 +27,7 @@ source /etc/profile.d/history.sh
 
 dnf install java-25-openjdk maven-openjdk25
 
-dnf install -y python3.13
+dnf install -y python3.13 python3.13-pip
 rm -f /usr/bin/python3
 ln -s /usr/bin/python3.13 /usr/bin/python3
 pip install netkiller-devops
