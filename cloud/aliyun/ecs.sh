@@ -13,9 +13,7 @@ dnf -y upgrade
 
 dnf install -y lrzsz
 
-dnf install -y bzip2 tree psmisc \
-telnet wget rsync vim-enhanced \
-net-tools bind-utils
+dnf install -y bzip2 tree psmisc telnet wget rsync vim-enhanced net-tools bind-utils
 
 cat >> /etc/profile.d/history.sh <<EOF
 # Administrator specific aliases and functions for system security
