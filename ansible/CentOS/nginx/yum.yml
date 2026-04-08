@@ -1,0 +1,7 @@
+---
+- hosts: all
+  user: root
+  tasks:
+  - name: Install nginx is a high performance web server
+    yum: name=nginx state=present
+    action: command cp /etc/nginx/nginx.conf{,.original}
